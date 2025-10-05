@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shoji Room Seasons</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #f6f5f0;
+      overflow-x: hidden;
+    }
+
+    .hallway {
+      display: flex;
+      width: 400vw;
+      height: 100vh;
+      transition: transform 0.6s ease-in-out;
+    }
+
+    .room {
+      position: relative;
+      width: 100vw;
+      height: 100vh;
+      overflow: hidden;
+      background-size: cover;
+      background-position: center;
+    }
+
+    .shoji-door {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(255,255,255,0.9);
+      border-left: 5px solid #b38c4d;
+      border-right: 5px solid #b38c4d;
+      z-index: 2;
+      transition: transform 1s ease;
+    }
+
+    .room.open .shoji-door {
+      transform: translateX(-100%);
+    }
+
+    .content {
+      position: absolute;
+      z-index: 1;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(255, 255, 255, 0.7);
+      padding: 2rem;
+      border-radius: 10px;
+      max-width: 600px;
+      text-align: center;
+      display: none;
+    }
+
+    .room.open .content {
+      display: block;
+    }
+
+    .nav {
+      position: fixed;
+      top: 50%;
+      left: 1rem;
+      transform: translateY(-50%);
+      z-index: 100;
+    }
+
+    .nav button {
+      display: block;
+      margin: 10px 0;
+      padding: 0.5rem 1rem;
+      background-color: #b38c4d;
+      color: white;
+      border: none;
+      cursor: pointer;
+      border-radius: 5px;
+    }
+  </style>
+</head>
+<body>
+  <div class="nav">
+    <button onclick="goToRoom(0)">🌸 Spring</button>
+    <button onclick="goToRoom(1)">☀️ Summer</button>
+    <button onclick="goToRoom(2)">🍁 Autumn</button>
+    <button onclick="goToRoom(3)">❄️ Winter</button>
+  </div>
+
+  <div class="hallway" id="hallway">
+    <div class="room" style="background-image: url('https://images.unsplash.com/photo-1554189097-ffe88e998a2c');">
+      <div class="shoji-door" onclick="openRoom(this)"></div>
+      <div class="content">
+        <h1>Spring</h1>
+        <p>Cherry blossoms bloom across Japan. Don't miss hanami picnics in Ueno Park or along the Philosopher’s Path in Kyoto.</p>
+      </div>
+    </div>
+    <div class="room" style="background-image: url('https://images.unsplash.com/photo-1560848170-88f85e07bb80');">
+      <div class="shoji-door" onclick="openRoom(this)"></div>
+      <div class="content">
+        <h1>Summer</h1>
+        <p>Celebrate fireworks festivals, try kakigōri, and climb Mt. Fuji. Summer in Japan is bright, loud, and thrilling.</p>
+      </div>
+    </div>
+    <div class="room" style="background-image: url('https://images.unsplash.com/photo-1506744038136-46273834b3fb');">
+      <div class="shoji-door" onclick="openRoom(this)"></div>
+      <div class="content">
+        <h1>Autumn</h1>
+        <p>Fiery leaves paint the temples and mountains. Explore Kyoto’s Eikando or hike through Nikko’s national park.</p>
+      </div>
+    </div>
+    <div class="room" style="background-image: url('https://images.unsplash.com/photo-1574068468664-1be3f2c64edb');">
+      <div class="shoji-door" onclick="openRoom(this)"></div>
+      <div class="content">
+        <h1>Winter</h1>
+        <p>Discover snowy onsens, Hokkaido’s ski resorts, and the magical Snow Festival in Sapporo.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    function openRoom(door) {
+      const room = door.parentElement;
+      room.classList.toggle('open');
+    }
+
+    function goToRoom(index) {
+      document.getElementById('hallway').style.transform = `translateX(-${index * 100}vw)`;
+    }
+  </script>
+</body>
+</html>
