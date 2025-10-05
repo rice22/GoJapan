@@ -1,0 +1,1559 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Summer in Japan - Festival Season</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+    <style>
+        :root {
+            --summer-primary: #FFD54F; 
+            --summer-secondary: #FF8A65;  
+            --summer-accent: #4DB6AC;   
+            --summer-light: #FFFDE7; 
+            --summer-dark: #F57C00;     
+        }
+        body {
+            background: #ffffff;
+            font-family: 'Oswald', sans-serif;
+        }
+        /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+         .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+
+        p{
+            font-family: 'Inter', sans-serif;
+        }
+        /* header styles */
+        .header-container {
+            position: relative;
+            height: 400px;
+            background: url('../elements/seasons/summer/header.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        .header-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .header-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        /* navigation */
+        .nav-container {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .star-particles {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* vinyl */
+        .vinyl-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+        .vinyl {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid #666;
+        }
+        .vinyl:hover {
+            transform: scale(1.1);
+        }
+        .vinyl.playing {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .vinyl-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #222;
+        }
+        .vinyl-sticker {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .vinyl-1 .vinyl-sticker { background: var(--summer-primary); }
+        .vinyl-2 .vinyl-sticker { background: var(--summer-secondary); }
+        .vinyl-3 .vinyl-sticker { background: var(--summer-accent); }
+        .section-container {
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 1200px;
+        }
+        .gallery-container {
+            background: rgba(0, 200, 83, 0.05);
+        }
+        .main-content-container {
+            background: rgba(0, 200, 83, 0.05);  
+        }
+
+        .timeline-container-section {
+            background: rgba(0, 200, 83, 0.05);  
+        }
+        .season-nav-container {
+            background: rgba(0, 200, 83, 0.05); 
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 1;
+        }
+        /* image gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: #FFD54F;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-close:hover {
+            color: #000;
+        }
+        .modal-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        /* map section */
+        .two-column {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--summer-dark);
+        }
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            padding: 4px 8px;
+            background: var(--summer-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .legend-item:hover {
+            background: var(--summer-primary);
+            color: white;
+        }
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--summer-accent);
+        }
+        /* info panel */
+        .map-info-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .map-info-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .map-info-content {
+            transition: transform 0.5s ease;
+        }
+        .map-info-content.slide-out {
+            transform: translateX(-100%);
+        }
+        .map-info-content.slide-in {
+            transform: translateX(0);
+        }
+        .map-only-container {
+            background: rgba(0, 200, 83, 0.05);
+            margin: 0;
+        }
+        .info-panel-container {
+            background: rgba(0, 200, 83, 0.05);
+            margin: 0;
+        }
+        /* responsive */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+                        
+            .map-info-container {
+                height: auto;
+                min-height: 300px;
+            }
+        }
+        /* sidebar */
+        .info-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .weather-facts-container {
+            background: rgba(255, 253, 231, 0.9);
+        }
+        .trivia-weather-container {
+            background: rgba(77, 182, 172, 0.1);
+        }
+        .right-column-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+        }
+        .weather-guide-container {
+            height: 450px; 
+            min-height: 300px; 
+        }
+        .quick-facts-container {
+            height: 350px; 
+            min-height: 300px; 
+        }
+        /* trivia */
+        .trivia-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .trivia-card {
+            aspect-ratio: 2/3;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            perspective: 1000px;
+            position: relative;
+        }
+        .trivia-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .trivia-card.flipped .trivia-card-inner {
+            transform: rotateY(180deg);
+        }
+        .trivia-card-front, 
+        .trivia-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        .trivia-card-front {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8)
+        }
+        .trivia-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .trivia-card:hover .trivia-card-front::before {
+            left: 100%;
+        }
+
+        .trivia-card-front::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 25%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(0, 0, 0, 0.05) 75%,
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .trivia-card:nth-child(1) .trivia-card-front {
+            background: linear-gradient(145deg, #FFE066, #FFB347); 
+        }
+
+        .trivia-card:nth-child(2) .trivia-card-front {
+            background: linear-gradient(145deg, #FF7F50, #FF6347); 
+        }
+
+        .trivia-card:nth-child(3) .trivia-card-front {
+            background: linear-gradient(145deg, #00CED1, #40E0D0);
+        }
+
+        .trivia-card:nth-child(4) .trivia-card-front {
+            background: linear-gradient(145deg, #87CEFA, #1E90FF); 
+        }
+
+        .trivia-card:nth-child(5) .trivia-card-front {
+            background: linear-gradient(145deg, #98FB98, #3CB371); 
+        }
+
+        .trivia-card:nth-child(6) .trivia-card-front {
+            background: linear-gradient(145deg, #FFDAB9, #FFA07A); 
+        }
+
+        .trivia-card:nth-child(7) .trivia-card-front {
+            background: linear-gradient(145deg, #F08080, #FF69B4); 
+        }
+
+        .trivia-card:nth-child(8) .trivia-card-front {
+            background: linear-gradient(145deg, #ffcddc, #b326c5); 
+        }
+
+        .trivia-card-back {
+            color: white;
+            transform: rotateY(180deg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .trivia-card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .trivia-card-back::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .trivia-card:hover .trivia-card-back::after {
+            left: 100%;
+        }
+
+        .trivia-card:nth-child(1) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/sumida-river-fireworks.jpg');
+        }
+
+        .trivia-card:nth-child(2) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/yukata-fashion3.png');
+        }
+
+        .trivia-card:nth-child(3) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/tanabata-festival4.jpg');
+        }
+
+        .trivia-card:nth-child(4) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/kakigori.jpg');
+        }
+
+        .trivia-card:nth-child(5) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/bon-odori.jpg');
+        }
+
+        .trivia-card:nth-child(6) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/cicada3.jpg');
+        }
+
+        .trivia-card:nth-child(7) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/tokushima.jpg');
+        }
+
+        .trivia-card:nth-child(8) .trivia-card-back {
+            background-image: url('../elements/seasons/summer/wind-chimes.jpg');
+        }
+
+        .trivia-card-front > *,
+        .trivia-card-back > * {
+            position: relative;
+            z-index: 3;
+        }
+
+        .trivia-card-back {
+            font-size: 1.1rem;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.9),
+                1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* timeline */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--summer-accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.75rem;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--summer-accent);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        .timeline-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+
+        /* season navigation */
+        .season-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .season-link {
+            display: block;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .season-link:hover {
+            transform: translateX(10px);
+        }
+
+        .season-spring { 
+            background: linear-gradient(135deg, #dd789a, #d13f4b);
+            color: white;
+        }
+
+        .season-autumn {
+            background: linear-gradient(135deg, #FF8C00, #DC143C);
+            color: white;
+        }
+
+        .season-winter {
+            background: linear-gradient(135deg, #B0E0E6, #4169E1);
+            color: white;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .trivia-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-content {
+                width: 90%;
+                height: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="nav-container">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-12 h-12 object-contain" src="../elements/website logo.png" alt="Go Japan Logo"/>
+                                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-6">
+                <a href="../home.html" class="text-gray-600 hover:text-green-600 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-green-600 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-green-600 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-green-600 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-green-600 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header  -->
+    <header class="header-container">
+        <div class="header-overlay"></div>
+        <div id="star-particles"></div>
+        <div class="header-content">
+            <h1 class="header-title">Summer in Japan</h1>
+            <p class="header-tagline">Festival Season & Cultural Celebrations</p>
+            
+            <!-- vinyl -->
+            <div class="vinyl-container">
+                <div class="vinyl vinyl-1" onclick="playVinyl(1)">
+                    <div class="vinyl-sticker">👘</div>
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="vinyl vinyl-2" onclick="playVinyl(2)">
+                    <div class="vinyl-sticker">🎆</div>
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="vinyl vinyl-3" onclick="playVinyl(3)">
+                    <div class="vinyl-sticker">🏮</div>
+                    <div class="vinyl-center"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- image gallery -->
+    <section class="section-container gallery-container">
+        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Summer Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal(1)">
+                <img src="../elements/seasons/summer/tanabata-festival1.jpg" alt="Tanabata Festival">
+            </div>
+            <div class="gallery-item" onclick="openModal(2)">
+                <img src="../elements/seasons/summer/fireworks-display.jpg" alt="Fireworks Display">
+            </div>
+            <div class="gallery-item" onclick="openModal(3)">
+                <img src="../elements/seasons/summer/bon-festival1.jpg" alt="Bon Festival">
+            </div>
+            <div class="gallery-item" onclick="openModal(4)">
+                <img src="../elements/seasons/summer/matsuri2.png" alt="Summer Matsuri">
+            </div>
+            <div class="gallery-item" onclick="openModal(5)">
+                <img src="../elements/seasons/summer/yukata-fashion1.png" alt="Yukata Fashion">
+            </div>
+            <div class="gallery-item" onclick="openModal(6)">
+                <img src="../elements/seasons/summer/lantern-festival1.jpg" alt="Lantern Festival">
+            </div>
+            <div class="gallery-item" onclick="openModal(7)">
+                <img src="../elements/seasons/summer/street-food1.jpeg" alt="Street Food">
+            </div>
+            <div class="gallery-item" onclick="openModal(8)">
+                <img src="../elements/seasons/summer/traditional-dance.png" alt="Traditional Dance">
+            </div>
+            <div class="gallery-item" onclick="openModal(9)">
+                <img src="../elements/seasons/summer/hydrangea1.jpg" alt="Hydrangea Gardens">
+            </div>
+            <div class="gallery-item" onclick="openModal(10)">
+                <img src="../elements/seasons/summer/beach2.jpg" alt="Beach Getaways">
+            </div>
+            <div class="gallery-item" onclick="openModal(11)">
+                <img src="../elements/seasons/summer/goldfish-scooping1.png" alt="Goldfish Scooping">
+            </div>
+            <div class="gallery-item" onclick="openModal(12)">
+                <img src="../elements/seasons/summer/cicada1.jpg" alt="Cicada Season">
+            </div>
+        </div>
+    </section>
+
+    <!-- modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
+            <p id="modalDescription" class="text-gray-600"></p>
+        </div>
+    </div>
+
+    <!-- summer locations title -->
+    <section class="container mx-auto px-4 my-8">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800 text-center">🗾 Summer Locations</h2>
+    </section>
+
+        <!--map and info panel -->
+    <section class="container mx-auto px-4 my-8">
+        <div class="two-column">
+            <!-- map -->
+            <div class="section-container map-only-container">
+                <div class="map-container">
+                    <div id="summer-map" style="height: 100%; width: 100%;"></div>
+                    <div class="map-legend">
+                        <div class="legend-title">Summer Attractions</div>
+                        <div class="legend-items">
+                            <div class="legend-item" onclick="focusLocation(0)">
+                                <div class="legend-dot"></div>
+                                <spa>Sumida River Fireworks</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(1)">
+                                <div class="legend-dot"></div>
+                                <span>Tanabata Festival</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(2)">
+                                <div class="legend-dot"></div>
+                                <span>Gion Matsuri</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(3)">
+                                <div class="legend-dot"></div>
+                                <span>Awa Odori</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(4)">
+                                <div class="legend-dot"></div>
+                                <span>Okinawa Beaches</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- info panel -->
+            <div class="section-container info-panel-container">
+                <div class="map-info-container">
+                    <div id="mapInfo" class="map-info-content">
+                        <h4 class="text-xl font-bold mb-3">Select a location</h4>
+                        <p class="text-gray-600">Click on any marker on the map or legend item to see photos and information about summer attractions in Japan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+           
+    <!-- main content and sidebar -->
+    <div class="main-layout">
+        <!-- main -->
+        <div class="main-content">
+            <!-- trivia -->
+            <section class="main-content-container" style="margin-bottom: 2rem; padding: 2rem; border-radius: 15px;">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800 text-center">🎯 Summer Trivia</h2>
+                <div class="trivia-grid">
+                    <div class="trivia-card" onclick="flipCard(1)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What is Japan's most famous summer fireworks display?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Sumida River Fireworks</p>
+                                    <p class="text-xs mt-2">Tokyo's iconic hanabi event dating back to the Edo period</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(2)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What traditional clothing is worn during summer festivals?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Yukata</p>
+                                    <p class="text-xs mt-2">A lightweight cotton kimono for hot weather</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(3)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">Which festival is known for colorful streamers in August?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Tanabata Festival</p>
+                                    <p class="text-xs mt-2">Celebrates the star-crossed lovers Orihime and Hikoboshi</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(4)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What sweet treat is popular in Japanese summers?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Kakigōri</p>
+                                    <p class="text-xs mt-2">Shaved ice topped with syrup and condensed milk</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(5)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What dance is performed during Obon?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Bon Odori</p>
+                                    <p class="text-xs mt-2">A folk dance to welcome ancestral spirits</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(6)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What insect is a symbol of summer in Japan?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Cicada</p>
+                                    <p class="text-xs mt-2">Their loud songs define the season</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(7)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">Where is the Awa Odori dance festival held?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Tokushima</p>
+                                    <p class="text-xs mt-2">One of Japan’s largest traditional dance festivals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(8)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What is the purpose of hanging wind chimes in summer?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">To invite coolness</p>
+                                    <p class="text-xs mt-2">The sound is believed to evoke a sense of breeze</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- timeline -->
+            <section class="timeline-container-section" style="padding: 2rem; border-radius: 15px;">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">🗺️ Your Summer Adventure Timeline</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/enoshima.png" alt="Early Morning" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Early Morning (6:00 AM)</h4>
+                            <p class="text-gray-600 mb-2">🌅 Coastal Sunrise Walk</p>
+                            <p class="text-sm">Start your day with a peaceful stroll along Enoshima Beach or the Izu Peninsula as the sun rises over the Pacific.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/zojoji.jpg" alt="Morning" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Morning (9:00 AM)</h4>
+                            <p class="text-gray-600 mb-2">🎋 Tanabata Decorations & Temple Visits</p>
+                            <p class="text-sm">Visit temples like Zojo-ji or Asakusa adorned with colorful Tanabata streamers and paper wishes tied to bamboo.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/street-food3.jpg" alt="Afternoon" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Afternoon (12:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🍧 Street Food & Kakigōri Break</p>
+                            <p class="text-sm">Explore a local summer matsuri. Try yakisoba, grilled squid, and cool down with flavored shaved ice under lantern canopies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/yukata-stroll.png" alt="Late Afternoon" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Late Afternoon (3:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">👘 Yukata Stroll & Photo Spots</p>
+                            <p class="text-sm">Dress in a traditional yukata and walk through scenic spots like Kamakura or Gion, capturing seasonal charm.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/river-fireworks.png" alt="Evening" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Evening (6:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🎆 Fireworks by the River</p>
+                            <p class="text-sm">Watch fireworks (hanabi) over rivers like the Sumida or Osaka rivers, a quintessential Japanese summer experience.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/summer/lantern-float.jpg" alt="Night" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Night (8:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🕯️ Bon Odori & Lantern Festivals</p>
+                            <p class="text-sm">Join locals in Bon dances at shrines, or watch floating lanterns drift along rivers to honor ancestors.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- sidebar -->
+        <div class="sidebar">
+            <!-- weather guide -->
+            <div class="info-container weather-guide-container">
+                <h3 class="text-xl font-bold mb-4 flex items-center" style="color: var(--summer-dark)">
+                    🌤️ Summer Weather Guide                
+                </h3>
+                <div class="space-y-3">
+                    <div class="p-3 bg-green-50 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Early Summer</h4>
+                                <p class="text-sm text-gray-600">June</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🌦️</div>
+                                <div class="text-sm">22–28°C</div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="p-3 bg-green-100 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Mid Summer</h4>
+                                <p class="text-sm text-gray-600">July</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">☀️</div>
+                                <div class="text-sm">28–33°C</div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="p-3 bg-green-200 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Late Summer</h4>
+                                <p class="text-sm text-gray-600">August</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🔥</div>
+                                <div class="text-sm">30–35°C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="mt-4 p-3 bg-green-50 border-l-4 border-green-400 rounded">
+                    <p class="text-sm"><strong>💡 Tip:</strong> Japan's summer can be intense—carry a folding fan, cooling towel, and water bottle to beat the heat while exploring festivals and fireworks!</p>
+                </div>
+            </div>
+
+            <!-- quick facts -->
+            <div class="info-container quick-facts-container">
+                <h3 class="text-xl font-bold mb-4" style="color: var(--summer-dark)">
+                    📊 Summer Quick Facts                
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Firework Festivals Held Nationwide</span>
+                            <span class="text-green-600 font-bold">10,000+</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Traditional Yukata Worn</span>
+                            <span class="text-green-600 font-bold">Millions</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Matsuri Attendance Spike</span>
+                            <span class="text-green-600 font-bold">200%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Summer Festival History</span>
+                            <span class="text-green-600 font-bold">1300+ years</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-green-500 h-2 rounded-full" style="width: 98%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+    <!-- season navigation -->
+            <section class="section-container season-nav-container">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Explore Other Seasons</h3>
+                        
+            <div class="season-nav">
+                <a href="spring.html" class="season-link season-spring">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">🌸 Spring</h4>
+                            <p class="text-sm opacity-90">Cherry Blossoms</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+                                
+                <a href="autumn.html" class="season-link season-autumn">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">🍁 Autumn</h4>
+                            <p class="text-sm opacity-90">Colorful Foliage</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+                                
+                <a href="winter.html" class="season-link season-winter">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">❄️ Winter</h4>
+                            <p class="text-sm opacity-90">Snow & Hot Springs</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        </div>  
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- audio -->
+    <audio id="audio1" loop>
+        <source src="../elements/audio/otsukare-summer.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2" loop>
+        <source src="../elements/audio/hana-ni-bourei.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio3" loop>
+        <source src="../elements/audio/remember-summer-days.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+         // cherry Blossom SVG as cursor
+        const cursor = document.getElementById('custom-cursor');
+        cursor.innerHTML = `
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <g>
+              <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+              <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+              <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+              <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+              <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+              <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+            </g>
+          </svg>
+        `;
+         document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+
+          // Sparkle effect
+          const sparkle = document.createElement('div');
+          sparkle.className = 'cursor-sparkle';
+          sparkle.style.left = (e.clientX - 5) + 'px';
+          sparkle.style.top = (e.clientY - 5) + 'px';
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 700);
+        });
+         document.querySelectorAll('a, button').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+          });
+        });
+        // image data for modal
+        const imageData = {
+            1: {
+                src: "../elements/seasons/summer/tanabata-festival2.jpg", 
+                title: "Tanabata Festival",
+                description: "Held on July 7, Tanabata celebrates the celestial reunion of star-crossed lovers Orihime and Hikoboshi. Streets fill with bamboo trees decorated in colorful paper strips bearing wishes. Parades, music, and folklore create a festive, enchanting atmosphere of hope and unity."
+            },
+            2: {
+                src: "../elements/seasons/summer/fireworks-display2.jpg", 
+                title: "Fireworks Display",
+                description: "Summer fireworks festivals, or hanabi taikai, light up Japan’s night skies with dazzling colors and thunderous bursts. Crowds gather near rivers and parks to witness these fleeting, spectacular displays, symbolizing joy, celebration, and the beauty of impermanence in Japanese culture."
+            },
+            3: {
+                src: "../elements/seasons/summer/bon-festival2.jpg",
+                title: "Obon Festival",
+                description: "Obon honors ancestors mid-July to August. Families visit graves, light lanterns, and perform bon odori dances. Lanterns float on rivers to guide spirits home. This Buddhist tradition blends reverence with lively communal dancing, music, and food stalls, celebrating family ties, remembrance, and joyful togetherness during Japan’s warm summer nights."
+            },
+            4: {
+                src: "../elements/seasons/summer/matsuri.jpeg", 
+                title: "Summer Matsuri",
+                description: "Summer matsuri are colorful local festivals featuring floats, music, and dancing. People wear yukata, enjoy games and food stalls, and celebrate under lantern-lit skies. These festivals reflect Japan’s seasonal joy and cultural pride, uniting tradition and excitement in one vibrant celebration."
+            },
+            5: {
+                src: "../elements/seasons/summer/yukata-fashion2.jpg", 
+                title: "Yukata Fashion",
+                description: "Yukata are lightweight cotton robes worn at summer events. Their colorful floral and seasonal patterns bring elegance and comfort during humid weather. Wearing yukata reflects Japanese tradition, personal expression, and enhances the festive ambiance of summer matsuri and fireworks nights."
+            },
+            6: {
+                src: "../elements/seasons/summer/lantern-festival2.jpg", 
+                title: "Lantern Festival",
+                description: "Lantern festivals bring serene beauty to summer nights. Thousands of glowing lanterns drift down rivers or hang in temples, honoring spirits or celebrating light. These tranquil events blend reflection, artistry, and community gathering in a peaceful tribute to life and summer."
+            },
+            7: {
+                src: "../elements/seasons/summer/street-food2.png", 
+                title: "Street Food",
+                description: "Japanese summer festivals feature delicious street food like takoyaki, yakisoba, and kakigori. Food stalls line the streets, creating enticing scents and lively crowds. These treats offer affordable, nostalgic flavors, becoming an essential, flavorful part of the seasonal festival experience."
+            },
+            8: {
+                src: "../elements/seasons/summer/traditional-dance2.jpg", 
+                title: "Traditional Dance",
+                description: "Bon odori is a joyful summer dance performed in circles to traditional music. Dancers wear yukata and move in unison, welcoming ancestral spirits. This tradition fosters community connection, spiritual reflection, and seasonal festivity through rhythmic movement and cultural expression."
+            },
+            9: {
+                src: "../elements/seasons/summer/hydrangea2.jpg",
+                title: "Hydrangea Gardens",
+                description: "During early summer, Japan’s temples and gardens burst with blooming hydrangeas. Their vibrant blues and purples symbolize heartfelt emotion and resilience. Visitors stroll through peaceful, rain-soaked paths, finding calm amid the blossoms in one of Japan’s quiet seasonal pleasures."
+            },
+            10: {
+                src: "../elements/seasons/summer/beach1.jpg", 
+                title: "Beach Getaways",
+                description: "Japan’s beaches become summer sanctuaries, offering swimming, sunbathing, and water sports. Coastal spots like Okinawa and Shonan attract vacationers seeking cool ocean breezes, local seafood, and scenic beauty. Beach culture blends fun, relaxation, and festive events under bright summer skies."
+            },
+            11: {
+                src: "../elements/seasons/summer/goldfish-scooping2.jpeg",
+                title: "Goldfish Scooping",
+                description: "Goldfish scooping, or kingyo-sukui, is a nostalgic game played at summer festivals. Using a fragile paper scoop, players try to catch goldfish from shallow pools. It’s a charming, lighthearted activity that captures the playful essence of Japanese summer celebration."
+            },
+            12: {
+                src: "../elements/seasons/summer/cicada2.jpg", 
+                title: "Cicada Season",
+                description: "Cicadas fill Japan’s summer air with loud, rhythmic songs. Their buzzing marks the season’s height and is a symbol of fleeting beauty. Though noisy, their chorus evokes nostalgia, deeply tied to Japanese memories, childhood, and the essence of hot summer days."
+            }
+        };
+
+        function openModal(imageNumber) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            
+            modalImage.src = imageData[imageNumber].src;
+            modalTitle.textContent = imageData[imageNumber].title;
+            modalDescription.textContent = imageData[imageNumber].description;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // vinyl
+        let currentlyPlaying = null;
+
+        function playVinyl(vinylNumber) {
+        const audio = document.getElementById(`audio${vinylNumber}`);
+        const vinyl = document.querySelector(`.vinyl-${vinylNumber}`);
+        
+        // stop 
+        if (currentlyPlaying && currentlyPlaying !== vinylNumber) {
+            document.getElementById(`audio${currentlyPlaying}`).pause();
+            document.querySelector(`.vinyl-${currentlyPlaying}`).classList.remove('playing');
+        }
+        
+        if (audio.paused) {
+            audio.play();
+            vinyl.classList.add('playing');
+            currentlyPlaying = vinylNumber;
+        } else {
+            audio.pause();
+            vinyl.classList.remove('playing');
+            currentlyPlaying = null;
+        }
+    }
+
+        // card flip 
+        function flipCard(cardNumber) {
+            const card = document.querySelector(`.trivia-card:nth-child(${cardNumber})`);
+            card.classList.toggle('flipped');
+        }
+
+        function createStarParticle() {
+            const headerContainer = document.querySelector('.header-container');
+            const star = document.createElement('div');
+            star.className = 'star-particles';
+            star.innerHTML = '✨';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            
+            headerContainer.appendChild(star);
+            
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        setInterval(createStarParticle, 300);
+
+        let map;
+        let markers = [];
+
+        function initMap() {
+    map = L.map('summer-map').setView([35.6762, 139.6503], 6);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const locations = [
+    {
+        name: "Sumida River Fireworks, Tokyo",
+        coords: [35.7118, 139.8005],
+        image: "../elements/seasons/summer/sumida-river-fireworks2.jpg",
+        description: "Tokyo’s Sumida River fireworks festival draws thousands each July, showcasing dazzling pyrotechnics that illuminate the summer night sky."
+    },
+    {
+        name: "Tanabata Festival, Sendai",
+        coords: [38.2682, 140.8694],
+        image: "../elements/seasons/summer/tanabata-festival3.jpg",
+        description: "One of Japan’s largest Tanabata festivals featuring elaborate paper decorations, vibrant parades, and traditional music, celebrated in early August."
+    },
+    {
+        name: "Gion Matsuri, Kyoto",
+        coords: [35.0037, 135.7808],
+        image: "../elements/seasons/summer/gion-matsuri.jpg",
+        description: "Kyoto’s famous month-long festival in July featuring grand floats, street processions, and traditional performances, embodying centuries of cultural heritage."
+    },
+    {
+        name: "Awa Odori, Tokushima",
+        coords: [34.0703, 134.5548],
+        image: "../elements/seasons/summer/awa-odori.png",
+        description: "The largest dance festival in Japan held in August. Thousands of dancers perform the traditional ‘Awa dance’ in colorful costumes throughout Tokushima City."
+    },
+    {
+        name: "Okinawa Beaches",
+        coords: [26.3344, 127.8056],
+        image: "../elements/seasons/summer/okinawa-beach.png",
+        description: "Okinawa’s turquoise beaches offer sunbathing, snorkeling, and summer festivals, making it a top tropical escape during Japan’s heat."
+    }
+];
+
+    locations.forEach((location, index) => {
+        const marker = L.marker(location.coords).addTo(map);
+        marker.bindPopup(`<b>${location.name}</b>`);
+        marker.on('click', () => updateMapInfo(location));
+        markers.push(marker);
+    });
+}
+
+function focusLocation(index) {
+    const locations = [
+    {
+        name: "Sumida River Fireworks, Tokyo",
+        coords: [35.7118, 139.8005],
+        image: "../elements/seasons/summer/sumida-river-fireworks.jpg",
+        description: "Tokyo’s Sumida River fireworks festival draws thousands each July, showcasing dazzling pyrotechnics that illuminate the summer night sky."
+    },
+    {
+        name: "Tanabata Festival, Sendai",
+        coords: [38.2682, 140.8694],
+        image: "../elements/seasons/summer/tanabata-festival3.jpg",
+        description: "One of Japan’s largest Tanabata festivals featuring elaborate paper decorations, vibrant parades, and traditional music, celebrated in early August."
+    },
+    {
+        name: "Gion Matsuri, Kyoto",
+        coords: [35.0037, 135.7808],
+        image: "../elements/seasons/summer/gion-matsuri.jpg",
+        description: "Kyoto’s famous month-long festival in July featuring grand floats, street processions, and traditional performances, embodying centuries of cultural heritage."
+    },
+    {
+        name: "Awa Odori, Tokushima",
+        coords: [34.0703, 134.5548],
+        image: "../elements/seasons/summer/awa-odori.png",
+        description: "The largest dance festival in Japan held in August. Thousands of dancers perform the traditional ‘Awa dance’ in colorful costumes throughout Tokushima City."
+    },
+    {
+        name: "Okinawa Beaches",
+        coords: [26.3344, 127.8056],
+        image: "../elements/seasons/summer/okinawa-beach.png",
+        description: "Okinawa’s turquoise beaches offer sunbathing, snorkeling, and summer festivals, making it a top tropical escape during Japan’s heat."
+    }
+];
+
+    const location = locations[index];
+    map.setView(location.coords, 10);
+    markers[index].openPopup();
+    updateMapInfo(location);
+}
+
+function updateMapInfo(location) {
+    const mapInfo = document.getElementById('mapInfo');
+    
+    mapInfo.classList.remove('slide-out', 'slide-in');
+    
+    mapInfo.offsetHeight;
+    
+    mapInfo.classList.add('slide-out');
+    
+    setTimeout(() => {
+        mapInfo.innerHTML = `
+            <img src="${location.image}" alt="${location.name}" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h4 class="text-xl font-bold mb-2">${location.name}</h4>
+            <p class="text-gray-600">${location.description}</p>
+        `;
+        
+        mapInfo.classList.remove('slide-out');
+        mapInfo.classList.add('slide-in');
+        
+        setTimeout(() => {
+            mapInfo.classList.remove('slide-in');
+        }, 500);
+    }, 250);
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+});
+
+window.addEventListener('resize', function() {
+    if (map) {
+        map.invalidateSize();
+    }
+});
+    </script>
+</body>
+</html>
+
+
+
+
+            
+

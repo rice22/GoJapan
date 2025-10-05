@@ -1,0 +1,1566 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Autumn in Japan - Harvest Season </title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.7.1/dist/leaflet.css" />
+
+    <style>
+        html {
+            scroll-behavior: smooth;
+        }
+        :root {
+            --autumn-primary: #D2691E;   
+            --autumn-secondary: #FFB74D; 
+            --autumn-accent: #8D6E63;    
+            --autumn-light: #FFF3E0;   
+            --autumn-dark: #5D4037;     
+        }
+        body {
+            background: #ffffff;
+            font-family: 'Oswald', sans-serif;
+        }
+         /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+        .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+        p{
+            font-family: 'Inter', sans-serif;
+        }
+        /* header */
+        .header-container {
+            position: relative;
+            height: 400px;
+            background: url('../elements/seasons/autumn/header.jpg') center/cover;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .header-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.4);
+        }
+        .header-content {
+            position: relative;
+            z-index: 2;
+            text-align: center;
+            color: white;
+        }
+        .header-title {
+            font-size: 4rem;
+            font-weight: bold;
+            margin-bottom: 1rem;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+        .header-tagline {
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+        /* navigation */
+        .nav-container {
+            background: white;
+            padding: 1rem 0;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        .star-particles {
+            position: absolute;
+            font-size: 20px;
+            animation: fall 5s linear infinite;
+            pointer-events: none;
+            z-index: 1;
+        }
+        @keyframes fall {
+            0% {
+                transform: translateY(-100px) rotate(0deg);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(500px) rotate(360deg);
+                opacity: 0;
+            }
+        }
+        /* vinyl player */
+        .vinyl-container {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            margin-top: 2rem;
+            position: relative;
+            z-index: 3;
+        }
+        .vinyl {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            background: #333;
+            position: relative;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid #666;
+        }
+        .vinyl:hover {
+            transform: scale(1.1);
+        }
+        .vinyl.playing {
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+        .vinyl-center {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            background: #222;
+        }
+        .vinyl-sticker {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            right: 10px;
+            bottom: 10px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 12px;
+            font-weight: bold;
+        }
+        .vinyl-1 .vinyl-sticker { background: var(--autumn-primary); }
+        .vinyl-2 .vinyl-sticker { background: var(--autumn-secondary); }
+        .vinyl-3 .vinyl-sticker { background: var(--autumn-accent); }
+
+        .section-container {
+            margin: 2rem auto;
+            padding: 2rem;
+            border-radius: 15px;
+            max-width: 1200px;
+        }
+        .gallery-container {
+            background: rgba(255, 179, 0, 0.1);
+        }
+        .main-content-container {
+            background: rgba(255, 179, 0, 0.1);
+        }
+
+        .timeline-container-section {
+            background: rgba(255, 179, 0, 0.1);  
+        }
+        .season-nav-container {
+            background: rgba(255, 179, 0, 0.1);
+        }
+
+        .main-layout {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            padding: 0 2rem;
+        }
+        .sidebar {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+        }
+        .sidebar-item {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            aspect-ratio: 1;
+        }
+        /* Image Gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: transform 0.3s ease;
+            border: 3px solid transparent;
+        }
+        .gallery-item:hover {
+            transform: translateY(-10px);
+            border-color: #D2691E;
+        }
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+        /* modal */
+        .modal {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.8);
+            display: none;
+            align-items: center;
+            justify-content: center;
+            z-index: 1000;
+        }
+        .modal-content {
+            background: white;
+            width: 500px;
+            height: 500px;
+            border-radius: 10px;
+            position: relative;
+            padding: 2rem;
+            display: flex;
+            flex-direction: column;
+        }
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 20px;
+            font-size: 24px;
+            cursor: pointer;
+            color: #666;
+        }
+        .modal-close:hover {
+            color: #000;
+        }
+        .modal-image {
+            width: 100%;
+            height: 60%;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        /* map section */
+        .two-column {
+            display: grid;
+            grid-template-columns: 70% 30%;
+            gap: 2rem;
+            margin: 2rem 0;
+        }
+        .map-container {
+            height: 400px;
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+            background: white;
+            padding: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        .map-legend {
+            position: absolute;
+            bottom: 10px;
+            left: 10px;
+            right: 10px;
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 8px;
+            padding: 10px;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+        }
+        .legend-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            color: var(--autumn-dark);
+        }
+        .legend-items {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .legend-item {
+            display: flex;
+            align-items: center;
+            gap: 4px;
+            font-size: 12px;
+            padding: 4px 8px;
+            background: var(--autumn-light);
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+        .legend-item:hover {
+            background: var(--autumn-primary);
+            color: white;
+        }
+        .legend-dot {
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: var(--autumn-accent);
+        }
+        /* info panel */
+        .map-info-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            height: 400px;
+            overflow: hidden;
+            position: relative;
+        }
+        .map-info-content img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+        }
+        .map-info-content {
+            transition: transform 0.5s ease;
+        }
+        .map-info-content.slide-out {
+            transform: translateX(-100%);
+        }
+        .map-info-content.slide-in {
+            transform: translateX(0);
+        }
+        .map-only-container {
+            background: rgba(255, 179, 0, 0.1);
+            margin: 0;
+        }
+        .info-panel-container {
+            background: rgba(255, 179, 0, 0.1);
+            margin: 0;
+        }
+        /* responsive */
+        @media (max-width: 768px) {
+            .two-column {
+                grid-template-columns: 1fr;
+            }
+                        
+            .map-info-container {
+                height: auto;
+                min-height: 300px;
+            }
+        }
+        /* sidebar widgets */
+        .info-container {
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            margin-bottom: 1rem;
+        }
+        .weather-facts-container {
+            background: rgba(255, 253, 231, 0.9);
+        }
+        .trivia-weather-container {
+            background: rgba(77, 182, 172, 0.1);
+        }
+        .right-column-stack {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+            height: 100%;
+        }
+        .weather-guide-container {
+            height: 450px; 
+            min-height: 300px; 
+        }
+        .quick-facts-container {
+            height: 350px; 
+            min-height: 300px; 
+        }
+        /* trivia cards */
+        .trivia-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        .trivia-card {
+            aspect-ratio: 2/3;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            cursor: pointer;
+            perspective: 1000px;
+            position: relative;
+        }
+        .trivia-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            text-align: center;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+        .trivia-card.flipped .trivia-card-inner {
+            transform: rotateY(180deg);
+        }
+        .trivia-card-front, 
+        .trivia-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 1rem;
+            overflow: hidden;
+        }
+        .trivia-card-front {
+            font-size: 1.2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.8)
+        }
+        .trivia-card-front::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.4) 50%,
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 1;
+        }
+        .trivia-card:hover .trivia-card-front::before {
+            left: 100%;
+        }
+
+        .trivia-card-front::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(
+                135deg,
+                rgba(255, 255, 255, 0.3) 0%,
+                rgba(255, 255, 255, 0.1) 25%,
+                rgba(255, 255, 255, 0.05) 50%,
+                rgba(0, 0, 0, 0.05) 75%,
+                rgba(0, 0, 0, 0.1) 100%
+            );
+            border-radius: 8px;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        .trivia-card:nth-child(1) .trivia-card-front {
+            background: linear-gradient(145deg, #FFD966, #FFB347);
+        }
+
+        .trivia-card:nth-child(2) .trivia-card-front {
+            background: linear-gradient(145deg, #FF8C00, #dbb431); 
+        }
+
+        .trivia-card:nth-child(3) .trivia-card-front {
+            background: linear-gradient(145deg, #B8860B, #FF8C00);
+        }
+
+        .trivia-card:nth-child(4) .trivia-card-front {
+            background: linear-gradient(145deg, #FF7F50, #CD3700);
+        }
+
+        .trivia-card:nth-child(5) .trivia-card-front {
+            background: linear-gradient(145deg, #8B4513, #5C3317);
+        }
+
+        .trivia-card:nth-child(6) .trivia-card-front {
+            background: linear-gradient(145deg, #A0522D, #8B4000);
+        }
+
+        .trivia-card:nth-child(7) .trivia-card-front {
+            background: linear-gradient(145deg, #D2691E, #A0522D); 
+        }
+
+        .trivia-card:nth-child(8) .trivia-card-front {
+            background: linear-gradient(145deg, #FF6347, #FF4500);
+        }
+
+        .trivia-card-back {
+            color: white;
+            transform: rotateY(180deg);
+            background-size: cover;
+            background-position: center;
+        }
+
+        .trivia-card-back::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.6);
+            border-radius: 8px;
+            z-index: 1;
+        }
+
+        .trivia-card-back::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(
+                90deg,
+                transparent,
+                rgba(255, 255, 255, 0.3) 50%,
+                transparent
+            );
+            transform: skewX(-25deg);
+            transition: left 0.6s ease;
+            pointer-events: none;
+            z-index: 2;
+        }
+
+        .trivia-card:hover .trivia-card-back::after {
+            left: 100%;
+        }
+
+        .trivia-card:nth-child(1) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/momijigari.jpg');
+        }
+
+        .trivia-card:nth-child(2) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/maple.jpg');
+        }
+
+        .trivia-card:nth-child(3) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/persimmon.jpg');
+        }
+
+        .trivia-card:nth-child(4) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/hokkaido.jpg');
+        }
+
+        .trivia-card:nth-child(5) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/tsukimi3.jpg');
+        }
+
+        .trivia-card:nth-child(6) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/tsukimi-dango.jpg');
+        }
+
+        .trivia-card:nth-child(7) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/chrysanthemum.jpg');
+        }
+
+        .trivia-card:nth-child(8) .trivia-card-back {
+            background-image: url('../elements/seasons/autumn/shun.jpg');
+        }
+
+        .trivia-card-front > *,
+        .trivia-card-back > * {
+            position: relative;
+            z-index: 3;
+        }
+
+        .trivia-card-back {
+            font-size: 1.1rem;
+            text-shadow: 
+                2px 2px 4px rgba(0, 0, 0, 0.9),
+                1px 1px 2px rgba(0, 0, 0, 0.7);
+        }
+
+        /* timeline styles */
+        .timeline-container {
+            position: relative;
+            padding-left: 2rem;
+        }
+
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: var(--autumn-accent);
+        }
+
+        .timeline-item {
+            position: relative;
+            margin-bottom: 2rem;
+            background: white;
+            border-radius: 10px;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            display: flex;
+            gap: 1rem;
+        }
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -2.75rem;
+            top: 1.5rem;
+            width: 15px;
+            height: 15px;
+            background: var(--autumn-accent);
+            border-radius: 50%;
+            border: 3px solid white;
+        }
+        .timeline-image {
+            width: 300px;
+            height: 200px;
+            object-fit: cover;
+            border-radius: 8px;
+            flex-shrink: 0;
+        }
+        .timeline-content {
+            flex: 1;
+        }
+
+        /* aeason navigation */
+
+        .season-nav {
+            display: flex;
+            flex-direction: column;
+            gap: 1rem;
+        }
+
+        .season-link {
+            display: block;
+            padding: 1rem;
+            border-radius: 10px;
+            text-decoration: none;
+            transition: transform 0.3s ease;
+        }
+
+        .season-link:hover {
+            transform: translateX(10px);
+        }
+
+        .season-spring { 
+            background: linear-gradient(135deg, #dd789a, #d13f4b);
+            color: white;
+        }
+
+        .season-summer {
+            background: linear-gradient(135deg, #87CEEB, #32CD32);
+            color: white;
+        }
+
+        .season-winter {
+            background: linear-gradient(135deg, #B0E0E6, #4169E1);
+            color: white;
+        }
+
+        /* responsive */
+        @media (max-width: 768px) {
+            .header-title {
+                font-size: 2.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .main-layout {
+                grid-template-columns: 1fr;
+            }
+            .trivia-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .modal-content {
+                width: 90%;
+                height: 70%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="nav-container">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-12 h-12 object-contain" src="../elements/website logo.png" alt="Go Japan Logo"/>
+                                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-6">
+                <a href="../home.html" class="text-gray-600 hover:text-yellow-600 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-yellow-600 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-yellow-600 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-yellow-600 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-yellow-600 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- header section -->
+    <header class="header-container">
+        <div class="header-overlay"></div>
+        <div id="star-particles"></div>
+        <div class="header-content">
+            <h1 class="header-title">Autumn in Japan</h1>
+            <p class="header-tagline">Harvest & Cozy Gatherings</p>
+            
+            <!-- vinyl player -->
+            <div class="vinyl-container">
+                <div class="vinyl vinyl-1" onclick="playVinyl(1)">
+                    <div class="vinyl-sticker">👘</div>
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="vinyl vinyl-2" onclick="playVinyl(2)">
+                    <div class="vinyl-sticker">🎆</div>
+                    <div class="vinyl-center"></div>
+                </div>
+                <div class="vinyl vinyl-3" onclick="playVinyl(3)">
+                    <div class="vinyl-sticker">🏮</div>
+                    <div class="vinyl-center"></div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- image gallery section -->
+    <section class="section-container gallery-container">
+        <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Autumn Gallery</h2>
+        <div class="gallery-grid">
+            <div class="gallery-item" onclick="openModal(1)">
+                <img src="../elements/seasons/autumn/koyo.jpg" alt="Koyo">
+            </div>
+            <div class="gallery-item" onclick="openModal(2)">
+                <img src="../elements/seasons/autumn/lantern.jpg" alt="Lantern Festival">
+            </div>
+            <div class="gallery-item" onclick="openModal(3)">
+                <img src="../elements/seasons/autumn/street-food.png" alt="Autumn Street Food">
+            </div>
+            <div class="gallery-item" onclick="openModal(4)">
+                <img src="../elements/seasons/autumn/dance.jpg" alt="Traditional Dance Performances">
+            </div>
+            <div class="gallery-item" onclick="openModal(5)">
+                <img src="../elements/seasons/autumn/rice.jpg" alt="Rice Harvest Scenes">
+            </div>
+            <div class="gallery-item" onclick="openModal(6)">
+                <img src="../elements/seasons/autumn/wagashi.jpg" alt="Seasonal Wagashi">
+            </div>
+            <div class="gallery-item" onclick="openModal(7)">
+                <img src="../elements/seasons/autumn/momiji.jpg" alt="Momiji Leaves in Temples">
+            </div>
+            <div class="gallery-item" onclick="openModal(8)">
+                <img src="../elements/seasons/autumn/local-market.jpg" alt="Local Market Scenes">
+            </div>
+            <div class="gallery-item" onclick="openModal(9)">
+                <img src="../elements/seasons/autumn/haori.jpg" alt="Kimono and Haori Fashion">
+            </div>
+            <div class="gallery-item" onclick="openModal(10)">
+                <img src="../elements/seasons/autumn/festival.jpg" alt="Cultural Festivals at Shrines">
+            </div>
+            <div class="gallery-item" onclick="openModal(11)">
+                <img src="../elements/seasons/autumn/tsukimi.jpg" alt="Tsukimi">
+            </div>
+            <div class="gallery-item" onclick="openModal(12)">
+                <img src="../elements/seasons/autumn/hotspring.jpg" alt="Hot Springs in the Mountains">
+            </div>
+        </div>
+    </section>
+
+    <!-- modal -->
+    <div id="imageModal" class="modal">
+        <div class="modal-content">
+            <span class="modal-close" onclick="closeModal()">&times;</span>
+            <img id="modalImage" class="modal-image" src="" alt="">
+            <h3 id="modalTitle" class="text-xl font-bold mb-2"></h3>
+            <p id="modalDescription" class="text-gray-600"></p>
+        </div>
+    </div>
+
+    <!-- autumn locations tTitle -->
+    <section class="container mx-auto px-4 my-8">
+        <h2 class="text-3xl font-bold mb-4 text-gray-800 text-center">🗾 Autumn Locations</h2>
+    </section>
+
+        <!-- map an info panel-->
+    <section class="container mx-auto px-4 my-8">
+        <div class="two-column">
+            <!-- map -->
+            <div class="section-container map-only-container">
+                <div class="map-container">
+                    <div id="autumn-map" style="height: 100%; width: 100%;"></div>
+                    <div class="map-legend">
+                        <div class="legend-title">Autumn Attractions</div>
+                        <div class="legend-items">
+                            <div class="legend-item" onclick="focusLocation(0)">
+                                <div class="legend-dot"></div>
+                                <spa>Kiyomizu-dera Temple</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(1)">
+                                <div class="legend-dot"></div>
+                                <span>Nikko National Park</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(2)">
+                                <div class="legend-dot"></div>
+                                <span>Arashiyama</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(3)">
+                                <div class="legend-dot"></div>
+                                <span>Mount Takao</span>
+                            </div>
+                            <div class="legend-item" onclick="focusLocation(4)">
+                                <div class="legend-dot"></div>
+                                <span>Korankei Gorge</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- info panel-->
+            <div class="section-container info-panel-container">
+                <div class="map-info-container">
+                    <div id="mapInfo" class="map-info-content">
+                        <h4 class="text-xl font-bold mb-3">Select a location</h4>
+                        <p class="text-gray-600">Click on any marker on the map or legend item to see photos and information about autumn attractions in Japan.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+           
+    <!-- main content and sidebar -->
+    <div class="main-layout">
+        <!-- main content -->
+        <div class="main-content">
+            <!-- trivia section -->
+            <section class="main-content-container" style="margin-bottom: 2rem; padding: 2rem; border-radius: 15px;">
+                <h2 class="text-3xl font-bold mb-4 text-gray-800 text-center">🎯 Autumn Trivia</h2>
+                <div class="trivia-grid">
+                    <div class="trivia-card" onclick="flipCard(1)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What is the Japanese term for autumn foliage viewing?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Momijigari</p>
+                                    <p class="text-xs mt-2">Means “red leaf hunting” – the practice of visiting scenic spots to view colorful fall leaves</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(2)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">Which tree is most iconic for autumn colors in Japan?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Maple</p>
+                                    <p class="text-xs mt-2">Japanese maples (momiji) turn brilliant red, making them a fall favorite</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(3)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What fruit is commonly associated with Japanese autumn?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Persimmon</p>
+                                    <p class="text-xs mt-2">Kaki (persimmons) are sweet, orange fruits that symbolize fall in Japan</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(4)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">Which region is famous for early autumn leaves?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Hokkaido</p>
+                                    <p class="text-xs mt-2">Leaves begin to change color here as early as mid-September</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(5)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What festival celebrates the harvest moon in autumn?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Tsukimi</p>
+                                    <p class="text-xs mt-2">“Moon viewing” includes offerings of dango (rice dumplings) and pampas grass</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(6)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What do Japanese people traditionally eat during Tsukimi?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Tsukimi Dango</p>
+                                    <p class="text-xs mt-2">Round rice dumplings stacked in a pyramid to honor the full moon</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(7)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What seasonal flower blooms during autumn in Japan?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Chrysanthemum</p>
+                                    <p class="text-xs mt-2">Known as “kiku,” these flowers are symbols of longevity and are celebrated in festivals</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="trivia-card" onclick="flipCard(8)">
+                        <div class="trivia-card-inner">
+                            <div class="trivia-card-front">
+                                <p class="text-sm font-medium">What is the term for seasonal foods in Japanese culture?</p>
+                            </div>
+                            <div class="trivia-card-back">
+                                <div class="content">
+                                    <p class="text-sm font-bold">Shun</p>
+                                    <p class="text-xs mt-2">Means foods at their seasonal peak – autumn shun includes mushrooms, chestnuts, and sweet potatoes</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- timeline section -->
+            <section class="timeline-container-section" style="padding: 2rem; border-radius: 15px;">
+                <h3 class="text-2xl font-bold mb-4 text-gray-800">🗺️ Your Autumn Adventure Timeline</h3>
+                <div class="timeline-container">
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/togakushi.jpg" alt="Early Morning" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Early Morning (6:00 AM)</h4>
+                            <p class="text-gray-600 mb-2">🍂 Foggy Forest Walk</p>
+                            <p class="text-sm">Start your day with a quiet stroll through misty woods like the Togakushi Forest in Nagano, where autumn leaves glow in the morning light.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/matsumoto.jpg" alt="Morning" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Morning (9:00 AM)</h4>
+                            <p class="text-gray-600 mb-2">🏯 Castle Grounds Exploration</p>
+                            <p class="text-sm">Visit historic castles such as Himeji or Matsumoto, framed by vibrant fall foliage that creates a postcard-perfect scene.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/momiji3.jpg" alt="Afternoon" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Afternoon (12:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🍱 Momiji Picnic</p>
+                            <p class="text-sm">Enjoy a bento lunch beneath fiery maple trees. Popular picnic spots include Arashiyama in Kyoto and Korankei Gorge in Aichi.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/lake-chuzenji.jpg" alt="Late Afternoon" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Late Afternoon (3:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🚶‍♂️ Koyo Walks</p>
+                            <p class="text-sm">Take a scenic hike through autumn trails like Nikko’s Lake Chuzenji or the Kumano Kodo, where crimson and amber leaves blanket the path.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/rikugien-garden.jpg" alt="Evening" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Evening (6:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🎑 Seasonal Illumination</p>
+                            <p class="text-sm">Watch temples like Eikando and Rikugien Garden light up their foliage for mesmerizing nighttime displays during koyo season.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item">
+                        <img src="../elements/seasons/autumn/sanma.jpg" alt="Night" class="timeline-image">
+                        <div class="timeline-content">
+                            <h4 class="font-bold text-lg mb-2">Night (8:00 PM)</h4>
+                            <p class="text-gray-600 mb-2">🍲 Hearty Autumn Feast</p>
+                            <p class="text-sm">Savor warming dishes like mushroom hotpot, roasted sweet potatoes, and grilled sanma (Pacific saury) — all autumn favorites in Japan.</p>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- sidebar -->
+        <div class="sidebar">
+            <!-- weather guide -->
+            <div class="info-container weather-guide-container">
+                <h3 class="text-xl font-bold mb-4 flex items-center" style="color: var(--autumn-dark)">
+                    🌤️ Autumn Weather Guide                
+                </h3>
+                <div class="space-y-3">
+                    <div class="p-3 bg-yellow-50 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Early Autumn</h4>
+                                <p class="text-sm text-gray-600">September</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🍂</div>
+                                <div class="text-sm">22–28°C</div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="p-3 bg-yellow-100 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Peak Autumn</h4>
+                                <p class="text-sm text-gray-600">October</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🍁</div>
+                                <div class="text-sm">15–22°C</div>
+                            </div>
+                        </div>
+                    </div>
+                                    
+                    <div class="p-3 bg-yellow-200 rounded-lg">
+                        <div class="flex justify-between items-center">
+                            <div>
+                                <h4 class="font-semibold">Late Autumn</h4>
+                                <p class="text-sm text-gray-600">November</p>
+                            </div>
+                            <div class="text-right">
+                                <div class="text-2xl">🌬️</div>
+                                <div class="text-sm">10–15°C</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                                
+                <div class="mt-4 p-3 bg-yellow-50 border-l-4 border-yellow-400 rounded">
+                    <p class="text-sm"><strong>💡 Tip:</strong> Bring a light jacket and scarf — autumn evenings can get chilly, especially in the mountains or countryside.</p>
+                </div>
+            </div>
+
+            <!-- quick facts -->
+            <div class="info-container quick-facts-container">
+                <h3 class="text-xl font-bold mb-4" style="color: var(--autumn-dark)">
+                    📊 Autumn Quick Facts                
+                </h3>
+                <div class="space-y-4">
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Maple Tree Varieties</span>
+                            <span class="text-yellow-600 font-bold">130+</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 15%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Peak Foliage Duration</span>
+                            <span class="text-yellow-600 font-bold">2–4 weeks</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 30%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Seasonal Tourism Spike</span>
+                            <span class="text-yellow-600 font-bold">250%</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                                    
+                    <div>
+                        <div class="flex justify-between items-center mb-2">
+                            <span class="font-semibold">Koyo Tradition Age</span>
+                            <span class="text-yellow-600 font-bold">1200+ years</span>
+                        </div>
+                        <div class="w-full bg-gray-200 rounded-full h-2">
+                            <div class="bg-yellow-500 h-2 rounded-full" style="width: 100%"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+    
+    <!-- season nav -->
+            <section class="section-container season-nav-container">
+            <h3 class="text-2xl font-bold mb-4 text-gray-800 text-center">Explore Other Seasons</h3>
+                        
+            <div class="season-nav">
+                <a href="spring.html" class="season-link season-spring">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">🌸 Spring</h4>
+                            <p class="text-sm opacity-90">Cherry Blossoms</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+                                
+                <a href="summer.html" class="season-link season-summer">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">🌻 Summer</h4>
+                            <p class="text-sm opacity-90">Festivals & Fireworks</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+                                
+                <a href="winter.html" class="season-link season-winter">
+                    <div class="flex items-center justify-between">
+                        <div>
+                            <h4 class="font-bold text-lg">❄️ Winter</h4>
+                            <p class="text-sm opacity-90">Snow & Hot Springs</p>
+                        </div>
+                        <div class="text-2xl">→</div>
+                    </div>
+                </a>
+            </div>
+        </section>
+
+        </div>  
+    </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- audio -->
+    <audio id="audio1" loop>
+        <source src="../elements/audio/evening-glow.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio2" loop>
+        <source src="../elements/audio/momiji.mp3" type="audio/mpeg">
+    </audio>
+    <audio id="audio3" loop>
+        <source src="../elements/audio/satonoaki.mp3" type="audio/mpeg">
+    </audio>
+
+    <script src="https://unpkg.com/leaflet@1.7.1/dist/leaflet.js"></script>
+
+    <script>
+         // Cherry Blossom SVG as cursor
+        const cursor = document.getElementById('custom-cursor');
+        cursor.innerHTML = `
+          <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+            <g>
+              <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+              <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+              <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+              <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+              <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+              <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+            </g>
+          </svg>
+        `;
+         document.addEventListener('mousemove', (e) => {
+          cursor.style.left = e.clientX + 'px';
+          cursor.style.top = e.clientY + 'px';
+
+          // Sparkle effect
+          const sparkle = document.createElement('div');
+          sparkle.className = 'cursor-sparkle';
+          sparkle.style.left = (e.clientX - 5) + 'px';
+          sparkle.style.top = (e.clientY - 5) + 'px';
+          document.body.appendChild(sparkle);
+          setTimeout(() => sparkle.remove(), 700);
+        });
+         document.querySelectorAll('a, button').forEach(el => {
+          el.addEventListener('mouseenter', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+          });
+          el.addEventListener('mouseleave', () => {
+            cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+          });
+        });
+        // image data modal
+        const imageData = {
+            1: {
+                src: "../elements/seasons/autumn/koyo2.jpg", 
+                title: "Koyo (Autumn Leaves Viewing)",
+                description: "Japan's landscapes transform into a fiery palette of red, orange, and gold. Parks, mountains, and temple grounds become popular spots for locals and travelers alike to stroll and admire the fleeting beauty of autumn foliage."
+            },
+            2: {
+                src: "../elements/seasons/autumn/lantern2.jpg", 
+                title: "Lantern Festival",
+                description: "Glowing lanterns light up towns and temple paths during Japan’s autumn nights. These festivals blend artistry and spirituality, creating a magical ambiance that celebrates the changing season with warm illumination and traditional performances."
+            },
+            3: {
+                src: "../elements/seasons/autumn/street-food.jpg",
+                title: "Autumn Street Food",
+                description: "From roasted sweet potatoes to chestnut-filled pastries, Japan’s streets fill with delicious autumn treats. Food stalls line festival paths, offering cozy, nostalgic flavors that mark the arrival of cooler days and festive gatherings."
+            },
+            4: {
+                src: "../elements/seasons/autumn/dance2.jpg", 
+                title: "Traditional Dance Performances",
+                description: "Autumn matsuri often feature local dancers in vibrant costumes performing centuries-old routines. These dances reflect regional history and folklore, offering a rhythmic, colorful way to celebrate the season and connect with community traditions."
+            },
+            5: {
+                src: "../elements/seasons/autumn/rice2.jpg", 
+                title: "Rice Harvest Scenes",
+                description: "Golden rice paddies blanket rural Japan as farmers begin the annual harvest. These scenes capture the nation’s agricultural rhythm, with bundles of rice drying under sunlit skies and a deep cultural respect for the land."
+            },
+            6: {
+                src: "../elements/seasons/autumn/wagashi2.jpg", 
+                title: "Seasonal Wagashi (Sweets)",
+                description: "Wagashi artisans craft seasonal delights shaped like maple leaves and chestnuts. These traditional sweets, often served with tea, celebrate autumn’s essence through delicate textures, elegant designs, and refined flavors tied to nature’s transitions."
+            },
+            7: {
+                src: "../elements/seasons/autumn/momiji2.jpg", 
+                title: "Momiji Leaves in Temples",
+                description: "Temple grounds become even more serene in autumn, framed by blazing maple trees. The crimson leaves against ancient architecture create a spiritual, photogenic atmosphere, inviting peaceful reflection and reverence for nature’s fleeting beauty."
+            },
+            8: {
+                src: "../elements/seasons/autumn/local-market2.jpg", 
+                title: "Local Market Scenes",
+                description: "Autumn markets burst with fresh produce—persimmons, mushrooms, sweet potatoes—and handmade goods. Bustling with locals and seasonal flavors, these markets offer an authentic glimpse into daily life and the abundance of the harvest."
+            },
+            9: {
+                src: "../elements/seasons/autumn/kimono.jpg",
+                title: "Kimono and Haori Fashion",
+                description: "As temperatures cool, people don elegant kimonos and layered haori jackets. Autumn tones—deep reds, browns, and ochres—highlight the seasonal mood, blending fashion with cultural heritage in streets, festivals, and temple visits."
+            },
+            10: {
+                src: "../elements/seasons/autumn/festival2.jpg", 
+                title: "Cultural Festivals at Shrines",
+                description: "Shrines host lively autumn festivals featuring music, offerings, and traditional ceremonies. Visitors enjoy a spiritual and communal experience that honors the season’s bounty while showcasing Shinto traditions and regional customs in full color."
+            },
+            11: {
+                src: "../elements/seasons/autumn/tsukimi2.jpg",
+                title: "Tsukimi (Moon Viewing Festival)",
+                description: "Under the full harvest moon, families gather with pampas grass and dango sweets. Tsukimi blends poetry, seasonal appreciation, and quiet celebration, honoring the moon’s beauty in a peaceful, reflective tradition."
+            },
+            12: {
+                src: "../elements/seasons/autumn/hotspring2.jpg", 
+                title: "Hot Springs in the Mountains",
+                description: "Soaking in a steaming onsen surrounded by red and gold foliage offers the ultimate autumn escape. The contrast of crisp mountain air and thermal water provides tranquility and connection with nature’s seasonal rhythm."
+            }
+        };
+
+        function openModal(imageNumber) {
+            const modal = document.getElementById('imageModal');
+            const modalImage = document.getElementById('modalImage');
+            const modalTitle = document.getElementById('modalTitle');
+            const modalDescription = document.getElementById('modalDescription');
+            
+            modalImage.src = imageData[imageNumber].src;
+            modalTitle.textContent = imageData[imageNumber].title;
+            modalDescription.textContent = imageData[imageNumber].description;
+            
+            modal.style.display = 'flex';
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeModal() {
+            const modal = document.getElementById('imageModal');
+            modal.style.display = 'none';
+            document.body.style.overflow = 'auto';
+        }
+
+        // clicking outside
+        window.onclick = function(event) {
+            const modal = document.getElementById('imageModal');
+            if (event.target === modal) {
+                closeModal();
+            }
+        }
+
+        // vinyl
+        let currentlyPlaying = null;
+
+        function playVinyl(vinylNumber) {
+        const audio = document.getElementById(`audio${vinylNumber}`);
+        const vinyl = document.querySelector(`.vinyl-${vinylNumber}`);
+        
+        // stop
+        if (currentlyPlaying && currentlyPlaying !== vinylNumber) {
+            document.getElementById(`audio${currentlyPlaying}`).pause();
+            document.querySelector(`.vinyl-${currentlyPlaying}`).classList.remove('playing');
+        }
+        
+        if (audio.paused) {
+            audio.play();
+            vinyl.classList.add('playing');
+            currentlyPlaying = vinylNumber;
+        } else {
+            audio.pause();
+            vinyl.classList.remove('playing');
+            currentlyPlaying = null;
+        }
+    }
+
+        // card flip
+        function flipCard(cardNumber) {
+            const card = document.querySelector(`.trivia-card:nth-child(${cardNumber})`);
+            card.classList.toggle('flipped');
+        }
+
+        // particle effects
+        function createStarParticle() {
+            const headerContainer = document.querySelector('.header-container');
+            const star = document.createElement('div');
+            star.className = 'star-particles';
+            star.innerHTML = '🍂';
+            star.style.left = Math.random() * 100 + '%';
+            star.style.animationDuration = (Math.random() * 3 + 2) + 's';
+            star.style.animationDelay = Math.random() * 2 + 's';
+            
+            headerContainer.appendChild(star);
+            
+            setTimeout(() => {
+                star.remove();
+            }, 5000);
+        }
+
+        setInterval(createStarParticle, 300);
+
+        let map;
+        let markers = [];
+
+        function initMap() {
+    map = L.map('autumn-map').setView([35.6762, 139.6503], 6);
+    
+    L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+        attribution: '© OpenStreetMap contributors'
+    }).addTo(map);
+
+    const locations = [
+    {
+        name: "Kiyomizu-dera Temple, Kyoto",
+        coords: [34.9949, 135.7850],
+        image: "../elements/seasons/autumn/kiyomizu-dera.jpg",
+        description: "Famous for its breathtaking autumn foliage, Kiyomizu-dera offers vibrant red and orange maple views along with historic temple architecture."
+    },
+    {
+        name: "Nikko National Park, Tochigi",
+        coords: [36.7195, 139.5983],
+        image: "../elements/seasons/autumn/nikko-national-park.jpg",
+        description: "Nikko’s mountains and lakes burst with fiery autumn colors, accompanied by ornate shrines and tranquil waterfalls."
+    },
+    {
+        name: "Arashiyama, Kyoto",
+        coords: [35.0094, 135.6663],
+        image: "../elements/seasons/autumn/arashiyama.jpg",
+        description: "Arashiyama’s bamboo groves and riverside paths glow with autumn hues, making it one of Kyoto’s most scenic fall spots."
+    },
+    {
+        name: "Mount Takao, Tokyo",
+        coords: [35.6251, 139.2434],
+        image: "../elements/seasons/autumn/takao.jpg",
+        description: "A popular hiking spot just outside Tokyo, Mount Takao’s trails showcase rich autumn colors and panoramic city views."
+    },
+    {
+        name: "Korankei Gorge, Aichi",
+        coords: [35.0776, 137.1140],
+        image: "../elements/seasons/autumn/korankei-gorge.jpg",
+        description: "Known for its spectacular maple leaves, Korankei Gorge is a stunning natural spot especially vibrant during late October and November."
+    }
+];
+
+    locations.forEach((location, index) => {
+        const marker = L.marker(location.coords).addTo(map);
+        marker.bindPopup(`<b>${location.name}</b>`);
+        marker.on('click', () => updateMapInfo(location));
+        markers.push(marker);
+    });
+}
+
+function focusLocation(index) {
+    const locations = [
+    {
+        name: "Kiyomizu-dera Temple, Kyoto",
+        coords: [34.9949, 135.7850],
+        image: "../elements/seasons/autumn/kiyomizu-dera.jpg",
+        description: "Famous for its breathtaking autumn foliage, Kiyomizu-dera offers vibrant red and orange maple views along with historic temple architecture."
+    },
+    {
+        name: "Nikko National Park, Tochigi",
+        coords: [36.7195, 139.5983],
+        image: "../elements/seasons/autumn/nikko-national-park.jpg",
+        description: "Nikko’s mountains and lakes burst with fiery autumn colors, accompanied by ornate shrines and tranquil waterfalls."
+    },
+    {
+        name: "Arashiyama, Kyoto",
+        coords: [35.0094, 135.6663],
+        image: "../elements/seasons/autumn/arashiyama.jpg",
+        description: "Arashiyama’s bamboo groves and riverside paths glow with autumn hues, making it one of Kyoto’s most scenic fall spots."
+    },
+    {
+        name: "Mount Takao, Tokyo",
+        coords: [35.6251, 139.2434],
+        image: "../elements/seasons/autumn/takao.jpg",
+        description: "A popular hiking spot just outside Tokyo, Mount Takao’s trails showcase rich autumn colors and panoramic city views."
+    },
+    {
+        name: "Korankei Gorge, Aichi",
+        coords: [35.0776, 137.1140],
+        image: "../elements/seasons/autumn/korankei-gorge.jpg",
+        description: "Known for its spectacular maple leaves, Korankei Gorge is a stunning natural spot especially vibrant during late October and November."
+    }
+];
+
+    const location = locations[index];
+    map.setView(location.coords, 10);
+    markers[index].openPopup();
+    updateMapInfo(location);
+}
+
+function updateMapInfo(location) {
+    const mapInfo = document.getElementById('mapInfo');
+    
+    mapInfo.classList.remove('slide-out', 'slide-in');
+    
+    mapInfo.offsetHeight;
+    
+    mapInfo.classList.add('slide-out');
+    
+    setTimeout(() => {
+        mapInfo.innerHTML = `
+            <img src="${location.image}" alt="${location.name}" class="w-full h-48 object-cover rounded-lg mb-4">
+            <h4 class="text-xl font-bold mb-2">${location.name}</h4>
+            <p class="text-gray-600">${location.description}</p>
+        `;
+        
+        mapInfo.classList.remove('slide-out');
+        mapInfo.classList.add('slide-in');
+        
+        setTimeout(() => {
+            mapInfo.classList.remove('slide-in');
+        }, 500);
+    }, 250);
+}
+
+
+document.addEventListener('DOMContentLoaded', function() {
+    initMap();
+});
+
+window.addEventListener('resize', function() {
+    if (map) {
+        map.invalidateSize();
+    }
+});
+    </script>
+</body>
+</html>
+
+
+
+
+            
+
