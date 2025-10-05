@@ -1,0 +1,1129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tochigi: Nikkō Tōshō-gū - Shrine of the Shogun</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/tochigi/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Gaze Upon the <br>Splendor of Nikko’s <br><span class="highlight">Tosho-gu Shrine</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A vibrant "city within a city" blending history, spirituality, and artistry in the heart of Nikkō. From intricate shrine carvings to traditional crafts and serene gardens, every corner offers a new discovery. Whether bathed in sunlight or illuminated by lanterns, Tōshō-gū pulses with reverence, color, and timeless culture.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/tochigi/10.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/tochigi/11.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/tochigi/9.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Nikkō Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Nikkō Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Nikkō Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Nikkō Tōshō-gū (日光東照宮) is one of Japan’s most important and opulent Shinto shrines, located in the forested mountains of Nikkō, Tochigi Prefecture. Dedicated to Tokugawa Ieyasu—the founder of the Tokugawa shogunate—it is the final resting place of the shogun who unified Japan in the early 17th century. The shrine is part of the “Shrines and Temples of Nikkō” UNESCO World Heritage Site, recognized for its historical significance and its stunning example of Edo-period craftsmanship.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="architectural_marvels">Architectural Marvels</button>
+                    <button class="tab" data-category="iconic_art">Iconic Woodcarvings & Art</button>
+                    <button class="tab" data-category="spiritual_experience">Spiritual Experience</button>
+                    <button class="tab" data-category="amenities">Visitor Amenities & Surroundings</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/tochigi/1.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Legacy in Stone and Spirit</h3>
+                        <p class="image-description">A timeless tribute to the Tokugawa legacy</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/tochigi/2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Gilded Grandeur</h4>
+                                <p class="image-description">The Vivid Splendor of Nikkō Tōshō-gū</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/tochigi/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Heavenly Rule</h4>
+                                <p class="image-description">Where politics met the heavens, and power took the form of sacred art and legend</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/tochigi/4.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">One Shrine, Two Spirits</h4>
+                                <p class="image-description">Where Shinto and Buddhism Flourished Together</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Nikkō Tōshō-gū</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Nikkō Tōshō-gū Shrine, nestled in the lush mountains of Tochigi, is a magnificent union of sacred art, spiritual legacy, and architectural splendor. Dedicated to Tokugawa Ieyasu, the founder of the Tokugawa shogunate, the shrine dazzles with vibrant carvings, lavish gates, and a deep harmony with nature. Whether you're drawn to its intricate craftsmanship, historical significance, or tranquil forest surroundings, Tōshō-gū offers a timeless journey into Japan’s cultural and religious heart.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/tochigi/7.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/tochigi/8.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Where Shoguns Rest, Dragons Echo, and Every Carving Tells a Century’s Tale.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Recommended Time to Visit:</strong>
+                            <li class="ml-4"><strong>Spring (late April to early May): </strong>Cherry blossoms bloom around the shrine, adding pink contrast to the golden and green surroundings.</li>
+                            <li class="ml-4"><strong>Autumn (late October to early November): </strong>Brilliant fall foliage envelops the shrine in reds and golds. </li>   
+                            <li class="ml-4"><strong>Winter: </strong>Snowfall gives the shrine a tranquil, magical atmosphere, with fewer tourists.</li>              
+                        <li><strong>Access:</strong>
+                            <li class="ml-4"><strong>From Tokyo: </strong>Take the JR Tohoku Shinkansen to Utsunomiya Station, then transfer to the JR Nikko Line to Nikkō Station. Alternatively, take the Tobu Nikko Line from Asakusa Station directly to Tobu-Nikko Station.</li>
+                            <li class="ml-4">From either station, it’s a 10-15 minute bus ride or a 30-minute scenic walk to the shrine complex.</li>
+                        </li>
+                        <li><strong>Opening Hours: </strong>
+                            <li class="ml-4"><strong>April to October: </strong> 8:00 AM to 5:00 PM </li>
+                            <li class="ml-4"><strong>November to March: </strong>8:00 AM to 4:00 PM </li>
+                            <li class="ml-4">(Last entry 30 minutes before closing)</li>
+                        </li>
+
+                        <li><strong>Admission:</strong>
+                            <li class="ml-4"><strong>Adult: </strong>1,300 yen (includes shrine buildings and museum)</li>
+                            <li class="ml-4"><strong>Children: </strong>450 yen</li>
+                            <li class="ml-4">Combined tickets with nearby attractions (Futarasan Shrine, Rinnō-ji) available</li>               
+                        </li>
+                        <li><strong>Address: </strong>2301 Sannai, Nikkō, Tochigi Prefecture 321-1431</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='yamanashi.html';">
+            <img src="../elements/places/yamanashi1.jpeg" alt="Yamanashi Lake Kawaguchi">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Yamanashi Lake Kawaguchi</h3>
+                <p>Mirror lake views of Fuji—serene, scenic, sublime</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='hyogo.html';">
+            <img src="../elements/places/hyogo1.jpeg" alt="Hyogo Himeji Castle">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Hyogo Himeji Castle</h3>
+                <p>Japan’s pristine white heron castle soaring through samurai history</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2> Nikkō Tōshō-gū Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Planning Your Visit</h3>
+                                        <ul>
+                                            <li><strong>Arrive Early or Late in the Day:</strong> Avoid crowds by visiting before 10:00 AM or after 3:00 PM, especially on weekends or holidays.</li>
+                                            <li><strong>Combine with Nearby Attractions:</strong> Make the most of your trip by also visiting Futarasan Shrine, Rinnoji Temple, and Shinkyo Bridge—all within walking distance.</li>
+                                            <li><strong>Check for Seasonal Events:</strong> Plan around the Grand Spring and Autumn Festivals (in May and October), which feature elaborate samurai parades and rituals.</li>
+                                            <li><strong>Allow At Least Half a Day:</strong> The shrine complex is large and visually rich—don’t rush. You’ll want time to admire details and explore nature trails.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Tickets & Access</h3>
+                                        <ul>
+                                            <li><strong>Buy the Combination Pass:</strong> The ticket bundle gives access to Toshogu, the museum, and nearby sites—ideal for full immersion at a discount.</li>
+                                            <li><strong>Prepare for Steps and Inclines:</strong> Wear comfortable shoes—there are many stone stairs and uneven paths, especially leading to Ieyasu’s tomb.</li>
+                                            <li><strong>English Materials Available:</strong> Pick up free brochures at the entrance or rent an audio guide for deeper understanding of the architecture and symbols.</li>
+                                            <li><strong>Nearest Station: Tobu Nikko or JR Nikko:</strong> From either station, it’s about a 30-minute walk or a 10-minute bus ride to the shrine entrance.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Shrine Etiquette & Comfort</h3>
+                                        <ul>
+                                            <li><strong>Dress Respectfully, Especially for Rituals:</strong> Modest attire is appreciated if attending ceremonies or stepping near worship spaces.</li>
+                                            <li><strong>Silence and Cleanliness Matter:</strong> Keep noise levels down. Don’t touch carvings or murals—many are centuries old and irreplaceable.</li>
+                                            <li><strong>Photography Rules Vary:</strong> Photos are allowed in most outdoor areas, but not always inside halls—check signs or ask staff politely.</li>
+                                            <li><strong>Stay Hydrated and Take Breaks:</strong> Vending machines and benches are available, but it’s wise to bring a bottle and pace yourself.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Tochigi', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+    const cityId = 1850311;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Nikkō', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        architectural_marvels: [
+            {
+            img: '../elements/places/tochigi/yomeimon-gate.jpg',
+            img2: '../elements/places/tochigi/yomeimon.jpg',
+            title: 'Yōmeimon Gate',
+            desc: 'Nicknamed the “Gate of the Sun,” Yōmeimon is the grand jewel of Toshogu Shrine, featuring over 500 intricate carvings of dragons, phoenixes, sages, and legendary beasts. This ornate two-story gate represents the pinnacle of Edo-period craftsmanship and a celebration of peace and prosperity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Gateway to Divine Craftsmanship',
+                subtitle: 'Where Every Inch Tells a Story'
+            },
+            bullets: ['Over 500 individual carvings symbolizing wisdom and protection','Listed as a National Treasure of Japan','Designed to awe, both spiritually and artistically']
+            },
+            {
+            img: '../elements/places/tochigi/karamon-gate.png',
+            img2: '../elements/places/tochigi/karamon.jpg',
+            title: 'Karamon Gate',
+            desc: 'Leading directly to the shrine\'s main worship hall, the Karamon Gate is an exquisitely detailed white-lacquered gate symbolizing purity and the sacred boundary between the spiritual and physical worlds.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Small Gate with Grand Significance',
+                subtitle: 'The Entrance to the Sacred'
+            },
+            bullets: ['Features elaborate floral and mythological motifs','Serves as a ceremonial threshold to deeper sanctity','Often overlooked, but rich in symbolism']
+            },
+            {
+            img: '../elements/places/tochigi/five-story-pagoda.jpg',
+            img2: '../elements/places/tochigi/five1.jpg',
+            title: 'Five-Story Pagoda',
+            desc: 'Standing gracefully near the entrance, the Five-Story Pagoda represents the five elements of Buddhist cosmology: earth, water, fire, wind, and void. Its elegant structure and earthquake-resistant design embody both beauty and ingenuity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Five Tiers of Cosmic Harmony',
+                subtitle: 'The Tower of Elements'
+            },
+            bullets: ['Originally built in 1650, reconstructed after fire','Internal central pillar offers earthquake resilience','Decorated with family crests and symbolic imagery']
+            },
+            {
+            img: '../elements/places/tochigi/honjido-hall.jpg',
+            img2: '../elements/places/tochigi/honido.jpg',
+            title: 'Honjido Hall',
+            desc: 'Inside Honjido Hall, the famous “Crying Dragon” mural adorns the ceiling. When clapped beneath the dragon’s mouth, the acoustics create a haunting, echoing cry, believed to embody the dragon’s spirit.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Sound and Spirit Experience',
+                subtitle: 'Echoes of the Dragon'
+            },
+            bullets: ['Painted by artist Kano Yasunobu in the Edo period','Only the space under the dragon’s head resonates','Symbolizes divine guardianship over the shrine']
+            }
+        ],
+        iconic_art: [
+            {
+            img: '../elements/places/tochigi/nemuri-neko.png',
+            img2: '../elements/places/tochigi/sleeping.jpg',
+            title: 'Sleeping Cat',
+            desc: 'Nestled above a doorway, this diminutive carving of a sleeping cat is attributed to legendary sculptor Hidari Jingorō. Despite its size, it’s one of Toshogu’s most cherished symbols, representing peace and protection.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Small in Size, Great in Meaning',
+                subtitle: 'The Guardian in Repose'
+            },
+            bullets: ['Marks the entrance to Tokugawa Ieyasu’s tomb','Flanked by sparrows — a peaceful coexistence symbol','Revered as a national cultural property']
+            },
+            {
+            img: '../elements/places/tochigi/monkeys.jpg',
+            img2: '../elements/places/tochigi/monkeys1.jpg',
+            title: 'Three Wise Monkeys',
+            desc: 'Carved into the Sacred Stable, this trio of monkeys embodies the famous proverb about moral conduct. Each monkey gestures the core of Confucian virtue in a visual teaching for children.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Hear No Evil, See No Evil, Speak No Evil',
+                subtitle: 'Wisdom in Silence'
+            },
+            bullets: ['Symbolizes ethical living and personal discipline','Part of an 8-panel narrative on monkey life','Universally recognized and deeply symbolic']
+            },
+            {
+            img: '../elements/places/tochigi/mythical.jpg',
+            img2: '../elements/places/tochigi/mythical1.jpg',
+            title: 'Mythical Beasts',
+            desc: 'Yōmeimon’s carvings include fantastical beasts like kirin, baku, and dragons—creatures drawn from myth to symbolize protection, power, and spiritual clarity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Creatures That Watch and Protect',
+                subtitle: 'Guardians of Legend'
+            },
+            bullets: ['Combines Chinese, Japanese, and Buddhist lore','Baku said to devour nightmares and evil','Decorative and protective symbolism intertwined']
+            },
+            {
+            img: '../elements/places/tochigi/mural.jpg',
+            img2: '../elements/places/tochigi/mural1.jpg',
+            title: 'Colorful Murals',
+            desc: 'Various halls and panels feature vivid murals showcasing everything from divine beings to mythical creatures, painted with natural pigments that have survived centuries.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Stories in Paint and Pattern',
+                subtitle: 'The Colors of Devotion'
+            },
+            bullets: ['Use of mineral-based pigments for longevity','Often feature floral and seasonal themes','Reflect influences from Chinese and Buddhist art']
+            },
+        ],
+        spiritual_experience: [
+            {
+            img: '../elements/places/tochigi/main.jpg',
+            img2: '../elements/places/tochigi/main1.jpg',
+            title: 'Main Worship Hall',
+            desc: 'The Main Worship Hall is the spiritual core of Toshogu, where rituals are held to honor Tokugawa Ieyasu. Its rich decorations include gold leaf, lacquer, and intricate woodwork.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Spirit and Reverence Meet',
+                subtitle: 'The Heart of the Shrine'
+            },
+            bullets: ['Houses the sacred shintai (divine object)','Prayers and offerings held regularly','Restricted entry preserves sanctity']
+            },
+            {
+            img: '../elements/places/tochigi/omikuji.jpg',
+            img2: '../elements/places/tochigi/omikuji1.jpg',
+            title: 'Omikuji Fortune-Telling',
+            desc: 'Near the shrine grounds, visitors can draw omikuji—paper fortunes offering predictions and spiritual guidance. Good or bad, the paper is tied to racks to encourage divine intervention.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Glimpse into Tomorrow',
+                subtitle: 'Unfold Your Fate'
+            },
+            bullets: ['Available in English at major stations','Fortune types include love, health, and travel','Bad fortunes can be “nullified” by tying to racks']
+            },
+            {
+            img: '../elements/places/tochigi/nature.jpg',
+            img2: '../elements/places/tochigi/nature1.jpg',
+            title: 'Nature Walks',
+            desc: 'Surrounding Toshogu is a peaceful forest of ancient cedars, offering shaded walking paths and a tranquil environment that enhances the spiritual ambiance.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Nature Whispers',
+                subtitle: 'Shrine in the Forest'
+            },
+            bullets: ['600-year-old cedar trees line the approach','Ideal for meditative walks and nature photography','Connects to other heritage sites nearby']
+            },
+            {
+            img: '../elements/places/tochigi/rituals.jpg',
+            img2: '../elements/places/tochigi/rituals1.jpg',
+            title: 'Seasonal Rituals',
+            desc: 'From spring processions to autumn harvest rites, Toshogu hosts numerous Shinto rituals that mark the seasons. These ceremonies keep centuries-old traditions alive.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Celebrate with the Spirits',
+                subtitle: 'Tradition in Bloom'
+            },
+            bullets: ['Grand Spring and Autumn Festivals are must-see','Features sacred dances and samurai parades','Visitors can witness ritual offerings and prayers']
+            },
+        ],
+        amenities: [
+            {
+            img: '../elements/places/tochigi/villa.jpg',
+            img2: '../elements/places/tochigi/villa1.jpg',
+            title: 'Tamozawa Imperial Villa',
+            desc: 'A short walk from the shrine, this former imperial residence showcases a blend of Edo, Meiji, and Taisho architectural styles. Its peaceful gardens offer a serene contrast to the shrine’s grandeur.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Elegance in the Mountains',
+                subtitle: 'An Imperial Retreat'
+            },
+            bullets: ['Over 100 rooms with historical exhibits','Surrounding gardens change beautifully with seasons','Insight into Japan’s modern imperial family life']
+            },
+            {
+            img: '../elements/places/tochigi/shinkyo.jpg',
+            img2: '../elements/places/tochigi/shinkyo1.jpg',
+            title: 'Shinkyo Bridge',
+            desc: 'Spanning the Daiya River, the bright red Shinkyo Bridge is considered one of Japan’s most beautiful and sacred bridges, traditionally used only by the emperor and messengers of the gods.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Legends Begin',
+                subtitle: 'Sacred Crossing'
+            },
+            bullets: ['Part of the shrine’s official approach','Associated with ancient legends of river gods','Popular photo spot, especially in fall']
+            },
+            {
+            img: '../elements/places/tochigi/souvenir.jpg',
+            img2: '../elements/places/tochigi/souvenir1.jpg',
+            title: 'Souvenir Shops',
+            desc: 'Near the shrine and along the approach, you’ll find charming souvenir shops offering handcrafted goods, traditional snacks, and locally made charms and accessories.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Take a Piece of Nikko Home',
+                subtitle: 'Gifts with Spirit'
+            },
+            bullets: ['Wooden charms, sake cups, and omamori amulets','Local specialties like yuba (tofu skin) snacks','Support regional artisans and traditions']
+            },
+            {
+            img: '../elements/places/tochigi/soba.jpg',
+            img2: '../elements/places/tochigi/soba1.jpg',
+            title: 'Local Cuisine',
+            desc: 'Nikko is known for its delicate mountain cuisine, including yuba (tofu skin), river fish, soba noodles, and sweet treats like manju. Many dishes reflect the local culture and seasonal ingredients.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From Shrine to Table',
+                subtitle: 'Taste Tradition'
+            },
+            bullets: ['Yuba served fresh or dried in various dishes','Local soba flour adds rich texture and flavor','Many eateries offer vegetarian temple-style meals']
+            },
+        ]
+    };
+
+    let currentCategory = 'architectural_marvels';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["architectural_marvels", "iconic_art", "spiritual_experience", "amenities"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/tochigi/1.jpg',
+            img2: '../elements/places/tochigi/history1.png',
+            title: 'Shrine of a Shogun',
+            desc: 'Built in 1617 to enshrine Tokugawa Ieyasu, Nikko Tōshō-gū was later magnificently expanded by his grandson Iemitsu in 1636, involving over 15,000 artisans in just one year. Blending Shinto, Buddhist, and Chinese design, the shrine symbolizes the political power and artistic height of the Edo period. Despite natural disasters and political change, it remains a stunning cultural landmark and spiritual site.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where power meets devotion in gilded splendor'
+            }
+        },
+        small1: {
+            img: '../elements/places/tochigi/2.jpg',
+            img2: '../elements/places/tochigi/history1.png',
+            title: 'Japan’s Baroque Masterpiece in the Mountains',
+            desc: 'Nikkō Tōshō-gū stands apart from typical Shinto shrines with its lavish architectural splendor and vivid coloration. Rather than the minimalist, unpainted wood seen at many sacred sites, this shrine dazzles with gold leaf, rich lacquer, and vibrant pigments adorning nearly every surface. From the ornate Yōmeimon Gate to the five-story pagoda, the shrine’s over a dozen structures are masterpieces of Edo-period craftsmanship.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where gold glows, dragons dance, and legends live in color',
+            }
+        },
+        small2: {
+            img: '../elements/places/tochigi/3.jpg',
+            img2: '../elements/places/tochigi/5.jpg',
+            title: 'Divine Shogun',
+            desc: 'Tōshō-gū Shrine was central to elevating the Tokugawa family beyond political power into the realm of divine legitimacy. Tokugawa Ieyasu, the first shogun of the Tokugawa shogunate, was enshrined here as Tōshō Daigongen—a deity embodying virtue and protection. The shrine\'s breathtaking blend of sacred architecture, elaborate symbolism, and masterful artwork was carefully designed to inspire reverence and reinforce the divine right of the Tokugawa regime.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'How Tōshō-gū Elevated the Tokugawa Legacy',
+            }
+        },
+        small3: {
+            img: '../elements/places/tochigi/4.jpg',
+            img2: '../elements/places/tochigi/6.jpg',
+            title: 'Before the Divide',
+            desc: 'The architectural layout of Nikkō Tōshō-gū is a striking embodiment of Japan’s historical religious syncretism, known as Shinbutsu-shūgō—a harmonious blend of Shinto and Buddhist traditions. Before the Meiji Restoration enforced a strict separation between the two faiths in the late 19th century, shrines like Tōshō-gū seamlessly integrated elements from both spiritual systems. This is evident in its use of Buddhist-style pagodas, decorative motifs, guardian statues, and rituals alongside Shinto torii gates, sacred trees, and purification fountains. ',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Spiritual Fusion: The Architecture of Belief',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

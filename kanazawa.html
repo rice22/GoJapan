@@ -1,0 +1,1196 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanazawa: Kenrokuen Garden - Garden of the Six Sublimities</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/kanazawa/header.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+         /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+        .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Discover the Secrets of Kanazawa’s <br><span class="highlight">Kenrokuen Garden</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A timeless sanctuary of seasonal beauty and refined elegance in the heart of Kanazawa. From cascading waterfalls to centuries-old pines, every path leads to a moment of peace. Whether draped in cherry blossoms or cloaked in snow, Kenrokuen Garden embodies harmony, history, and the fleeting grace of nature.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/kanazawa/6.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/kanazawa/7.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/kanazawa/8.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Kanazawa Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Kanazawa Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Kanazawa Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Kenrokuen Garden (兼六園, Kenroku-en), located in Kanazawa, Ishikawa Prefecture, is one of Japan’s most celebrated landscape gardens and has earned its place as one of the “Three Great Gardens of Japan,” alongside Korakuen in Okayama and Kairakuen in Mito. The name "Kenrokuen" means “Garden of the Six Sublimities,” referring to the six essential attributes of a perfect landscape garden as defined in Chinese tradition: spaciousness, seclusion, artificiality, antiquity, abundant water, and broad views. Kenrokuen uniquely harmonizes all six—an exceptionally rare achievement.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="scenic_spots">Scenic Spots</button>
+                    <button class="tab" data-category="flora_nature">Flora & Nature</button>
+                    <button class="tab" data-category="culture_experiences">Culture Experiences</button>
+                    <button class="tab" data-category="relaxation_dining">Relaxation & Dining</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/kanazawa/yukitsuri.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Legacy of Japan’s Most Celebrated Landscape</h3>
+                        <p class="image-description">A living work of art and centuries of tradition come to life</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/kanazawa/1.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Blend of Tradition, Opulence, and Seasonal Splendor</h4>
+                                <p class="image-description">Explore Nature’s Timeless Harmony</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/kanazawa/2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Iconic Treasures of Kenrokuen Garden</h4>
+                                <p class="image-description">Serene pond, iconic lantern, and historic teahouse</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/kanazawa/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Tradition, Beauty, and Seasonal Wonders</h4>
+                                <p class="image-description">Experience history, nature, and art in every season</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Kenrokuen Garden</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Kenrokuen Garden is more than just a historic landscape—it's a living expression of Japan’s seasonal beauty, harmony, and timeless design. Whether you seek reflection, inspiration, or simply a scenic stroll, this iconic garden invites you to slow down and savor nature at its finest.  As one of the Three Great Gardens of Japan, it offers a rich cultural and sensory experience that evolves with the passing months. 
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/kanazawa/meji-monument.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/kanazawa/5.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Kenrokuen: Where every season paints a masterpiece.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong>
+                            <li class="ml-4">March 1 – October 15: 7:00 AM to 6:00 PM </li>
+                            <li class="ml-4">October 16 – end of February: 8:00 AM to 5:00 PM </li>
+                        </li>
+                        <li><strong>Admission:</strong>
+                            <li class="ml-4">Adults: 320 yen </li>
+                            <li class="ml-4">Children (6–17): 100 yen </li>
+                            <li class="ml-4">Free entry on selected national holidays (e.g., Culture Day, November 3) </li>
+                        </li>
+                        <li><strong>Address: </strong>1-1 Marunouchi, Kanazawa, Ishikawa Prefecture 920-0937, Japan </li>
+                        <li><strong>Access: </strong>
+                            <li class="ml-4">From Kanazawa Station, take the Kanazawa Loop Bus (Left Loop) and get off at Kenrokuen-shita or Hirosaka bus stop (approx. 15-minute ride). </li>
+                            <li class="ml-4">Alternatively, a 30-minute walk or 10-minute taxi ride from Kanazawa Station. </li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='miyagi.html';">
+            <img src="../elements/places/miyagi2.jpg" alt="Miyagi Matsushima Bay">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Miyagi Matsushima Bay</h3>
+                <p>A seascape of 260 pine-clad islands—haiku brought to life</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='okinawa.html';">
+            <img src="../elements/places/okinawa1.jpg" alt="Okinawa Churaumi Aquarium">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Okinawa Churaumi Aquarium</h3>
+                <p>Deep-sea wonders and giant whale sharks of the Pacific</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Kenrokuen Garden Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Best Times to Visit</h3>
+                                        <ul>
+                                            <li><strong>Spring Blossoms:</strong> Visit late March to early April to enjoy the iconic cherry blossoms in full bloom, lighting up the garden with soft pink hues.</li>
+                                            <li><strong>Autumn Foliage:</strong> Late October to early November offers stunning red and gold maple leaves, perfect for photography and peaceful strolls.</li>
+                                            <li><strong>Winter Yukitsuri:</strong> December to February features the famous yukitsuri ropes protecting the trees from snow, creating a unique winter wonderland atmosphere.</li>
+                                            <li><strong>Early Morning Visits:</strong> Arrive early in the morning to avoid crowds and experience a tranquil atmosphere with softer light for photos.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Practical Tips for Visitors</h3>
+                                        <ul>
+                                            <li><strong>Wear Comfortable Shoes:</strong> The garden has uneven paths and gentle hills; sturdy shoes will make your visit more enjoyable.</li>
+                                            <li><strong>Bring a Camera:</strong> Kenrokuen’s scenic views and seasonal changes provide countless photo opportunities, so don’t forget your camera or smartphone.</li>
+                                            <li><strong>Stay Hydrated:</strong> Especially in warmer months, carry water with you as there are limited refreshment stalls inside the garden.</li>
+                                            <li><strong>Respect the Rules:</strong> Follow signs and stay on designated paths to protect the delicate plants and maintain the garden’s beauty.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Information & Tips</h3>
+                                        <ul>
+                                            <li><strong>Guided Tours:</strong> Join a guided tour to learn about the garden’s history, design, and hidden features not easily noticed on your own.</li>
+                                            <li><strong>Visit Nearby Attractions:</strong> Explore Seisonkaku Villa and Kanazawa Castle nearby to deepen your understanding of the region’s culture.</li>
+                                            <li><strong>Enjoy a Tea Break:</strong> Stop by the garden’s tea house to relax with traditional matcha tea and sweets while soaking in the surroundings.</li>
+                                            <li><strong>Seasonal Festivals:</strong> Check for special events or light-up festivals, particularly in spring and winter, to see the garden in a magical setting.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+    // Cherry Blossom SVG as cursor
+    const cursor = document.getElementById('custom-cursor');
+    cursor.innerHTML = `
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <g>
+          <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+          <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+          <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+          <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+          <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+          <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+        </g>
+      </svg>
+    `;
+     document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+
+      // Sparkle effect
+      const sparkle = document.createElement('div');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = (e.clientX - 5) + 'px';
+      sparkle.style.top = (e.clientY - 5) + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 700);
+    });
+     document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Kanazawa', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+        
+        const cityId = 1860243;
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Kanazawa', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        scenic_spots: [
+            {
+            img: '../elements/places/kanazawa/kasumagike-pond1.jpg',
+            img2: '../elements/places/kanazawa/kasumagike-pond.jpg',
+            title: 'Kasumigaike Pond',
+            desc: 'Kasumigaike Pond is the central feature of Kenrokuen Garden, designed to reflect the beauty of nature in every season. Trees, bridges, and clouds create a tranquil atmosphere that captures the essence of Japanese garden aesthetics.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Serenity mirrored in still waters',
+                subtitle: 'The heart of Kenrokuen'
+            },
+            bullets: ['Traditional stone and wooden bridges span the pond', 'Features a small island with a shrine said to bring good luck.', 'Stunning seasonal reflections, especially during fall and winter.']
+            },
+            {
+            img: '../elements/places/kanazawa/katasaki.jpg',
+            img2: '../elements/places/kanazawa/katsaki1.jpg',
+            title: 'Karasaki Pine',
+            desc: 'Planted from seeds by a feudal lord centuries ago, the Karasaki Pine is a beloved symbol of Kenrokuen. Its wide, graceful branches are supported by wooden posts, especially in winter, when yukitsuri ropes protect it from heavy snow.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A pine of patience and legacy',
+                subtitle: 'Nature held with human care'
+            },
+            bullets: ['One of the oldest and most iconic trees in the garden.', 'Carefully maintained using traditional winter protection techniques.', 'A popular photo spot during the snow season.']
+            },
+            {
+            img: '../elements/places/kanazawa/yugao-tei-teahouse.jpg',
+            img2: '../elements/places/kanazawa/yugao-tei-teahouse1.jpg',
+            title: 'Yugao-tei Teahouse',
+            desc: 'Yugao-tei is the oldest teahouse in Kenrokuen, offering a glimpse into Edo-period refinement. Surrounded by lush greens and nestled near the pond, it’s a peaceful retreat for enjoying matcha while overlooking natural beauty.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sip serenity with every view',
+                subtitle: 'A tea break from the 18th century'
+            },
+            bullets: ['Original thatched roof and traditional architecture.', 'Quiet spot for reflection and traditional tea experiences.', 'Near blooming flowers in spring and autumn foliage.']
+            },
+            {
+            img: '../elements/places/kanazawa/seisonkaku-villa.jpg',
+            img2: '../elements/places/kanazawa/seisonkaku-villa1.jpg',
+            title: 'Seisonkaku Villa',
+            desc: 'Built by a Maeda lord for his mother, Seisonkaku Villa stands at the edge of Kenrokuen as a luxurious retreat. Its preserved interiors, painted screens, and garden views reveal the opulence of samurai-era life.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A samurai\'s sanctuary',
+                subtitle: 'Elegance beyond the garden'
+            },
+            bullets: ['Rich interiors featuring tatami rooms and painted sliding doors.', 'Elevated verandas provide unique garden views.', 'Insight into feudal Japan’s aristocratic lifestyle.']
+            }
+        ],
+        flora_nature: [
+            {
+            img: '../elements/places/kanazawa/isihkawa.jpg',
+            img2: '../elements/places/kanazawa/isihkawa1.jpg',
+            title: 'Ishikawa Flower Garden',
+            desc: 'A neighboring garden that complements the experience with a rotating showcase of seasonal blooms—plum blossoms in late winter, irises in early summer, and chrysanthemums in autumn.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Nature’s palette, curated with care',
+                subtitle: 'Where every season blooms with elegance'
+            },
+            bullets: ['Seasonal Displays: Always-changing floral installations for each month', 'Plum Blossoms Trail: Especially striking in late February and March.', 'Photo-Friendly Paths: Ideal lighting and landscaping for memorable shots.']
+            },
+            {
+            img: '../elements/places/kanazawa/lantern.jpg',
+            img2: '../elements/places/kanazawa/kotojibtoro-lantern.jpg',
+            title: 'The Lanterns',
+            desc: 'The garden is dotted with elegant stone lanterns, each positioned for maximum visual harmony. The most iconic is the Kotojitoro Lantern, standing gracefully beside the pond with its two asymmetrical legs—symbolizing balance and tradition.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Stone guardians of Kenrokuen’s soul',
+                subtitle: 'Quiet beauty by firelight and snowfall'
+            },
+            bullets: ['Kotojitoro Icon: Most photographed spot in Kenrokuen.', 'Symbolic Placement: Lanterns are carefully positioned near water and bridges.', 'Winter Beauty: Stunning under snow with seasonal yukitsuri rope supports.']
+            },
+            {
+            img: '../elements/places/kanazawa/moss.jpg',
+            img2: '../elements/places/kanazawa/moss1.jpg',
+            title: 'Moss Garden',
+            desc: 'The moss-covered grounds offer a soothing, otherworldly contrast to the vibrant blooms elsewhere. Especially lush after rain, the moss garden enhances the garden’s wabi-sabi aesthetic, creating a calming, immersive atmosphere.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Soft textures in a quiet world',
+                subtitle: 'Where silence grows green'
+            },
+            bullets: ['Lush After Rain: The moss glows with moisture and deep color.', 'Zen Aesthetics: Minimalist beauty amid centuries-old trees.', 'Quiet Paths: Invites slow walking and peaceful reflection.']
+            },
+            {
+            img: '../elements/places/kanazawa/maple.jpg',
+            img2: '../elements/places/kanazawa/maple1.jpg',
+            title: 'Seasonal Maples',
+            desc: 'In autumn, the garden transforms into a fiery canvas of red, gold, and orange thanks to its many Japanese maples. The contrast against ponds, bridges, and lanterns makes it one of Japan’s most celebrated fall destinations.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Nature’s most elegant farewell',
+                subtitle: 'Autumn’s masterpiece on full display'
+            },
+            bullets: ['Fiery Canopy: Brilliant foliage frames walkways and vistas.', 'Photo Hotspots: Popular with tourists and photographers.', 'Cultural Symbolism: Maple leaves represent elegance and impermanence.']
+            },
+        ],
+        culture_experiences: [
+            {
+            img: '../elements/places/kanazawa/tea.jpg',
+            img2: '../elements/places/kanazawa/tea1.jpg',
+            title: 'Tea Ceremony',
+            desc: 'Step into a centuries-old tradition of mindfulness and hospitality. Tea ceremonies in Kenrokuen\'s teahouses offer a quiet, meditative escape that mirrors the garden\'s harmony.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sip serenity in every pour',
+                subtitle: 'A ritual of grace in a garden setting'
+            },
+            bullets: ['Experience authentic matcha preparation by trained hosts.', 'Learn the cultural etiquette behind tea service.', 'Enjoy traditional sweets paired with your tea.']
+            },
+            {
+            img: '../elements/places/kanazawa/festival.jpg',
+            img2: '../elements/places/kanazawa/festival1.jpg',
+            title: 'Seasonal Festivals',
+            desc: 'Kenrokuen hosts festivals that reflect the rhythms of nature, from plum blossoms in early spring to glowing lanterns in summer. These seasonal events bring the garden to life with music, art, and local flavor.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Kenrokuen blooms with every season',
+                subtitle: 'Nature\'s beauty, celebrated year-round'
+            },
+            bullets: ['View rare floral displays like camellias and irises.', 'Enjoy night illuminations during summer and autumn festivals.', 'Participate in local crafts and performances.']
+            },
+            {
+            img: '../elements/places/kanazawa/calligraphy.jpg',
+            img2: '../elements/places/kanazawa/calligraphy1.jpg',
+            title: 'Calligraphy Workshops',
+            desc: 'Channel the calm of Kenrokuen into brushstrokes. Calligraphy sessions near the garden let visitors practice this meditative art, guided by masters of the craft. Perfect for beginners and enthusiasts alike.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Ink your moment of Zen',
+                subtitle: 'Art in motion, inspired by nature'
+            },
+            bullets: ['Learn traditional kanji brush techniques.', 'Take home your own hand-lettered creation.', 'Explore calligraphy’s role in Japanese culture and gardens.']
+            },
+            {
+            img: '../elements/places/kanazawa/craft.jpg',
+            img2: '../elements/places/kanazawa/craft1.jpg',
+            title: 'Traditional Craft Shops',
+            desc: 'The area surrounding Kenrokuen is rich in artisan shops showcasing Kanazawa\'s celebrated crafts. From shimmering gold leaf to delicate ceramics, these stores offer meaningful keepsakes that reflect the city’s heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Crafted by hand, treasured by time',
+                subtitle: 'Gold leaf, silk, and stories woven into souvenirs'
+            },
+            bullets: ['Shop for gold leaf accessories, stationery, and skincare.', 'See live demos of pottery and lacquerware techniques.', 'Support local artisans preserving age-old traditions.']
+            },
+        ],
+        relaxation_dining: [
+            {
+            img: '../elements/places/kanazawa/cafe.jpg',
+            img2: '../elements/places/kanazawa/cafe1.jpg',
+            title: 'Garden Cafés',
+            desc: 'Scattered around Kenrokuen and its vicinity are quaint cafés that offer Japanese matcha, seasonal wagashi (sweets), and calming views of the surrounding greenery. These cafés are perfect for a quiet break after a stroll, often located near teahouses or historic spots.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sip serenity in a teacup',
+                subtitle: 'Traditional flavors with a garden view'
+            },
+            bullets: ['Matcha green tea served in traditional cups', 'Seasonal Japanese sweets like sakura mochi or yokan', 'Indoor and garden seating with scenic views']
+            },
+            {
+            img: '../elements/places/kanazawa/picnic.jpg',
+            img2: '../elements/places/kanazawa/picnic1.jpg',
+            title: 'Picnic Areas',
+            desc: 'Kenrokuen has open areas where visitors can sit and enjoy packed lunches while surrounded by natural beauty. Especially popular during cherry blossom season, these spots invite calm, unhurried moments amid nature.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Unroll a mat, embrace the moment',
+                subtitle: 'Dine beneath the maples and pines'
+            },
+            bullets: ['Great during hanami (flower-viewing) season', 'Shaded spots beneath large trees and pavilions', 'Ideal for families, couples, and solo travelers']
+            },
+            {
+            img: '../elements/places/kanazawa/boat.jpg',
+            img2: '../elements/places/kanazawa/boat1.jpg',
+            title: 'Boat Viewing',
+            desc: 'Though limited and seasonal, occasional boat rides are offered on Kasumigaike Pond, providing a peaceful and unique perspective of the garden’s layout, architecture, and natural elements reflected in still water.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Float through time on a tranquil pond',
+                subtitle: 'See the garden from a poet’s perspective'
+            },
+            bullets: ['Rare, seasonal experience (check availability)', 'Panoramic views of iconic bridges and trees', 'Quiet, slow-paced, and ideal for photography']
+            },
+            {
+            img: '../elements/places/kanazawa/restaurant.jpg',
+            img2: '../elements/places/kanazawa/restaurant1.jpg',
+            title: 'Nearby Restaurants',
+            desc: 'Steps away from Kenrokuen are a variety of eateries offering everything from local seafood to kaiseki (multi-course) meals. Many restaurants blend modern aesthetics with historic charm, echoing the garden\'s ambiance.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Taste Kanazawa after the garden',
+                subtitle: 'Dine where tradition meets flavor'
+            },
+            bullets: ['Access to fresh seafood and Ishikawa specialties', 'Stylish interiors that reflect Japanese design', 'Options range from quick bites to fine dining']
+            },
+        ]
+    };
+
+    let currentCategory = 'scenic_spots';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["scenic_spots", "flora_nature", "culture_experiences", "relaxation_dining"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/kanazawa/yukitsuri.jpg',
+            img2: '../elements/places/kanazawa/history1.jpg',
+            title: 'Japan’s Timeless Garden',
+            desc: 'Kenrokuen Garden, originally built in the 1670s by the powerful Maeda clan as a private retreat for Kanazawa Castle, has evolved over centuries into one of Japan’s most celebrated gardens. After being destroyed by fire in 1759, it was rebuilt, renamed, and eventually opened to the public in 1874. Now a designated “Special Place of Scenic Beauty,” Kenrokuen stands as a cultural and historical treasure, reflecting centuries of careful preservation and design.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where History Blossoms in Every Season'
+            }
+        },
+        small1: {
+            img: '../elements/places/kanazawa/1.jpg',
+            img2: '../elements/places/kanazawa/history2.jpg',
+            title: 'The Art of Japanese Stroll Gardens',
+            desc: 'Kenrokuen\'s layout showcases a harmonious blend of traditional Japanese garden aesthetics and the grandeur of feudal-era luxury, featuring carefully arranged ponds, streams, bridges, and teahouses. Every vantage point reveals a new perspective, where natural beauty is artfully framed by meticulously maintained plants, stone lanterns, and water features—offering a serene, immersive experience that reflects centuries of cultural refinement and attention to detail.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Nature’s elegance in every detail',
+            }
+        },
+        small2: {
+            img: '../elements/places/kanazawa/2.jpg',
+            img2: '../elements/places/kanazawa/history3.jpg',
+            title: 'Kenrokuen’s Legendary Landmarks',
+            desc: 'Kenrokuen Garden features iconic landmarks such as Kasumigaike Pond, a large central pond symbolizing the sea with islands like Horai-jima representing mythical immortals. Nearby stands the Kotoji-tōrō Lantern, a famous two-legged stone lantern resembling a Japanese harp bridge and one of the garden’s most photographed spots. The historic Yugao-tei Teahouse, built in 1774, offers a glimpse into the past where feudal lords enjoyed traditional tea ceremonies.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where history meets nature’s art',
+            }
+        },
+        small3: {
+            img: '../elements/places/kanazawa/3.jpg',
+            img2: '../elements/places/kanazawa/4.jpg',
+            title: 'Garden Highlights',
+            desc: 'Kenrokuen Garden is home to Japan’s oldest natural-powered fountain, the historic Meiji Monument and Fountain, and the elegant Seisonkaku Villa built in 1863. Throughout the year, seasonal flower displays—from plum and cherry blossoms to irises and vibrant maples—paint the landscape with rich colors. Unique yukitsuri ropes protect trees from heavy snow in winter, adding a striking and traditional element to this treasured garden’s year-round beauty.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where heritage meets breathtaking beauty',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

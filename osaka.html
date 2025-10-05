@@ -1,0 +1,1119 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Osaka: Dotonbori District - Osaka’s Neon Wonderland</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/osaka/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Savor the Vibrant <br>Pulse of <span class="highlight">Dotonbori</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A lively "street of lights" famous for its dazzling neon signs, bustling eateries, and vibrant nightlife in the heart of Osaka. From iconic takoyaki stalls to quirky boutiques, every alley bursts with flavor and excitement. Whether strolling by the canal or catching the vibrant crowds, Dotonbori captivates visitors with its energy, culture, and unforgettable atmosphere.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/osaka/5.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/osaka/6.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/osaka/7.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Osaka Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Osaka Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Osaka Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Dotonbori (道頓堀) is one of Osaka’s most iconic and energetic districts, famous for its neon lights, diverse street food, lively nightlife, and the canal that runs through its heart. Located in the Minami (South) area of Osaka, Dotonbori is the city's symbolic center of entertainment and a must-see destination for visitors seeking a vibrant and authentic urban Japanese experience. With its glowing signboards—especially the legendary Glico Running Man—and buzzing energy, Dotonbori is a visual and cultural feast day and night.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="iconic_landmarks">Iconic Landmarks & Photo Spots</button>
+                    <button class="tab" data-category="street_food">Street Food & Casual Eats</button>
+                    <button class="tab" data-category="entertainment">Nightlife & Entertainment</button>
+                    <button class="tab" data-category="shopping">Shopping & Unique Finds</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/osaka/history1.png" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Osaka’s Timeless Appetite</h3>
+                        <p class="image-description">Centuries of theater, street food, and electric nights keep Osaka’s soul shining</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/osaka/history2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">A riot of neon, flavor, and flair</h4>
+                                <p class="image-description">Where Osaka’s Spirit Becomes a Living Spectacle</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/osaka/history3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Glowing tribute to Osaka’s bold, boisterous heart</h4>
+                                <p class="image-description"> Culture, Comedy, and Cuisine Converge</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/osaka/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Faces of the Flavor</h4>
+                                <p class="image-description">The Culture and Characters of Dotonbori</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Dotonbori District</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Dotonbori, located in the heart of Osaka, is a dazzling fusion of urban energy, food culture, and theatrical flair. Often described as the city’s neon-lit soul, this iconic district is famed for its vibrant nightlife, massive animated billboards, bustling canal, and endless street food. Whether you're strolling beneath glowing signs, sampling takoyaki by the water, or catching a live comedy show, Dotonbori delivers a sensory overload that captures the bold spirit of Osaka.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/osaka/9.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/osaka/8.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Where lights blaze, flavors burst, and Osaka’s personality shines in every step along the canal</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Hours: </strong>Most shops open between 10:00 AM – 9:00 PM. Street food stalls and some restaurants operate until midnight or later.</li>
+                        <li><strong>Admission: </strong>Free to enter the district. Individual attraction prices vary (boat rides are typically 1,000–1,200 yen).</li>
+                        <li><strong>Boat Cruises: </strong>Dotonbori River Cruises (20 minutes) are available between 1:00 PM and 9:00 PM daily.</li>
+                        <li><strong>Address: </strong>Dotonbori, Chuo-ku, Osaka 542-0071, Japan</li>
+                        <li><strong>Access:</strong>
+                            <li class="ml-4"><strong>Subway: </strong>5-minute walk from Namba Station (Midosuji, Yotsubashi, and Sennichimae Lines). </li>
+                            <li class="ml-4">Alternatively, it's a 10-minute walk from Shinsaibashi Station via the popular covered shopping arcade, Shinsaibashi-suji.</li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='saitama.html';">
+            <img src="../elements/places/saitama1.jpg" alt="Saitama Kawagoe (Little Edo)">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Saitama Kawagoe (Little Edo)</h3>
+                <p>Step into Edo-era charm with old storehouses and sweet potatoes</p>
+            </div>
+        </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='shizuoka.html';">
+            <img src="../elements/places/shizuoka3.jpg" alt="Shizuoka Mount Fuji">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Shizuoka Mount Fuji</h3>
+                <p>Japan’s sacred mountain, rising in perfect symmetry</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Dotonbori District Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Timing & Navigation</h3>
+                                        <ul>
+                                            <li><strong>Avoid Peak Hours:</strong> Visit early in the morning or late at night to avoid the thickest crowds—especially on weekends.</li>
+                                            <li><strong>Best Photo Ops:</strong> For iconic shots of the Glico Man and canal, go around dusk when the neon signs light up but the sky still has color.</li>
+                                            <li><strong>Know Your Exits:</strong> Namba Station has multiple exits. Exit 14 or 15A will get you closest to the heart of Dotonbori.</li>
+                                            <li><strong>Stay Walkable:</strong> Book accommodation in the Namba area to explore Dotonbori and Shinsaibashi on foot with ease.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Food & Dining Tips</h3>
+                                        <ul>
+                                            <li><strong>Street Food Strategy:</strong> Go for takoyaki, okonomiyaki, kushikatsu, and melonpan ice cream. Share with friends to sample more.</li>
+                                            <li><strong>Watch for Long Lines:</strong> Popular stalls often have queues—if locals are waiting, it’s worth it. Many spots offer English menus.</li>
+                                            <li><strong>Cash is King:</strong> While more places accept cards, small food vendors still prefer cash. Carry small bills and coins.</li>
+                                            <li><strong>Try the Back Alleys:</strong> Restaurants along Hozenji Yokocho offer atmospheric, less touristy dining options and traditional vibes.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Experiences & Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Nighttime is Showtime:</strong> Dotonbori comes alive after dark with lights, crowds, and canal-side performances—don’t miss the vibe.</li>
+                                            <li><strong>Don’t Just Snap—Respect:</strong> Ask permission before photographing performers, shopkeepers, or inside small restaurants.</li>
+                                            <li><strong>Visit the Theater:</strong> See a kabuki performance at the historic Shochikuza Theater for a cultural break from the bustle.</li>
+                                            <li><strong>Canal Cruise Tip:</strong> The Tombori River Cruise offers a unique view of the neon-drenched cityscape—book early during peak season.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Osaka', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+    
+    const cityId = 1853909; 
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Osaka', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        iconic_landmarks: [
+            {
+            img: '../elements/places/osaka/glico.jpg',
+            img2: '../elements/places/osaka/glico1.jpg',
+            title: 'Glico Man Sign',
+            desc: 'The Glico Man Sign is Dotonbori’s iconic neon landmark, featuring a glowing runner crossing a finish line. By night, its vibrant colors and reflections on the canal create one of Japan’s most photographed urban scenes.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'TThe Neon Heartbeat of Dotonbori',
+                subtitle: 'Run into Osaka’s Brightest Glow'
+            },
+            bullets: ['Located above the Ebisu Bridge, visible from multiple vantage points.','Perfect spot for classic Osaka selfies and nighttime photography','Represents Ezaki Glico’s confectionery brand, a local favorite']
+            },
+            {
+            img: '../elements/places/osaka/bridge1.jpg',
+            img2: '../elements/places/osaka/bridge.jpg',
+            title: 'Ebisu Bridge',
+            desc: 'Ebisu Bridge is a lively pedestrian crossing over the Dotonbori Canal, serving as a central meeting point and hub of activity. Bustling with locals and tourists alike, it offers fantastic views of the canal’s colorful lights and iconic landmarks.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Step Into the Pulse of the City',
+                subtitle: 'Where Osaka Comes Together'
+            },
+            bullets: ['Prime spot for people-watching and snapping photos of Dotonbori’s neon skyline','Often crowded during festivals and weekends, adding to the festive vibe','Connects key shopping and entertainment streets in the district']
+            },
+            {
+            img: '../elements/places/osaka/kani-doraku-crab-sign.jpg',
+            img2: '../elements/places/osaka/crab.jpg',
+            title: 'Kani Doraku Crab',
+            desc: 'The Kani Doraku Crab is a giant mechanical crab perched above one of Osaka’s most famous seafood restaurants. Its moving claws and glowing eyes draw crowds daily, making it an unforgettable symbol of Dotonbori’s culinary culture.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Crustacean Icon in the Heart of Dotonbori',
+                subtitle: 'Catch the Claws of Osaka’s Flavor'
+            },
+            bullets: ['Animatronic crab claws move rhythmically, attracting curious onlookers','The restaurant is renowned for authentic crab cuisine and seasonal menus','A popular meeting spot and photo backdrop for visitors']
+            },
+            {
+            img: '../elements/places/osaka/ferris1.jpg',
+            img2: '../elements/places/osaka/ferris.jpg',
+            title: 'Don Quijote Ferris Wheel',
+            desc: 'Perched atop the Don Quijote discount store, this vibrant Ferris wheel offers panoramic views of Dotonbori’s dazzling neon cityscape. Operating both day and night, the wheel adds a playful and colorful element to the skyline.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Spin Above Osaka’s Neon Wonderland',
+                subtitle: 'A Colorful Ride with a View'
+            },
+            bullets: ['Located on the roof of a bustling, multi-story discount store','Illuminated with changing lights that brighten the night skyline','Offers a relaxing escape and stunning views over the lively district']
+            }
+        ],
+        street_food: [
+            {
+            img: '../elements/places/osaka/takoyaki.jpeg',
+            img2: '../elements/places/osaka/takoyaki1.jpg',
+            title: 'Takoyaki Stands',
+            desc: 'Takoyaki stands are the heart and soul of Dotonbori’s vibrant street food scene. These piping hot, ball-shaped snacks are made from a savory batter filled with tender octopus pieces, tempura scraps, and green onions, cooked to golden perfection on a special molded griddle.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The iconic street snack that defines Dotonbori’s flavor',
+                subtitle: 'Osaka’s beloved octopus balls'
+            },
+            bullets: ['Freshly cooked to order, served steaming hot.','Crispy exterior contrasts with the gooey, flavorful center.','Easily enjoyed while strolling through the lively Dotonbori streets.']
+            },
+            {
+            img: '../elements/places/osaka/restaurant.jpg',
+            img2: '../elements/places/osaka/restaurant1.jpg',
+            title: 'Okonomiyaki',
+            desc: 'Okonomiyaki is often called the soul food of Osaka, and there’s no better place to indulge than in Dotonbori’s bustling okonomiyaki joints. This savory pancake is made from a thick batter mixed with cabbage, green onions, and a choice of fillings such as pork, seafood, or cheese, cooked on a hot griddle right before you.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Stacked with flavor: Dotonbori’s must-try culinary art',
+                subtitle: 'Osaka’s savory pancake '
+            },
+            bullets: ['Interactive dining experience with tableside grilling.','Variety of toppings and fillings to suit all tastes.','Thick, hearty, and bursting with savory goodness.']
+            },
+            {
+            img: '../elements/places/osaka/kushi.jpg',
+            img2: '../elements/places/osaka/kushi1.jpg',
+            title: 'Kushikatsu Stalls',
+            desc: 'Kushikatsu offers a delicious variety of deep-fried skewers featuring meat, seafood, and vegetables coated in crispy panko breadcrumbs. This popular Osaka snack is loved for its satisfying crunch and flavorful dipping sauces.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Bursting with crunchy goodness and bold flavors',
+                subtitle: 'Straight from Dotonbori’s street stalls'
+            },
+            bullets: ['Variety of skewered ingredients cooked fresh on-site.','Signature crunchy panko coating with savory dipping sauces.','Fun, casual eating perfect for on-the-go snacking.']
+            },
+            {
+            img: '../elements/places/osaka/taiyaki.jpg',
+            img2: '../elements/places/osaka/taiyaki1.jpg',
+            title: 'Taiyaki Vendors',
+            desc: 'Taiyaki are charming fish-shaped pastries traditionally filled with sweet red bean paste but now offered with modern twists like custard, chocolate, or even savory fillings. These treats are cooked in special molds that give them their iconic shape and a golden, crispy exterior.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sweet, warm fish-shaped cakes that delight every sweet tooth',
+                subtitle: 'Fun and tasty twist'
+            },
+            bullets: ['Classic sweet red bean filling alongside innovative flavors.','Crispy, golden outside with soft, warm filling inside.','Easy to enjoy while wandering the bustling district.']
+            },
+        ],
+        entertainment: [
+            {
+            img: '../elements/places/osaka/karaoke.jpg',
+            img2: '../elements/places/osaka/karaoke1.jpg',
+            title: 'Karaoke Bars',
+            desc: 'Karaoke is a cornerstone of Japanese nightlife, and in Dotonbori, it’s more than just singing — it’s an experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Private booths or on lively stages in the city that never sleeps',
+                subtitle: 'Sing your heart out in the neon night'
+            },
+            bullets: ['Choose from thousands of songs in multiple languages, including English, Japanese, and Korean','Many spots like Big Echo or Jankara offer all-night deals and all-you-can-drink plans','Themed rooms available — from anime decor to luxury lounges with skyline views']
+            },
+            {
+            img: '../elements/places/osaka/comedy.jpg',
+            img2: '../elements/places/osaka/comedy1.jpg',
+            title: 'Theater and Comedy',
+            desc: 'Dotonbori is a center of Japanese comedy culture, especially the high-energy style known as manzai. Namba Grand Kagetsu is a legendary venue where famous acts, variety shows, and traditional comedy draw locals and tourists alike.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Kansai humor with energetic manzai, slapstick, and cultural skits',
+                subtitle: 'Where Osaka’s laughter lives'
+            },
+            bullets: ['Watch live performances by top comedians from Yoshimoto Kogyo','Non-verbal skits and physical humor make it accessible to non-Japanese speakers','Cultural performances and rakugo (sit-down storytelling) also offered at select venues']
+            },
+            {
+            img: '../elements/places/osaka/arcade.jpg',
+            img2: '../elements/places/osaka/arcade1.jpg',
+            title: 'Arcades & Game Centers',
+            desc: 'Bright, noisy, and full of life — Dotonbori’s arcades are sensory overload in the best way. Spanning multiple floors, these game centers are packed with UFO catchers (claw machines), dance battles, purikura photo booths, and retro video games.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From claw machines to rhythm games',
+                subtitle: 'Get lost in a world of color and chaos'
+            },
+            bullets: ['Try your luck at claw machines with anime plushies and quirky prizes','Compete on rhythm games like Taiko no Tatsujin or Dance Dance Revolution','Snap fun memories with friends in glitter-filled purikura (print-club) booths']
+            },
+            {
+            img: '../elements/places/osaka/river.jpg',
+            img2: '../elements/places/osaka/river1.jpg',
+            title: 'Night River Cruises',
+            desc: 'Dotonbori’s canal transforms after dark into a glowing corridor of light and sound. Night river cruises offer a fresh angle on the city, gliding past iconic signs like the Glico Man and under bustling bridges.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Under neon signs and lantern-lit bridges',
+                subtitle: 'Float through the lights of Osaka'
+            },
+            bullets: ['Cruises run regularly until late evening, perfect for a post-dinner activity','Many boats have guides or audio commentary introducing Dotonbori’s history','Great photo ops of Osaka’s iconic lights from the middle of the waterway']
+            },
+        ],
+        shopping: [
+            {
+            img: '../elements/places/osaka/shop.jpg',
+            img2: '../elements/places/osaka/shop1.jpg',
+            title: 'Shinsaibashi Shopping',
+            desc: 'Stretching nearly 600 meters, the Shinsaibashi Shopping Arcade is a vibrant blend of modern fashion, time-honored boutiques, and global brands.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Fashion Meets Tradition Under One Roof',
+                subtitle: 'Where Osaka Shops in Style'
+            },
+            bullets: ['Mix of international brands (like Zara, Uniqlo) and Japanese designers','Iconic Daimaru department store for upscale shopping','Nearby cafes and sweet shops perfect for breaks']
+            },
+            {
+            img: '../elements/places/osaka/nippo.jpg',
+            img2: '../elements/places/osaka/nippo1.jpg',
+            title: 'Nipponbashi Den Den',
+            desc: 'Nipponbashi Den Den Town is Osaka’s answer to Tokyo’s Akihabara—a haven for electronics, anime merchandise, and pop culture treasures. Whether you\'re after the latest tech gear or rare figurines, this district pulses with nerdy nostalgia and neon-lit excitement.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Otaku Dreams Power Up',
+                subtitle: 'Osaka’s Electric Playground'
+            },
+            bullets: ['Multistory shops full of anime, manga, and cosplay items','Discount electronics, audio gear, and camera shops','Nearby maid cafés and themed restaurants']
+            },
+            {
+            img: '../elements/places/osaka/thrift.jpg',
+            img2: '../elements/places/osaka/thrift1.jpg',
+            title: 'Vintage & Thrift Shops',
+            desc: 'Dotonbori’s backstreets are peppered with hip thrift stores and vintage boutiques that offer everything from 90s streetwear to classic Japanese denim. Loved by trendsetters and budget-savvy shoppers alike, these shops are treasure troves for unique pieces you won’t find anywhere else.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Fashion Finds with a Story',
+                subtitle: 'Old Souls, New Looks'
+            },
+            bullets: ['Wide selection of used kimono, graphic tees, and vintage jeans','Popular stores like Kinji and Chicago for curated finds','A hotspot for youth fashion culture and Instagrammable outfits']
+            },
+            {
+            img: '../elements/places/osaka/souvenir.jpg',
+            img2: '../elements/places/osaka/souvenir1.jpg',
+            title: 'Souvenir Shops',
+            desc: 'From quirky takoyaki-themed keychains to locally made sweets and Hello Kitty in Osaka garb, souvenir shops in and around Dotonbori offer a mix of the fun, the kitschy, and the cultural.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Souvenirs as Bold as Dotonbori',
+                subtitle: 'Bring a Bit of Osaka Home'
+            },
+            bullets: ['Edible souvenirs like Osaka okonomiyaki crackers and instant kits','Character goods and pop culture trinkets galore','Affordable bundles and lucky bags (fukubukuro) popular with tourists']
+            },
+        ]
+    };
+
+    let currentCategory = 'iconic_landmarks';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["iconic_landmarks", "street_food", "entertainment", "shopping"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/osaka/history1.png',
+            img2: '../elements/places/osaka/4.png',
+            title: 'From Canal Dreams to Neon Nights',
+            desc: 'Dotonbori traces its origins to the early 17th century when merchant Yasui Doton began building a canal to boost Osaka’s commerce. During the Edo period, Dotonbori flourished as a hub of theater and entertainment. While many of the original stages are gone, the district evolved into a modern wonderland of neon lights, nightlife, and food, still echoing the spirit of kuidaore — “eat until you drop.”',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Osaka Eats, Glows, and Lives Loud'
+            }
+        },
+        small1: {
+            img: '../elements/places/osaka/history2.jpg',
+            img2: '../elements/places/osaka/kuidarore.jpg',
+            title: 'Dotonbori Unleashed',
+            desc: 'Dotonbori is where Osaka’s vibrant personality bursts into life—loud, playful, and unapologetically over-the-top. Rather than sleek skyscrapers, its skyline is defined by massive, animated mascots, glowing neon advertisements, and comically oversized food displays that dangle above buzzing alleyways. Dragons coil out of ramen shop façades, a giant mechanical crab waves at passersby, and the famous Glico Running Man beams over the canal in perpetual mid-sprint.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Signs Glow and Streets Perform',
+            }
+        },
+        small2: {
+            img: '../elements/places/osaka/history3.jpg',
+            img2: '../elements/places/osaka/1.jpg',
+            title: 'Osaka’s Living Stage',
+            desc: 'Dotonbori is more than just Osaka’s neon-lit entertainment hub—it’s a living symbol of the city’s vibrant spirit, comedic roots, and merchant history. Born as a theater district in the early 1600s, Dotonbori became a stage for kabuki and bunraku, evolving into a center of food, humor, and street culture. Today, it reflects Osaka’s enduring love for spectacle, hospitality (omotenashi), and culinary indulgence, blending centuries of tradition with contemporary energy.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Timeless tradition lit by neon',
+            }
+        },
+        small3: {
+            img: '../elements/places/osaka/3.jpg',
+            img2: '../elements/places/osaka/2.JPG',
+            title: 'People of Dotonbori',
+            desc: 'Dotonbori embodies Osaka’s bold, energetic spirit—where friendly locals, street performers, merchants, and chefs create a dynamic, theatrical atmosphere. The district reflects Osaka’s reputation as Japan’s “kitchen” and comedy capital, with a culture rooted in food, humor, and hospitality. Whether you\'re greeted with a warm “maido!” by shopkeepers or entertained by lively entertainers along the canal, Dotonbori is a celebration of the city\'s people and their zest for life.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Loud, Local, and Full of Life',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

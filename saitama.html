@@ -1,0 +1,1115 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Saitama: Kawagoe - Little Edo</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/saitama/kawagoe.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Step Back in Time in Kawagoe’s <span class="highlight">Little Edo</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A charming "town within a town" preserving the spirit of old Edo in the heart of Kawagoe. Wander cobblestone streets lined with traditional warehouses, sweet shops, and artisan crafts. From fragrant sweet potatoes to timeless teahouses, every step reveals a glimpse of Japan’s past. Whether morning mist or lantern-lit evening, Kawagoe pulses with history, warmth, and timeless culture.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/saitama/8.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/saitama/5.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/saitama/4.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Saitama Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Saitama Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Saitama Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Kawagoe (川越), affectionately known as “Koedo” or “Little Edo,” is a historic city in Saitama Prefecture, just under an hour northwest of Tokyo. Renowned for its well-preserved Edo-period architecture, traditional merchant streets, and rich cultural heritage, Kawagoe offers visitors a captivating glimpse into Japan's past.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="heritage_history">Heritage & History</button>
+                    <button class="tab" data-category="local_flavors">Local Flavors & Treats</button>
+                    <button class="tab" data-category="culture_craft">Culture & Craftsmanship</button>
+                    <button class="tab" data-category="seasonal_charm">Seasonal Charm & Nature</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/saitama/history1.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Living Echoes of Edo</h3>
+                        <p class="image-description">Past and present walk side by side in Kawagoe’s timeworn streets</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/saitama/history2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Clay Walls and Silent Stories</h4>
+                                <p class="image-description">Where fireproof walls sheltered dreams and commerce</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/saitama/history3.png" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">A Town Shaped by Water and Roads</h4>
+                                <p class="image-description">Built where water flowed and roads crossed</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/saitama/kawagoe.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">In Kawagoe, the Past is Handmade</h4>
+                                <p class="image-description">Craftsmanship That Connects Generations in Kawagoe</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Kawagoe Little Edo</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Kawagoe, fondly known as “Little Edo,” offers a captivating glimpse into Japan’s storied past with preserved streetscapes, traditional merchant houses, and timeless atmosphere. Just a short ride from Tokyo, this charming town blends cultural heritage with modern hospitality. From strolling along the Kurazukuri warehouse district to sampling sweet potato treats in Candy Alley, Kawagoe invites you to step into a living postcard of Edo-period Japan.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/saitama/2.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/saitama/6.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Where centuries-old streets, nostalgic flavors, and Edo-period charm come together in a timeless journey just beyond Tokyo.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Local Experiences: </strong>Visitors can rent traditional kimono or yukata to enhance their stroll through the historic streets, immersing themselves in the Edo-period atmosphere.</li>
+                        <li><strong>Access: </strong>Approximately 30 minutes from Ikebukuro Station via the Tobu Tojo Line's Kawagoe Limited Express.</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='shizuoka.html';">
+            <img src="../elements/places/shizuoka3.jpg" alt="Shizuoka Mount Fuji">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Shizuoka Mount Fuji</h3>
+                <p>Japan’s sacred mountain, rising in perfect symmetry</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='tochigi.html';">
+            <img src="../elements/places/tochigi1.jpeg" alt="Tochigi Nikko Toshogu Shrine">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Tochigi Nikko Toshogu Shrine</h3>
+                <p>Lavish carvings and sacred silence honoring a shogun’s soul</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Kawagoe Little Edo Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Getting Around & Timing It Right</h3>
+                                        <ul>
+                                            <li><strong>Early Start, Easy Stroll:</strong> Arrive early to beat the crowds and enjoy the Kurazukuri Zone (Warehouse District) before tour buses roll in.</li>
+                                            <li><strong>Day Trip Friendly:</strong> Kawagoe is perfect for a half- to full-day trip from Tokyo—just 30 minutes via express train from Ikebukuro.</li>
+                                            <li><strong>Avoid Mondays:</strong> Many museums and smaller shops are closed on Mondays—plan accordingly to avoid disappointment.</li>
+                                            <li><strong>Walkable Charm:</strong> Most attractions are within walking distance, but you can also rent bicycles or hop on the Co-Edo Loop Bus for convenience.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Local Experiences & Cultural Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Sample Local Sweets:</strong> Try handmade sweet potato snacks, traditional candies, and matcha treats at the Kashiya Yokocho (Candy Alley).</li>
+                                            <li><strong>Respect Sacred Sites:</strong> When visiting shrines like Hikawa or Kitain Temple, follow proper etiquette—bow at torii gates, purify at the basin, and keep quiet.</li>
+                                            <li><strong>Try a Kimono Walk:</strong> Many shops offer kimono rentals so you can stroll through Little Edo in traditional attire for immersive photos.</li>
+                                            <li><strong>Cash Over Card:</strong> While major shops may accept credit cards, many local stores and food stalls prefer cash. ATMs are available at convenience stores.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>When to Visit & What to Pack</h3>
+                                        <ul>
+                                            <li><strong>Spring & Fall Highlights:</strong> Cherry blossoms by the Shingashi River in spring and illuminated warehouses in autumn are especially magical times to visit.</li>
+                                            <li><strong>Lightweight Layers:</strong> Weather can change quickly in Saitama—bring a light jacket or umbrella even in warmer months.</li>
+                                            <li><strong>Footwear Matters:</strong> Uneven stone streets are charming but tough on the feet—wear comfortable shoes for long walks.</li>
+                                            <li><strong>Avoid Peak Heat:</strong> If visiting in summer, explore in the early morning or late afternoon to avoid midday humidity and heat.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+
+
+// fetch weather data
+function fetchWeather(city = 'Saitama', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9';
+    
+    const cityId = 6940394;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Saitama', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        heritage_history: [
+            {
+            img: '../elements/places/saitama/kurazukuri-street.png',
+            img2: '../elements/places/saitama/kurazukuri.jpg',
+            title: 'Kurazukuri Street',
+            desc: 'Kurazukuri Street is the most iconic stretch of Kawagoe, lined with traditional clay-walled warehouse buildings once used by merchants during the Edo period.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Step into Edo—One Brick at a Time',
+                subtitle: 'Kawagoe’s Timeworn Heartbeat'
+            },
+            bullets: ['eatures original and reconstructed kura (storehouses) turned into shops, cafés, and museums.','Great photo opportunities with rickshaws, lanterns, and old wooden signage.','Especially atmospheric during early morning and golden hour.']
+            },
+            {
+            img: '../elements/places/saitama/toki-no-kane.jpg',
+            img2: '../elements/places/saitama/toi-no-kane1.jpg',
+            title: 'Toki no Kane',
+            desc: 'Toki no Kane is Kawagoe’s beloved symbol—an elegant wooden bell tower that has told time for over 400 years. Originally built by local lords and later rebuilt after a fire, the bell still rings four times a day, resonating across the old streets and preserving a tradition of daily rhythm in the modern age.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The Sound That Tells Kawagoe’s Story',
+                subtitle: 'Ringing Through Centuries'
+            },
+            bullets: ['Stands at 16 meters tall, with a design rooted in traditional tower architecture.','Recognized as a tangible cultural property of Saitama Prefecture.','Best heard in the quiet morning or late afternoon when the chimes echo through town.']
+            },
+            {
+            img: '../elements/places/saitama/honmaru.jpg',
+            img2: '../elements/places/saitama/honmaru1.jpg',
+            title: 'Castle Honmaru Goten',
+            desc: 'Honmaru Goten is the only remaining part of Kawagoe Castle, once a strategic stronghold during the Edo period. This elegant wooden building served as the lord’s residence and administrative hall, now open to the public as a historic site.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The Quiet Power of Edo\'s Outpost',
+                subtitle: 'Where Lords Once Walked'
+            },
+            bullets: ['One of the few surviving castle palaces in the Kanto region.','Offers a tranquil look into feudal authority and aesthetics.','Surrounded by peaceful gardens and walking paths.']
+            },
+            {
+            img: '../elements/places/saitama/kitain-temple.jpg',
+            img2: '../elements/places/saitama/kitain.jpg',
+            title: 'Kitain Temple',
+            desc: 'Kitain Temple is Kawagoe’s foremost Buddhist temple, originally founded in 830 CE and reconstructed in the early 1600s with actual structures relocated from Edo Castle by Tokugawa Iemitsu.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Edo Castle Lives On',
+                subtitle: 'Spiritual Center of the Old Province'
+            },
+            bullets: ['Home to historical buildings from Edo Castle, including the only surviving palace room.','Serene grounds with seasonal beauty—especially cherry blossoms in spring.','The Gohyaku Rakan statues offer a unique glimpse into Edo-period sculpture and humor.']
+            }
+        ],
+        local_flavors: [
+            {
+            img: '../elements/places/saitama/kashiya.jpg',
+            img2: '../elements/places/saitama/kashiya1.jpg',
+            title: 'Kashiya Yokocho',
+            desc: 'Kashiya Yokocho is a charming, narrow alleyway packed with old-style candy shops that evoke Japan’s Showa and Edo periods. The scent of roasted rice crackers and caramelized sugar fills the air, while colorful handmade sweets line the shelves.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sweet Nostalgia, One Alley at a Time',
+                subtitle: 'Taste the Simpler Days of Edo'
+            },
+            bullets: ['Over 20 traditional confectioners selling handmade senbei, ramune candies, and yokan','Retro packaging and old-school displays perfect for nostalgic photos','Wallet-friendly snacks make it easy to sample many different treats']
+            },
+            {
+            img: '../elements/places/saitama/sweetpotato.jpg',
+            img2: '../elements/places/saitama/sweetpotato1.jpg',
+            title: 'Sweet Potato Delicacies',
+            desc: 'Known as “Imo no Machi” (Sweet Potato Town), Kawagoe has long been famous for its creative use of sweet potatoes in local cuisine. From crispy snacks to creamy desserts, the humble potato is transformed into culinary art, with many shops offering seasonal specialties.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The Heart of Kawagoe in Every Bite',
+                subtitle: 'More Than Just a Spud'
+            },
+            bullets: ['Must-try: sweet potato soft serve, imo yokan (sweet jelly), and baked imo manju','Many stores offer free samples and seasonal variations','Sweet potato dishes are often paired with matcha or local teas']
+            },
+            {
+            img: '../elements/places/saitama/coedo.jpg',
+            img2: '../elements/places/saitama/coedo1.jpg',
+            title: 'Coedo Beer',
+            desc: 'Brewed in Kawagoe using local ingredients and pure water, Coedo Beer has earned international acclaim for its unique lineup. Each bottle is named after a color and crafted with a distinct profile—from the smooth Beniaka (sweet potato amber) to the crisp Ruri pilsner.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Taste Tradition with a Twist',
+                subtitle: 'Edo Spirit, Modern Brew'
+            },
+            bullets: ['Visit local bars or cafés that serve all six Coedo varieties','Pairs beautifully with traditional Japanese or fusion dishes','Available in gift sets for takeaway or souvenirs']
+            },
+            {
+            img: '../elements/places/saitama/tea.jpg',
+            img2: '../elements/places/saitama/tea1.jpg',
+            title: 'Cafés & Tea Houses',
+            desc: 'Scattered throughout Kawagoe’s old streets are quaint tea houses and cafés that blend historic architecture with warm hospitality. Whether you’re sipping thick matcha or nibbling on wagashi, these spots offer the perfect rest between sightseeing and shopping.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Time Slows and Tea Flows',
+                subtitle: 'Sip the Seasons in Little Edo'
+            },
+            bullets: ['Many cafés are housed in preserved kura (storehouses) or townhouses','Seasonal wagashi and sweets often change monthly','Some tea houses offer small garden views or kimono-friendly seating']
+            },
+        ],
+        culture_craft: [
+            {
+            img: '../elements/places/saitama/festival.jpg',
+            img2: '../elements/places/saitama/festival1.jpg',
+            title: 'Festival Museum',
+            desc: 'Step inside the Kawagoe Festival Museum to witness the grandeur and artistry behind one of Japan’s most spirited traditional festivals. The museum showcases the dazzling floats used in the annual Kawagoe Festival, known for its dynamic street performances and elaborate costumes.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where centuries-old floats come to life',
+                subtitle: 'Experience the spirit of Edo in motion'
+            },
+            bullets: ['View towering festival floats adorned with intricate carvings and gold leaf.','Watch videos of the festival atmosphere and musical performances.','Learn about the cultural significance of Kawagoe’s festival traditions.']
+            },
+            {
+            img: '../elements/places/saitama/hikawa-shrine.jpg',
+            img2: '../elements/places/saitama/hikawa-shrine1.jpg',
+            title: 'Kawagoe Hikawa Shrine',
+            desc: 'Kawagoe Hikawa Shrine is a tranquil oasis tucked behind the main streets of town, renowned for its blessings in love and marriage. The shrine is especially magical in summer, when its tunnel of wind chimes (furin) transforms the grounds into a delicate soundscape of hope and romance.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A spiritual retreat adorned with wishes and wind chimes',
+                subtitle: 'Where love rides the breeze'
+            },
+            bullets: ['Stroll through the famous furin tunnel in summer.','Draw an omikuji (fortune) that floats on water.','Write wishes on colorful wooden plaques dedicated to love and happiness.']
+            },
+            {
+            img: '../elements/places/saitama/kimono.jpg',
+            img2: '../elements/places/saitama/kimono1.jpg',
+            title: 'Kimono Rentals & Strolls',
+            desc: 'Kawagoe’s picturesque streets are best experienced in kimono. Rental shops throughout town offer a variety of traditional garments for men, women, and children, allowing visitors to slip into the ambiance of Little Edo.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Walk through time in elegant threads',
+                subtitle: 'Dress the part of Edo-era charm'
+            },
+            bullets: ['Choose from a range of styles, colors, and accessories.','Professional staff assist with dressing and hair styling.','Many shops offer package deals that include photos or rickshaw rides.']
+            },
+            {
+            img: '../elements/places/saitama/local.jpg',
+            img2: '../elements/places/saitama/local1.jpg',
+            title: 'Local Artisan Shops',
+            desc: 'Kawagoe is home to a number of artisan shops where traditional crafts come to life. From Edo-kiriko cut glass to handwoven textiles and lacquerware, these crafts preserve skills passed down through generations.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Take home a piece of Edo ingenuity',
+                subtitle: 'Discover craft born of tradition'
+            },
+            bullets: ['Watch demonstrations of craft techniques like weaving and glass cutting.','Purchase one-of-a-kind, handcrafted gifts and home goods.','Learn the stories behind each artisan and their dedication to tradition.']
+            },
+        ],
+        seasonal_charm: [
+            {
+            img: '../elements/places/saitama/river.jpg',
+            img2: '../elements/places/saitama/river1.jpg',
+            title: 'Shingashi River',
+            desc: 'Every spring, the Shingashi River transforms into a soft tunnel of cherry blossoms. The sight of petals reflecting in the calm water alongside old Edo-style architecture offers a serene, almost poetic atmosphere.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cherry blossoms meet history along the riverbank',
+                subtitle: 'Where pink petals drift over ancient waters.'
+            },
+            bullets: ['Beautiful reflection of cherry blossoms in the river during peak bloom.','Traditional boats sometimes glide through, enhancing the nostalgic charm.','Quiet, uncrowded alternative to major hanami spots in Tokyo.']
+            },
+            {
+            img: '../elements/places/saitama/hikawa1.jpg',
+            img2: '../elements/places/saitama/hikawa.jpg',
+            title: 'Wind Bell Tunnel',
+            desc: 'In summer, Kawagoe Hikawa Shrine becomes a magical escape with its tunnel of furin—colorful glass wind bells that tinkle softly in the breeze. Each bell carries a written wish or prayer, creating a symphony of hope and tranquility.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A thousand glass chimes, one summer memory',
+                subtitle: 'Let your wishes ring in the breeze.'
+            },
+            bullets: ['Tunnel of 1,000+ furin (glass wind bells) swaying and ringing in the wind.','Visitors can write and hang their own wishes.','Evening illuminations add extra enchantment to the experience.']
+            },
+            {
+            img: '../elements/places/saitama/autumn.jpg',
+            img2: '../elements/places/saitama/autumn1.jpg',
+            title: 'Autumn Kurazukuri',
+            desc: 'As autumn colors paint the skies, Kawagoe’s historic Kurazukuri streets are gently lit with warm, amber-toned lights. The event blends Edo-period buildings with modern lighting design to create an atmospheric evening walk.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'When Edo architecture glows with autumn fire',
+                subtitle: 'Golden leaves, glowing streets, timeless nights'
+            },
+            bullets: ['Soft, seasonal lighting on traditional clay-walled storehouses','Ideal for evening strolls and autumn photography.','Special seasonal foods and night-only events at select shops.']
+            },
+            {
+            img: '../elements/places/saitama/koedo.jpg',
+            img2: '../elements/places/saitama/koedo1.jpg',
+            title: 'Koedo Kawagoe Spring',
+            desc: 'Held in April, the Koedo Kawagoe Spring Festival fills the town with traditional performances, food stalls, and decorations. Kurazukuri Street becomes a stage for taiko drums, parades, and festive flair.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Celebrate spring with rhythm, color, and tradition',
+                subtitle: 'Where blossoms dance to the beat of Koedo pride'
+            },
+            bullets: ['Traditional music and dance performances throughout the town.','Festival floats and decorations create a vibrant atmosphere.','Great timing with cherry blossom season for double the beauty.']
+            },
+        ]
+    };
+
+    let currentCategory = 'heritage_history';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["heritage_history", "local_flavors", "culture_craft", "seasonal_charm"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/saitama/history1.jpg',
+            img2: '../elements/places/saitama/1.jpg',
+            title: 'Where Edo Lives On',
+            desc: 'Kawagoe is affectionately called “Koedo,” meaning “Little Edo,” not only for its well-preserved architecture but also for the lifestyle and atmosphere that endure centuries after the Edo period ended. Unlike some heritage sites that feel frozen in time, Kawagoe pulses with modern life while embracing its roots — locals still open traditional sweet shops in clay-walled buildings, and shrines hold seasonal festivals just as they did 200 years ago.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The Enduring Soul of Koedo Kawagoe'
+            }
+        },
+        small1: {
+            img: '../elements/places/saitama/history2.jpg',
+            img2: '../elements/places/saitama/6.jpg',
+            title: 'City of Storehouses',
+            desc: 'One of Kawagoe’s most defining features is its row of kurazukuri — traditional fireproof storehouses with thick clay walls and tiled roofs. These buildings reflect the town’s rise as a prosperous merchant hub during the Edo period, when Kawagoe supplied goods, especially sweet potatoes and textiles, to nearby Edo (Tokyo). After a major fire in 1893, locals rebuilt using this durable architectural style, giving the town its signature look today.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Kura by kura, a merchant town rose to prominence',
+            }
+        },
+        small2: {
+            img: '../elements/places/saitama/history3.png',
+            img2: '../elements/places/saitama/3.jpg',
+            title: 'Kawagoe’s Historic Lifelines',
+            desc: 'Kawagoe’s location made it a natural center of trade and governance. Positioned along the Shingashi River and old highways like the Kawagoe-kaidō, it became a castle town that funneled resources to Edo while defending its northern approaches. The Tokugawa shogunate placed Kawagoe under direct control, elevating its political and economic status. Over time, the town evolved into a mini-metropolis of merchants, samurai, and artisans — all supported by strategic waterways and roads.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From strategic stronghold to Edo’s right hand',
+            }
+        },
+        small3: {
+            img: '../elements/places/saitama/kawagoe.jpg',
+            img2: '../elements/places/saitama/kawagoe-festival.jpg',
+            title: 'The Hands of Little Edo',
+            desc: 'During Setsubun, Canal City hosts a lively mamemaki (bean-throwing) ceremony on its central stage. Costumed oni (demons) playfully appear, and participants throw roasted soybeans while chanting “Oni wa soto! Fuku wa uchi!” ("Demons out! Luck in!"). The event often includes traditional dance performances, taiko drum shows, and lucky prize giveaways for children and families. The complex’s shops also take part with Setsubun-themed treats and seasonal displays.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Old skills, new stories — the crafts of Koedo endure',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

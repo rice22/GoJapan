@@ -1,0 +1,1116 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hyogo: Himeji Castle - Japan's White Heron Castle</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/hyogo8.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Stand in Awe of Hyogo’s <br><span class="highlight">Himeji Castle</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A majestic "castle within a city" where history and tradition stand tall in the heart of Hyogo. From ancient samurai tales to exquisite local cuisine, every corner tells a story. Whether beneath cherry blossoms or illuminated at night, Himeji Castle shines with timeless elegance, culture, and grace.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image">
+                    <img src="../elements/places/hyogo4.jpeg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image">
+                        <img src="../elements/places/hyogo7.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image">
+                        <img src="../elements/places/hyogo5.jpeg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Hyogo Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Hyogo Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Hyogo Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Himeji Castle (姫路城, Himeji-jō), also known as White Heron Castle due to its elegant, white appearance, is widely considered Japan's most spectacular castle for its imposing size and beauty and its well-preserved, complex castle grounds. The castle is both a national treasure and a UNESCO world heritage site.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="shopping">Castle & Culture</button>
+                    <button class="tab" data-category="dining">Local Flavors</button>
+                    <button class="tab" data-category="entertainment">Streets & Stories</button>
+                    <button class="tab" data-category="events">Seasonal Magic</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/hyogo/1.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Himeji Castle’s Enduring Fortress</h3>
+                        <p class="image-description">A living relic of samurai strategy, history, and architectural brilliance</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/hyogo/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">The Crown Jewel of Samurai Architecture</h4>
+                                <p class="image-description">A fortress of elegance, built to endure centuries</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/hyogo/5.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">White Wings of the Samurai </h4>
+                                <p class="image-description">Himeji Castle’s Timeless Majesty</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/hyogo/8.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">A Living Legacy Carved in Stone and Spirit</h4>
+                                <p class="image-description">The Cultural Heart of Japan’s White Heron Castle</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Himeji Castle</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Himeji Castle, located in Hyogo Prefecture, is Japan’s most iconic and well-preserved feudal fortress. Often called the “White Heron Castle” for its elegant, white appearance, it stands as a symbol of architectural brilliance and historical legacy. Whether you're here to explore its sprawling grounds, admire intricate defenses, or immerse yourself in centuries of samurai history, Himeji Castle offers a captivating journey through Japan’s past.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/hyogo/7.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/hyogo6.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">A majestic fortress where timeless beauty meets intricate design, inviting every visitor to step into the heart of Japan’s samurai heritage and architectural mastery.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong> 9:00 AM to 5:00 PM (last entry at 4:00 PM)</li>
+                        <li><strong>Closed:</strong> December 29 and 30</li>
+                        <li><strong>Admission:</strong> 1,000 yen (castle only), 1,040 yen (combined with Kokoen Garden)</li>
+                        <li><strong>Address:</strong> 68 Honmachi, Himeji, Hyogo Prefecture 670-0012</li>
+                        <li><strong>Access:</strong> 20-minute walk from Himeji Station</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='fukuoka.html';">
+            <img src="../elements/places/fukuoka4.jpeg" alt="Fukuoka Canal City Hakata">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Fukuoka Canal City Hakata</h3>
+                <p>A futuristic fusion of shopping, art, and flowing water</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='fushimi.html';">
+            <img src="../elements/places/fushimi1.jpg" alt="Fushimi Inari Taisha">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Fushimi Inari Taisha</h3>
+                <p>Kyoto's iconic shrine with thousands of torii gates</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Himeji Castle Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Planning & Timing Tips</h3>
+                                        <ul>
+                                            <li><strong>Early Arrival Advantage:</strong> Arrive by 8:00–9:00 AM to beat the crowds and enjoy the shrine’s peaceful morning atmosphere.</li>
+                                            <li><strong>Best Seasons to Visit:</strong> Visit in autumn (late October–early November) for vibrant foliage, or spring (April) for cherry blossoms paired with clear skies.</li>
+                                            <li><strong>Combine with Nikko Pass:</strong> Use the Nikko All Area Pass for discounted train fare and free bus rides to multiple heritage sites in the Nikko area.</li>
+                                            <li><strong>Weekday Serenity:</strong> Avoid weekends and national holidays for a quieter experience and fewer tour groups.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>On-site Etiquette & Essentials</h3>
+                                        <ul>
+                                            <li><strong>Respect Sacred Spaces:</strong> Be mindful of signage—some areas, like the inner sanctums, prohibit photography or loud conversation.</li>
+                                            <li><strong>Watch Your Step:</strong> Wear comfortable shoes; many areas have stone steps, gravel paths, or sloped terrain that can be slippery, especially after rain.</li>
+                                            <li><strong>Cleanse Before Entering:</strong> Use the purification fountain near the entrance: rinse your hands and mouth using the ladle before approaching the main shrine.</li>
+                                            <li><strong>Cash Over Card:</strong> Bring yen in cash for admission (1,300 yen) and omamori (amulets), as some stands do not accept credit cards.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Information & Tips</h3>
+                                        <ul>
+                                            <li><strong>Spot the "Sleeping Cat":</strong> Look above the Kuguri-mon Gate for the famous nemuri-neko carving, a masterpiece by legendary sculptor Hidari Jingorō.</li>
+                                            <li><strong>Listen to the Story:</strong> Rent an audio guide or join an English-speaking tour for deeper context on the ornate carvings and Tokugawa legacy.</li>
+                                            <li><strong>Take the Back Path:</strong> Walk the peaceful forest trail behind the shrine to Tokugawa Ieyasu’s mausoleum, which rewards visitors with silence and stunning moss-covered stone steps.</li>
+                                            <li><strong>Explore Nearby Shrines:</strong> After Toshogu, visit Futarasan Shrine and Taiyuinbyo for a full experience of Nikko’s spiritual and architectural landscape.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Hyogo', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+    
+    const cityId = 1862047;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Hyogo', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        shopping: [
+            {
+            img: '../elements/places/hyogo/himeji.jpg',
+            img2: '../elements/places/hyogo/himeji1.jpg',
+            title: 'Himeji Castle',
+            desc: 'Himeji Castle, also known as the White Heron Castle, is Japan\'s most spectacular and best-preserved feudal castle. Designated as a UNESCO World Heritage Site, it showcases brilliant white walls and an intricate defensive design that has stood the test of time.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Himeji Castle: Where Feudal Grandeur Meets Timeless Beauty',
+                subtitle: 'Japan’s White Heron: A Fortress of Elegance and Strength'
+            },
+            bullets: ['Explore the main keep with its complex maze-like paths designed to confuse invaders.','Enjoy panoramic views of Himeji City from the top floor of the castle.','Visit during cherry blossom season for a picturesque scene of pink blooms surrounding the white castle.']
+            },
+            {
+            img: '../elements/places/hyogo/kokoen.jpg',
+            img2: '../elements/places/hyogo/kokoen1.jpg',
+            title: 'Koko-en Garden',
+            desc: 'Adjacent to Himeji Castle, Koko-en Garden is a beautifully landscaped area consisting of nine separate walled gardens, each designed in various styles reflective of the Edo period. ',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Tranquil Stroll Through Edo-Period Elegance',
+                subtitle: 'Koko-en: Nine Gardens, One Serene Experience'
+            },
+            bullets: ['Experience the "Garden of the Lord\'s Residence" with its elegant architecture.','Participate in a traditional tea ceremony at the tea house.','Capture stunning photographs with Himeji Castle as a backdrop.']
+            },
+            {
+            img: '../elements/places/hyogo/museumofart.jpg',
+            img2: '../elements/places/hyogo/museumofart1.jpg',
+            title: 'Museum of Art',
+            desc: 'Housed in a red-brick building that once served as a military facility, the Himeji City Museum of Art offers a diverse collection of artworks, including Western and Japanese pieces.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Historic Architecture Meets Artistic Expression',
+                subtitle: 'A Canvas of Culture in the Heart of Himeji'
+            },
+            bullets: ['Explore exhibitions ranging from classical to contemporary art.','Enjoy the museum\'s architecture, which blends historical and modern elements.','Attend special events and workshops held throughout the year.']
+            },
+            {
+            img: '../elements/places/hyogo/zoo.jpg',
+            img2: '../elements/places/hyogo/zoo1.jpg',
+            title: 'Himeji City Zoo',
+            desc: 'Located within the outer moat of Himeji Castle, the Himeji City Zoo offers visitors a chance to see a variety of animals in a compact and accessible setting. The zoo features species from around the world and provides educational experiences for all ages.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Family-Friendly Zoo in the Shadow of a Castle',
+                subtitle: 'Wildlife Wonders Amidst Historic Surroundings'
+            },
+            bullets: ['Observe animals like elephants, giraffes, and polar bears up close.','Enjoy interactive experiences at the petting zoo area.','Take in views of Himeji Castle while exploring the zoo grounds.']
+            }
+        ],
+        dining: [
+            {
+            img: '../elements/places/hyogo/anago.jpg',
+            img2: '../elements/places/hyogo/anago1.jpg',
+            title: 'Anago-meshi',
+            desc: 'Anago-meshi is a traditional dish featuring grilled sea eel (anago) served over seasoned rice. Originating from fishermen\'s meals, it has become a beloved local specialty, often enjoyed as an ekiben (train station bento).',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Anago-meshi: A Taste of Himeji\'s Culinary Heritage',
+                subtitle: 'Savor the Delicate Flavors of Grilled Sea Eel'
+            },
+            bullets: ['Experience the rich, savory taste of perfectly grilled anago.','Find this specialty at local restaurants and train stations.','Pair with local sake for a complete dining experience.']
+            },
+            {
+            img: '../elements/places/hyogo/oden.jpg',
+            img2: '../elements/places/hyogo/oden1.jpeg',
+            title: 'Himeji Oden',
+            desc: 'Himeji Oden is a regional variation of the traditional Japanese hot pot dish, featuring assorted ingredients like daikon, tofu, and fishcakes simmered in a light soy broth. What makes it distinct is the addition of ginger soy sauce as a condiment, giving each bite a subtly spicy and warming flavor.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Himeji Oden: Where Soy Meets Ginger Warmth',
+                subtitle: 'A Comforting Classic with a Himeji Twist'
+            },
+            bullets: ['Dip oden ingredients in a unique ginger soy sauce for an extra kick.','Try it at izakayas or dedicated oden stalls near Himeji Station and Otemae-dori.','A must-try comfort food for experiencing everyday Himeji flavor culture.']
+            },
+            {
+            img: '../elements/places/hyogo/yumesaki.jpg',
+            img2: '../elements/places/hyogo/yumesaki1.jpg',
+            title: 'Yumesaki Sweets',
+            desc: 'Yumesaki, a region in Himeji, is renowned for its traditional Japanese sweets (wagashi). These confections are crafted using time-honored methods and local ingredients, offering a taste of Japan\'s rich culinary culture.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Yumesaki Sweets: A Sweet Journey Through Time',
+                subtitle: 'Delight in Traditional Japanese Confections'
+            },
+            bullets: ['Sample a variety of wagashi, including mochi and yokan.','Visit local shops to see artisans at work.','Purchase beautifully packaged sweets as souvenirs.']
+            },
+            {
+            img: '../elements/places/hyogo/sake.jpg',
+            img2: '../elements/places/hyogo/sake1.jpg',
+            title: 'Sake Breweries',
+            desc: 'Himeji is home to several esteemed sake breweries, such as Meijo Sake Brewery and Nadagiku Shuzo, each with a rich history and dedication to quality. Visitors can tour these breweries to learn about the sake-making process and sample various types.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From Rice to Richness: Himeji\'s Sake Traditions',
+                subtitle: 'Experience the Art of Sake Brewing in Himeji'
+            },
+            bullets: ['Take guided tours to understand traditional brewing techniques.','Enjoy tastings of different sake varieties.','Purchase exclusive sake products directly from the breweries.']
+            },
+        ],
+        entertainment: [
+            {
+            img: '../elements/places/hyogo/avenue.jpg',
+            img2: '../elements/places/hyogo/avenue1.jpg',
+            title: 'Otemae-dori Avenue',
+            desc: 'Otemae-dori is the main street stretching from Himeji Station to Himeji Castle. Lined with shops, cafes, and cultural sites, it offers a pleasant walk with views of the castle in the distance.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The Grand Boulevard Leading to Himeji Castle',
+                subtitle: 'Otemae-dori: Where Tradition Meets Modernity'
+            },
+            bullets: ['Shop for local crafts and souvenirs.','Dine at restaurants offering regional cuisine.','Enjoy seasonal decorations and events along the avenue.']
+            },
+            {
+            img: '../elements/places/hyogo/nishi.jpg',
+            img2: '../elements/places/hyogo/nishi1.jpg',
+            title: 'Nishi-no-Maru',
+            desc: 'The Nishi-no-Maru, or Western Bailey, is a part of Himeji Castle that once served as the residence for princesses and their attendants. This area offers insights into the daily lives of the castle\'s inhabitants and features unique architectural elements.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Nishi-no-Maru: A Glimpse into the Lives of Samurai',
+                subtitle: 'Discover the Hidden Corners of Himeji Castle'
+            },
+            bullets: ['Explore the long corridors and rooms used by the princess\'s entourage.','View exhibits showcasing artifacts from the Edo period.','Enjoy quieter surroundings away from the main keep.']
+            },
+            {
+            img: '../elements/places/hyogo/miyuki.jpg',
+            img2: '../elements/places/hyogo/miyuki1.jpg',
+            title: 'Miyuki-dori',
+            desc: 'Miyuki-dori is a covered shopping street near Himeji Station, offering a mix of traditional shops, modern boutiques, and eateries. It\'s a great place to experience local life and pick up unique items.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Bustling Arcade of Local Flavors and Finds',
+                subtitle: 'Miyuki-dori: Himeji\'s Shopping Heartbeat'
+            },
+            bullets: ['Browse shops selling everything from souvenirs to daily necessities.','Taste local street food and snacks.','Experience the lively atmosphere of a traditional Japanese shopping arcade.']
+            },
+            {
+            img: '../elements/places/hyogo/shoshazan.jpg',
+            img2: '../elements/places/hyogo/shoshazan1.jpg',
+            title: 'Shoshazan Engyo-ji',
+            desc: 'Located on Mount Shosha, Shoshazan Engyo-ji is a historic temple complex known for its serene atmosphere and beautiful wooden structures. The temple has been featured in films and offers panoramic views of the surrounding area.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Engyo-ji: Spiritual Serenity Above the City',
+                subtitle: 'A Sacred Retreat on Mount Shosha'
+            },
+            bullets: ['Ride the ropeway to the mountain\'s summit.','Explore temple halls dating back centuries.','Participate in meditation or calligraphy sessions.']
+            },
+        ],
+        events: [
+            {
+            img: '../elements/places/hyogo/spring.jpg',
+            img2: '../elements/places/hyogo/spring1.png',
+            title: 'Spring',
+            desc: 'Spring in Himeji is marked by the blooming of cherry blossoms, especially around Himeji Castle. The combination of pink petals and the white castle creates a stunning visual experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cherry Blossoms and Castle Views: A Springtime Symphony',
+                subtitle: 'Himeji in Bloom: Where History Meets Hanami'
+            },
+            bullets: ['Join locals for hanami (flower viewing) picnics in castle grounds.','Attend seasonal festivals celebrating the arrival of spring.','Capture photographs of the iconic sakura and castle scenery.']
+            },
+            {
+            img: '../elements/places/hyogo/summer.jpg',
+            img2: '../elements/places/hyogo/summer2.jpg',
+            title: 'Summer',
+            desc: 'Summer brings lively festivals, outdoor concerts, and captivating night illuminations around Himeji Castle. The season buzzes with energy, offering a mix of traditional celebrations and modern entertainment.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Celebrate Summer’s Spirit with Lights and Festivals',
+                subtitle: 'Warm Evenings and Lantern Glow'
+            },
+            bullets: ['Experience the Himeji Yukata Festival with colorful traditional dress.','Watch lantern-lit evening events and castle light shows.','Cool down with shaved ice and local street foods at summer markets.']
+            },
+            {
+            img: '../elements/places/hyogo/autumn.jpg',
+            img2: '../elements/places/hyogo/autumn1.jpg',
+            title: 'Autumn',
+            desc: 'Autumn cloaks Himeji in rich hues of red, orange, and yellow, providing a stunning contrast to the white castle walls. It’s an ideal time for peaceful walks, photography, and seasonal food delights.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Stroll Through a Season Painted in Red and Gold',
+                subtitle: 'A Fiery Tapestry of Maples and History'
+            },
+            bullets: ['Explore Koko-en Garden’s vivid autumn colors.','Participate in local harvest festivals and markets.','Enjoy warm seasonal dishes like chestnut rice and sweet potatoes.']
+            },
+            {
+            img: '../elements/places/hyogo/winter.jpg',
+            img2: '../elements/places/hyogo/winter1.jpg',
+            title: 'Winter',
+            desc: 'Winter in Himeji offers a serene atmosphere with occasional snow dusting the castle rooftops and surrounding gardens. The season features fewer crowds and special illumination events that cast a magical glow.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Experience the Castle’s Tranquil White Mantle',
+                subtitle: 'Snow-Kissed Beauty and Quiet Reflection'
+            },
+            bullets: ['Visit the castle during winter light-up events and festivals.','Warm up with hearty local cuisine in cozy eateries.','Enjoy peaceful strolls through snow-covered parks and streets.']
+            },
+        ]
+    };
+
+    let currentCategory = 'shopping';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["shopping", "dining", "entertainment", "events"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/hyogo/1.jpg',
+            img2: '../elements/places/hyogo/2.jpg',
+            title: 'Legacy of the White Heron',
+            desc: 'Himeji Castle, also known as the "White Heron Castle," stands as one of Japan’s twelve original castles, remarkably untouched by war, earthquakes, or fire. Originating as a fort in 1333, it evolved through centuries into Japan’s largest and most well-preserved castle. Its layered moats, complex walls, and interlocking baileys showcase the peak of medieval Japanese fortress design, especially following its grand expansion by Tokugawa Ieyasu in the early 1600s.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where elegance meets invincibility'
+            }
+        },
+        small1: {
+            img: '../elements/places/hyogo/3.jpg',
+            img2: '../elements/places/hyogo/4.jpg',
+            title: 'White Heron Stronghold',
+            desc: 'Himeji Castle, completed in 1609, stands as Japan’s most iconic and best-preserved feudal fortress. With 83 interconnected buildings, ingenious defensive layouts, and its striking white exterior, it exemplifies the height of Japanese castle architecture. Both a military stronghold and noble residence, it has remained intact for over 400 years, earning its place as a national treasure and UNESCO World Heritage Site.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A fortress of elegance, built to endure centuries',
+            }
+        },
+        small2: {
+            img: '../elements/places/hyogo/5.jpg',
+            img2: '../elements/places/hyogo/6.jpg',
+            title: 'The White Heron Rises',
+            desc: 'Himeji Castle, also known as the "White Heron Castle" for its elegant white plastered walls, is a towering 46.4-meter structure with five visible and six internal floors. Surrounded by clever defensive features like winding paths and layered gates, it’s a masterpiece of feudal architecture. Easily accessible from Himeji Station, the castle is especially stunning during cherry blossom season in April and autumn foliage in November.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Japan’s iconic castle, graceful as it is unbreakable',
+            }
+        },
+        small3: {
+            img: '../elements/places/hyogo/8.jpg',
+            img2: '../elements/places/hyogo/9.jpg',
+            title: 'Fortress of Heritage',
+            desc: 'Himeji Castle stands as a masterpiece of Japanese feudal architecture and a symbol of resilience, beauty, and historical continuity. Its well-preserved structures showcase the ingenuity of defensive design from the Edo period, reflecting the power and prestige of the Tokugawa shogunate. Beyond its military function, the castle embodies Japan’s cultural heritage, inspiring admiration for centuries-old craftsmanship and the harmonious blend of aesthetic elegance with practical fortification.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where history, beauty, and strength unite',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

@@ -1,0 +1,1202 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miyagi-ken: Matsushima Bay - Pine Islands</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/miyagi/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+         /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+        .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+     <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Sail the Misty Tranquil <br>Isles of Miyagi’s <br><span class="highlight">Matsushima Bay</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A timeless coastal escape where natural beauty meets cultural heritage. Cruise through pine-covered islets, explore centuries-old temples, and savor fresh seafood by the shore. Whether basking in the sunrise mist or walking scenic trails at dusk, Matsushima Bay offers serenity, wonder, and a glimpse into Japan’s poetic soul.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/miyagi/3.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/miyagi/4.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/miyagi/5.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Miyagi Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Miyagi Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Miyagi Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Matsushima Bay (松島湾, Matsushima-wan), located on the eastern coast of Miyagi Prefecture near Sendai, is renowned for its ethereal beauty and is celebrated as one of Japan’s Nihon Sankei (Three Most Scenic Views), alongside Amanohashidate in Kyoto and Miyajima in Hiroshima. The bay is dotted with over 260 pine-covered islets, creating a serene and almost dreamlike seascape that has inspired poets, painters, and pilgrims for centuries.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="scenic_cruise">Scenic Cruise</button>
+                    <button class="tab" data-category="spiritual_sites">Spiritual Sites</button>
+                    <button class="tab" data-category="cultural_encounters">Cultural Encounters</button>
+                    <button class="tab" data-category="nature_leisure">Nature & Leisure</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/miyagi/futagojima-twin-islands.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Where Samurai Legacy Meets Timeless Poetry</h3>
+                        <p class="image-description">A thousand years of poetry, power, and quiet reverence by the sea</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/miyagi/kanejima-bell-island.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Cruising Through Legends</h4>
+                                <p class="image-description">Discover Matsushima’s Iconic Islands by Boat</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/miyagi/niojima.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">The Shidaikan</h4>
+                                <p class="image-description">Four Legendary Viewpoints of Matsushima Bay</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/miyagi/1.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Matsushima Bay Through the Seasons</h4>
+                                <p class="image-description">A Landscape of Changing Light and Color</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Matsushima Bay</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Matsushima Bay, located in Miyagi Prefecture, is a breathtaking natural wonder dotted with over 260 pine-covered islets. Celebrated as one of Japan’s Three Scenic Views, it offers a serene blend of coastal beauty, historical sites, and traditional culture. Whether you're cruising the bay, strolling temple grounds, or enjoying fresh seafood, Matsushima provides a timeless escape into Japan’s scenic soul.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/miyagi/6.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/miyagi/7.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Matsushima is a year-round destination, but spring and autumn offer the most photogenic scenes.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Godaido Hall </strong>
+                                <li class="ml-4"><strong>Hours: </strong>Open 24/7 (no admission fee, best viewed during daylight)</li>
+                                <li class="ml-4"><strong>Note: </strong>Be cautious crossing the arched bridges, especially during wet weather.</li>                    </li>
+                            <li><strong>Zuiganji Temple</strong>
+                                <li class="ml-4"><strong>Hours: </strong>8:00 AM to 3:30 PM (subject to seasonal changes)</li>
+                                <li class="ml-4"><strong>Admission: </strong>700 yen (adults), includes entrance to the museum</li>
+                                <li class="ml-4"><strong>Address: </strong>91 Chonai, Matsushima, Miyagi 981-0213</li>
+                            </li>
+                            <li><strong>Matsushima Bay Cruise</strong>
+                                <li class="ml-4"><strong>Hours: </strong>9:00 AM – 4:00 PM (varies by season and weather)</li>
+                                <li class="ml-4"><strong>Duration: </strong>50 minutes</li>
+                                <li class="ml-4"><strong>Fare: </strong>~1,500 yen (adults), discounts for round-trips or multiple riders</li>
+                                <li class="ml-4"><strong>Boarding Point: </strong>Near Matsushima-Kaigan Station</li>
+
+                            </li>
+                            <li><strong>Access: </strong>
+                                <li class="ml-4">Matsushima is easily accessible from Sendai, the capital of Miyagi Prefecture. </li>
+                                <li class="ml-4">From Sendai Station: Take the JR Senseki Line to Matsushima-Kaigan Station (approximately 40 minutes) </li>
+                                <li class="ml-4">From Tokyo: Take the Tohoku Shinkansen to Sendai Station (~1.5 hours), then transfer to the Senseki Line </li>
+                                <li class="ml-4">Local buses and rental bikes are available around the area for further exploration. </li>
+                            </li>
+                        </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='okinawa.html';">
+            <img src="../elements/places/okinawa1.jpg" alt="Okinawa Churaumi Aquarium">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Okinawa Churaumi Aquarium</h3>
+                <p>Deep-sea wonders and giant whale sharks of the Pacific</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='shurijo.html';">
+            <img src="../elements/places/shurijo4.jpg" alt="Okinawa Shurijo Castle Ruins">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Okinawa Shurijo Castle Ruins</h3>
+                <p>Echoes of the Ryukyu Kingdom amid fiery red fortress stones</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Matsushima Bay Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Getting Around</h3>
+                                        <ul>
+                                            <li><strong>Ferry Tours:</strong> Take a scenic ferry ride to explore the islands up close and enjoy panoramic views of the bay.</li>
+                                            <li><strong>Bicycle Rentals:</strong> Rent a bike to cycle along the coastal paths for a leisurely and flexible way to see the area.</li>
+                                            <li><strong>Walking Trails:</strong> Explore the well-marked walking trails such as the Fukuura Island trail for peaceful nature immersion.</li>
+                                            <li><strong>Local Bus Services:</strong> Use local buses connecting Matsushima with nearby towns for convenient travel without a car.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>What to Bring</h3>
+                                        <ul>
+                                            <li><strong>Comfortable Footwear:</strong> Wear sturdy shoes for walking uneven terrain and trails around the islands.</li>
+                                            <li><strong>Weather-Appropriate Clothing:</strong> Layered clothing is best, as Matsushima’s weather can change quickly, especially near the water.</li>
+                                            <li><strong>Camera or Smartphone:</strong> Capture stunning views of pine-covered islands, seasonal foliage, and sunrise/sunset scenes.</li>
+                                            <li><strong>Cash:</strong> Many small shops and eateries may not accept credit cards, so keep some cash handy.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Cultural Etiquette & Safety</h3>
+                                        <ul>
+                                            <li><strong>Respect Nature:</strong> Avoid littering and stay on designated paths to protect the delicate ecosystem.</li>
+                                            <li><strong>Quiet Zones:</strong> Maintain a respectful volume in temples and shrines, such as Zuiganji Temple, to preserve the tranquil atmosphere.</li>
+                                            <li><strong>Photography Guidelines:</strong> Ask permission before photographing locals or religious ceremonies.</li>
+                                            <li><strong>Emergency Contacts:</strong> Keep local emergency numbers saved and know the location of the nearest tourist information center.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    const cursor = document.getElementById('custom-cursor');
+    cursor.innerHTML = `
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <g>
+          <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+          <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+          <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+          <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+          <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+          <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+        </g>
+      </svg>
+    `;
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+
+      // Sparkle effect
+      const sparkle = document.createElement('div');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = (e.clientX - 5) + 'px';
+      sparkle.style.top = (e.clientY - 5) + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 700);
+    });
+    document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+//fetch weather data
+function fetchWeather(city = 'Miyagi-ken', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9';
+    
+    const cityId = 2111888; 
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Miyagi', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        scenic_cruise: [
+            {
+            img: '../elements/places/miyagi/nihon.jpg',
+            img2: '../elements/places/miyagi/nihon1.jpg',
+            title: 'Nihon Sankei Cruise:',
+            desc: 'Glide past dozens of uniquely shaped islands, each with poetic names and historic lore. Narration shares stories of the bay’s scenery once praised by feudal lords and poets alike.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Explore pine-clad legendary islets',
+                subtitle: 'Sail through one of Japan’s Three Great Views'
+            },
+            bullets: ['Cruises depart hourly from the central Matsushima Pier', 'Island formations like Niojima and Senganjima dot the scenic route', 'Best viewed during spring bloom or autumn color']
+            },
+            {
+            img: '../elements/places/miyagi/sunset.jpg',
+            img2: '../elements/places/miyagi/sunset1.jpg',
+            title: 'Sunset Cruise',
+            desc: 'A dreamy evening cruise that casts Matsushima in warm, golden hues. Perfect for photographers, couples, or anyone seeking a peaceful end to the day. The changing sky enhances the silhouette of the islands, creating a scene right out of a painting.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Golden light, unforgettable views',
+                subtitle: 'End your day wrapped in Matsushima’s glow'
+            },
+            bullets: ['Departs just before dusk (exact time varies by season)', 'Offers unmatched lighting for scenic and romantic photos', 'Fewer crowds than daytime tours for a tranquil ride']
+            },
+            {
+            img: '../elements/places/miyagi/oku.jpg',
+            img2: '../elements/places/miyagi/oku1.jpg',
+            title: 'Oku-Matsushima Boat',
+            desc: 'This lesser-known cruise explores the deeper, less-touristed waters of Oku-Matsushima. The route reveals uninhabited islands, secret inlets, and untouched forested shores.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Find hidden gems beyond the main bay',
+                subtitle: 'For those who crave the quiet and wild'
+            },
+            bullets: ['Smaller boat for a more intimate, close-to-water experience', 'Visits rarely seen areas unreachable by larger cruises', 'Often includes commentary on wildlife and geology']
+            },
+            {
+            img: '../elements/places/miyagi/saigyo.jpg',
+            img2: '../elements/places/miyagi/saigyo1.jpg',
+            title: 'Saigyo Modoshi',
+            desc: 'Departing from near the famous pine tree that inspired 12th-century poet Saigyo, this short cruise is a favorite during sakura season, when the adjacent hilltop park bursts into pink bloom.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cruise from where poetry meets nature',
+                subtitle: 'Begin your journey beneath the pines'
+            },
+            bullets: ['Excellent pairing with a walk in Saigyo Modoshi no Matsu Park', 'Views include Godaido Hall and distant temple roofs', 'Especially photogenic during spring and early autumn']
+            }
+        ],
+        spiritual_sites: [
+            {
+            img: '../elements/places/miyagi/zuiganji-temple.jpg',
+            img2: '../elements/places/miyagi/zuiganji-temple1.jpg',
+            title: 'Zuigan-ji Temple',
+            desc: 'Most renowned Zen temple, founded in 828 and reconstructed by Date Masamune in the early 1600s. Surrounded by towering pines, it features gilded sliding doors, a serene inner sanctum, and meditation caves carved into the hills nearby.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A national treasure carved in silence',
+                subtitle: 'Where history whispers through pine trees'
+            },
+            bullets: ['Ornate golden fusuma (sliding doors) painted with elegant motifs', 'Mysterious monk meditation caves along the temple approach','Museum showcasing samurai-era artifacts and calligraphy']
+            },
+            {
+            img: '../elements/places/miyagi/entsuin-temple.jpg',
+            img2: '../elements/places/miyagi/entsuin-temple1.jpg',
+            title: 'Entsu-in Temple',
+            desc: 'Built in 1647 as a mausoleum for Date Mitsumune, Entsu-in Temple is beloved for its moss-covered gardens, rose-themed Western-style crypt, and striking seasonal changes—from spring blossoms to brilliant autumn foliage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A temple of seasons and remembrance',
+                subtitle: 'Matsushima’s hidden jewel of reflection'
+            },
+            bullets: ['Tranquil moss and rock gardens ideal for meditation', 'Ornate mausoleum blending Japanese and Western design', 'Famous autumn light-up event with glowing maple reflections']
+            },
+            {
+            img: '../elements/places/miyagi/godaido-hall.jpg',
+            img2: '../elements/places/miyagi/godaido-hall1.jpg',
+            title: 'Godaido Hall',
+            desc: 'Perched on a small islet connected by twin plank bridges, Godaido Hall offers unmatched views of Matsushima Bay. Originally built in 807, it houses five hidden Buddhist statues shown only once every 33 years.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A sacred perch above the sea',
+                subtitle: 'Step back a thousand years on the edge of the bay'
+            },
+            bullets: ['Unique bridge with gaps symbolizing mindfulness with each step', 'Panoramic photo spot of the bay’s pine-clad islands', 'Rare housing of five Buddhist deities from the Heian period']
+            },
+            {
+            img: '../elements/places/miyagi/oshima.jpeg',
+            img2: '../elements/places/miyagi/oshima1.jpg',
+            title: 'Oshima Island',
+            desc: 'Just a short walk from the mainland, Oshima is a quiet island once used exclusively by monks for ascetic practice. It’s now a peaceful retreat filled with hand-carved Buddhist reliefs and stunning coastal views.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A spiritual escape across the red bridge',
+                subtitle: 'Stone-carved prayers among the pines'
+            },
+            bullets: ['Carved meditation caves and inscriptions from ancient monks', 'A bright red bridge symbolizing purification before entering', 'Coastal walking paths under whispering pines']
+            },
+        ],
+        cultural_encounters: [
+            {
+            img: '../elements/places/miyagi/market.jpg',
+            img2: '../elements/places/miyagi/market1.jpg',
+            title: 'Matsushima Fish Market',
+            desc: 'This lively waterfront market is the heart of Matsushima’s seafood culture. Brimming with stalls offering grilled oysters, local sushi, and ocean delicacies, it\'s a must-visit for food lovers. A casual, authentic way to taste the sea.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Fresh from the Sea to Your Hands',
+                subtitle: 'Oysters, Crabs, and Culinary Thrills'
+            },
+            bullets: ['Grilled Oysters On-the-Spot – Enjoy freshly roasted oysters prepared right in front of you.', 'Local Seafood Souvenirs – Bring home dried fish, roe, or specialty condiments.','Affordable Sushi Plates – Sample regional varieties like anago (sea eel) and maguro (tuna).']
+            },
+            {
+            img: '../elements/places/miyagi/kokeshi.jpg',
+            img2: '../elements/places/miyagi/kokeshi1.jpg',
+            title: 'Kokeshi Doll Painting',
+            desc: 'Create your own version of a beloved Tōhoku icon—handcrafted Kokeshi dolls. Guided by local artisans, this hands-on experience lets you blend tradition with creativity, and take home a souvenir with your personal style.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Craft Your Own Keepsake',
+                subtitle: 'Paint Tradition with a Personal Touch'
+            },
+            bullets: ['Hands-On Artistry – Use real brushes and pigments in a guided painting session.', 'All Ages Welcome – A great cultural activity for kids, couples, or solo travelers.','Learn Kokeshi History – Discover the story behind these charming wooden figures.']
+            },
+            {
+            img: '../elements/places/miyagi/rikyu.jpg',
+            img2: '../elements/places/miyagi/rikyu1.jpg',
+            title: 'Matsushima Rikyu',
+            desc: 'Inspired by a feudal lord’s villa, this elegant museum blends modern architecture with regional heritage. Inside, visitors can explore historical artifacts, seasonal exhibits, and a café with sweeping views of the bay.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A Palace of Culture by the Sea',
+                subtitle: 'Old Meets New in Elegant Design'
+            },
+            bullets: ['Architectural Elegance – A seamless fusion of contemporary design and Edo-period aesthetics.','Oceanview Terrace Café – Enjoy matcha and desserts with a front-row seat to Matsushima Bay.','Rotating Exhibitions – Features local artists, historical themes, and cultural installations.']
+            },
+            {
+            img: '../elements/places/miyagi/onsen.jpg',
+            img2: '../elements/places/miyagi/onsen1.jpg',
+            title: 'Togatta Onsen Hand Spa',
+            desc: 'Located near the coast or in select scenic corners, Togatta’s hand (and sometimes foot) spas are a charming and relaxing break from sightseeing. These free, hot spring-fed basins offer quick relief and cultural immersion.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Relax, Rejuvenate, Repeat',
+                subtitle: 'A Soothing Stop with a Scenic Bonus'
+            },
+            bullets: ['Free Onsen Access – No fees required; just dip in and enjoy.','Scenic Atmosphere – Set against views of the bay or tranquil gardens.','Mineral-Rich Waters – Known for their skin-smoothing, therapeutic benefits.']
+            },
+        ],
+        nature_leisure: [
+            {
+            img: '../elements/places/miyagi/modoshi.jpg',
+            img2: '../elements/places/miyagi/modoshi1.jpg',
+            title: 'Matsu Park',
+            desc: 'Especially stunning in spring, it offers panoramic views of the pine-dotted bay framed by sakura trees, making it a favorite for locals and visitors alike.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cherry blossoms above the bay',
+                subtitle: 'A poet’s view, in every season'
+            },
+            bullets: ['Spring bloom: Over 200 cherry trees create a dreamy hanami destination.','Photo spots: Elevated views of the bay ideal for landscape photography.','Peaceful resting areas: Benches and open lawns invite slow, mindful moments.']
+            },
+            {
+            img: '../elements/places/miyagi/kanrantei.jpg',
+            img2: '../elements/places/miyagi/kanrantei1.jpg',
+            title: 'Kanrantei Tea House',
+            desc: 'Originally a gift from Toyotomi Hideyoshi, this historic tea house now welcomes visitors with traditional tea and sweets, served with floor-to-ceiling views of Matsushima Bay. It\'s one of the most refined places to experience Japanese hospitality and architecture.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sip serenity above the sea',
+                subtitle: 'Matcha with a view'
+            },
+            bullets: ['Tea experience: Enjoy freshly prepared matcha and wagashi in a tatami room.','Historic interiors: Edo-period design with gold-leaf screens and scrolls.','Bay panorama: One of the best indoor vantage points over the islands.']
+            },
+            {
+            img: '../elements/places/miyagi/fukuura.jpg',
+            img2: '../elements/places/miyagi/fukuura1.jpg',
+            title: 'Fukuura Island Walk',
+            desc: 'Connected by a striking 252-meter red bridge, Fukuura Island offers tranquil nature trails through pine forests and coastal viewpoints. It\'s less visited than the main bayfront, making it a peaceful escape into nature right from town.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Red bridge to quiet nature',
+                subtitle: 'Your own forested island path'
+            },
+            bullets: ['Iconic bridge: A walk across one of Matsushima’s most photogenic landmarks.','Shaded trails: Loop paths through pine groves and flower gardens.','Hidden calm: Perfect for a quiet stroll or reflective solo walk.']
+            },
+            {
+            img: '../elements/places/miyagi/cycling.jpg',
+            img2: '../elements/places/miyagi/cycling1.jpg',
+            title: 'Cycling',
+            desc: 'The route offers sea breezes, gentle inclines, and views of the iconic islands from various angles, making for a refreshing half-day adventure.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Ride where the sea meets sky',
+                subtitle: 'Pedal past pine-framed horizons'
+            },
+            bullets: ['Scenic route: Flat terrain and scenic views ideal for all levels.','Flexible stops: Visit parks, cafés, or shrines along the way.','Local rentals: Affordable bikes available near the train station.']
+            },
+        ]
+    };
+
+    let currentCategory = 'scenic_cruise';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["scenic_cruise", "spiritual_sites", "cultural_encounters", "nature_leisure"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/miyagi/futagojima-twin-islands.jpg',
+            img2: '../elements/places/miyagi/history1.jpg',
+            title: 'Matsushima’s Sacred Heritage',
+            desc: 'Matsushima Bay has been a sacred and cultural landmark for over a thousand years, inspiring countless works of Japanese art and poetry—including Matsuo Bashō’s famed, wordless haiku. During the Edo Period, the bay fell under the domain of the powerful Date clan, whose legacy endures through landmarks like Zuiganji Temple, a spiritual and artistic treasure rebuilt by the legendary Date Masamune.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Nature introduces history to haiku'
+            }
+        },
+        small1: {
+            img: '../elements/places/miyagi/kanejima-bell-island.jpg',
+            img2: '../elements/places/miyagi/history2.jpg',
+            title: 'Sail Between Storybook Islands',
+            desc: 'Matsushima Bay’s beauty is best experienced on the water. A 50-minute sightseeing cruise weaves among the bay’s iconic pine-covered islets, offering close-up views of famed formations like Kanejima (shaped like a temple bell), Niojima (resembling guardian statues), and Futagojima—the picturesque “Twin Islands.” It’s a serene and immersive way to appreciate the bay’s legendary landscape.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Pine-cloaked islets and timeless formations',
+            }
+        },
+        small2: {
+            img: '../elements/places/miyagi/niojima.jpg',
+            img2: '../elements/places/miyagi/history3.jpg',
+            title: 'Timeless Vantage Points',
+            desc: 'To truly grasp the timeless beauty of Matsushima Bay, visit the “Shidaikan” – four famous scenic viewpoints selected for their breathtaking perspectives. From the sweeping aerial panorama of Otakamori to the poetic, pine-framed views of Ogidani, each location reveals a unique angle of the bay’s natural charm. Tamonzan is especially beloved at sunset, while Tomiyama offers quiet reflection from a forested ridge.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Four views. One unforgettable bay.',
+            }
+        },
+        small3: {
+            img: '../elements/places/miyagi/1.jpg',
+            img2: '../elements/places/miyagi/2.jpg',
+            title: 'Matsushima\'s Four Faces',
+            desc: 'Cherry blossoms in April soften the rocky terrain of Matsushima Bay, casting a delicate pink glow over the landscape that has inspired poets and painters for centuries. In autumn, from October to November, fiery red and gold foliage contrasts beautifully with the steadfast green pines that dot the islands. Even in winter, the bay retains its mystique — calm waters and snow-dusted pines create a tranquil, dreamlike atmosphere that feels both serene and surreal.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where every season paints the bay anew',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

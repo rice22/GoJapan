@@ -1,0 +1,1118 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hiroshima: Itsukushima Shrine - The Floating Shrine</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/hiroshima/header.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    <span class="highlight">Itsukushima Shrine</span>—<br>Tradition Meets the Sea
+                </h1>
+                <p class="header-tagline justified">
+                    A sacred island retreat where ancient temples and iconic torii gates meet tranquil seas. From spiritual rituals to breathtaking views, Itsukushima Shrine offers a serene blend of culture and nature that captivates every visitor.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/hiroshima/honden-main.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/hiroshima/itsukushima-shrine.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/hiroshima/main-hall2.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Hiroshima Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Hiroshima Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Hiroshima Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Itsukushima Shrine (厳島神社, Itsukushima-jinja) is one of Japan’s most revered Shinto shrines, famous worldwide for its iconic "floating" torii gate set dramatically in the sea. Located on the island of Itsukushima—more popularly known as Miyajima (“Shrine Island”)—in Hiroshima Prefecture, the shrine is a designated UNESCO World Heritage Site and a National Treasure of Japan.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="sacred_sites">Sacred Sites</button>
+                    <button class="tab" data-category="local_cuisine">Local Cuisine</button>
+                    <button class="tab" data-category="nature_outdoor">Nature Outdoor</button>
+                    <button class="tab" data-category="cultural_experiences">Cultural Experiences</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/hiroshima/history1.png" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Sacred Island Sanctuary, Architectural Legacy</h3>
+                        <p class="image-description">From ancient sea goddesses to the grandeur of Heian-era design</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/hiroshima/history3.jpeg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Architectural Elegance on the Tides</h4>
+                                <p class="image-description">Blend of Shinto design and aristocratic refinement</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/hiroshima/shrine2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Ever-Changing Tides, Enchanting Floating Illusion</h4>
+                                <p class="image-description">Experience nature and reverence</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/hiroshima/setsubun.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Island of Worship, Art, and Timeless Cultural Influence</h4>
+                                <p class="image-description">Centuries of Japanese art, poetry, and culture.</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Itsukushima Shrine</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        <strong>Best Time to Visit:</strong><br><strong>Spring:</strong> Experience the island awash with delicate cherry blossoms, creating a stunning and serene backdrop for your visit.<br><strong>Autumn:</strong> The surrounding forested hills come alive with vibrant fall foliage, painting the landscape in rich reds, oranges, and yellows<br><strong>High Tide Timings:</strong>Visiting during high tide reveals the shrine’s enchanting illusion of floating on water, making for an unforgettable sight.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/hiroshima/noh-stage.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/hiroshima/kangen-sai-festival.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Itsukushima Shrine is open year-round, with sunrise, sunset, and full moons creating a magical atmosphere.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong>6:30 AM to 6:00 PM (may vary by season)</li>
+                        <li><strong>Admission:</strong> 300 yen (adult), 100 yen (child)</li>
+                        <li><strong>Address:</strong> 1-1 Miyajima-cho, Hatsukaichi, Hiroshima Prefecture 739From </li>
+                        <li><strong>Access:</strong>
+                            <li class="ml-4">Hiroshima Station, take the JR Sanyo Line to Miyajimaguchi Station (~30 minutes)10-minute walk from Hakata Station (JR, Shinkansen, and subway lines)</li>
+                            <li class="ml-4">From there, a 10-minute ferry ride (JR or Matsudai Ferries) takes you to Miyajima Island</li>
+                            <li class="ml-4">The shrine is a 10-minute walk from the ferry terminal</li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+            <div class="popular-card" onclick="window.location.href='gifu.html';">
+                <img src="../elements/places/gifu1.jpeg" alt="Gifu Shirakawa-go">
+                <div class="popular-card-overlay">
+                    <h3 class="text-lg font-bold">Gifu Shirakawa-go</h3>
+                    <p>A timeless village of steep thatched roofs blanketed in snow</p>
+                </div>
+            </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='kanagawa.html';">
+            <img src="../elements/places/kanagawa3.jpg" alt="Kanagawa Kamakura">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Kanagawa Kamakura</h3>
+                <p>Where samurai spirits linger by giant Buddhas and ocean air</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Itsukushima ShrineTravel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Practical Tips & Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Respect Shrine Etiquette:</strong> When entering sacred areas, follow customs like bowing at the torii, cleansing hands at the temizuya fountain, and speaking quietly.</li>
+                                            <li><strong>Avoid Touching the Torii:</strong> The giant gate is a sacred symbol, so don’t climb or lean on it to help preserve it.</li>
+                                            <li><strong>Bring a Reusable Water Bottle:</strong> Staying hydrated is key, especially if hiking Mount Misen, and water refill stations are available.</li>
+                                            <li><strong>Plan for Weather:</strong> The island can be rainy or sunny; check forecasts and bring sun protection or rain gear as needed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Sightseeing & Activities</h3>
+                                        <ul>
+                                            <li><strong>Visit at High Tide:</strong> To see the iconic torii gate appear to float on water, plan your visit around high tide times.</li>
+                                            <li><strong>Explore the Shrine Grounds:</strong> Walk through the vast complex of Itsukushima Shrine, including the stage built over the water and smaller auxiliary shrines.</li>
+                                            <li><strong>Climb Mount Misen:</strong> Hike or take a cable car to the summit for panoramic views of the Seto Inland Sea and nearby islands.</li>
+                                            <li><strong>Attend a Ritual or Festival:</strong> Time your visit to witness traditional ceremonies like the Kangen-sai Boat Festival for an immersive cultural experience.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Getting There & Around</h3>
+                                        <ul>
+                                            <li><strong>Ferry Ride Timing:</strong> Take the ferry early in the morning or late afternoon to avoid crowds and enjoy peaceful views of the floating torii.</li>
+                                            <li><strong>Wear Comfortable Shoes:</strong> The island has many walking paths and uneven surfaces, so sturdy footwear is a must for exploring comfortably.</li>
+                                            <li><strong>Use Local Transport:</strong> Miyajima has buses and rickshaws to help you get around—perfect if you want to save energy for hiking or sightseeing.</li>
+                                            <li><strong>Carry Cash:</strong> Many small shops and eateries don’t accept cards, so having yen on hand is important for smooth transactions.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Hiroshima', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+        
+        const cityId = 1862415; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Hiroshima', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        sacred_sites: [
+            {
+            img: '../elements/places/hiroshima/itsukushima.jpg',
+            img2: '../elements/places/hiroshima/itsukushima1.jpg',
+            title: 'Itsukushima Shrine',
+            desc: 'A UNESCO World Heritage site, Itsukushima Shrine is famous for its striking red torii gate that appears to float on the water during high tide. The shrine’s architecture beautifully blends with the natural surroundings, creating a mystical atmosphere that enchants visitors year-round.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Iconic torii gate that appears to float during high tide',
+                subtitle: 'Famous floating torii gate'
+            },
+            bullets: ['Iconic "floating" torii gate at high tide', 'Explore wooden walkways built over the sea', 'Witness traditional Shinto ceremonies and festivals']
+            },
+            {
+            img: '../elements/places/hiroshima/daisho.jpg',
+            img2: '../elements/places/hiroshima/daisho1.jpg',
+            title: 'Daisho-in Temple',
+            desc: 'Daisho-in Temple is one of the oldest and most significant Buddhist temples on Miyajima Island, renowned for its peaceful gardens and spiritual ambiance. Visitors can wander through vibrant statues and prayer halls that reflect centuries of religious heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Historic Buddhist temple with lovely gardens and spiritual ambiance',
+                subtitle: 'Serene temple with gardens'
+            },
+            bullets: ['Beautiful gardens with seasonal flowers', 'Statues of Jizo, the guardian of travelers and children', 'Experience traditional Buddhist rituals and meditation']
+            },
+            {
+            img: '../elements/places/hiroshima/summit.jpeg',
+            img2: '../elements/places/hiroshima/summit1.jpg',
+            title: 'Mount Misen Summit',
+            desc: 'Mount Misen offers breathtaking panoramic views of Miyajima Island and the Seto Inland Sea from its summit. Hike the well-marked trails that pass by ancient temples, sacred sites, and natural wonders, making it both a spiritual and adventurous experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Panoramic views and ancient temples atop Miyajima’s highest peak',
+                subtitle: 'Views from Miyajima’s peak'
+            },
+            bullets: ['Scenic hiking trails with spiritual landmarks', 'Observation decks with stunning sea views', 'Historic temples and ancient rock formations']
+            },
+            {
+            img: '../elements/places/hiroshima/five.jpg',
+            img2: '../elements/places/hiroshima/five1.jpg',
+            title: 'Five-Story Pagoda',
+            desc: 'The Five-Story Pagoda stands as a graceful blend of Shinto and Buddhist architectural styles, rising majestically against the lush forest backdrop. Its vibrant colors and intricate design make it a popular subject for photography and contemplation.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Stunning pagoda blending Shinto and Buddhist architecture',
+                subtitle: 'Elegant Shinto-Buddhist pagoda'
+            },
+            bullets: ['Bright vermilion pagoda contrasting with nature', 'Combines Shinto and Buddhist cultural elements', 'Nearby tranquil gardens perfect for reflection']
+            }
+        ],
+        local_cuisine: [
+            {
+            img: '../elements/places/hiroshima/manju.jpg',
+            img2: '../elements/places/hiroshima/manju1.jpg',
+            title: 'Momiji Manju Shops',
+            desc: 'Famous for their delicate maple leaf shape, Momiji Manju are sweet pastries filled with smooth red bean paste. These iconic treats are perfect souvenirs and a delicious snack while exploring Miyajima. Many shops offer seasonal and unique flavors beyond the traditional filling.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Famous maple leaf-shaped sweet pastries filled with red bean paste',
+                subtitle: 'Sweet. Soft. Iconic. Miyajima.'
+            },
+            bullets: ['Traditional red bean paste filling', 'Seasonal varieties like chestnut or chocolate', 'Popular souvenir gift item']
+            },
+            {
+            img: '../elements/places/hiroshima/oyster.jpg',
+            img2: '../elements/places/hiroshima/oyster1.jpg',
+            title: 'Grilled Oyster Stands',
+            desc: 'Miyajima is renowned for its fresh oysters, often grilled right at street-side stands. The smoky aroma and briny flavor make for a must-try local delicacy, especially during the oyster season from autumn to early spring.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Freshly grilled oysters, a local Miyajima specialty',
+                subtitle: 'Fresh, smoky oysters grilled to perfection'
+            },
+            bullets: ['Freshly grilled over charcoal flames', 'Served with simple lemon or sauces', 'Seasonal specialty from autumn to spring']
+            },
+            {
+            img: '../elements/places/hiroshima/anago.jpg',
+            img2: '../elements/places/hiroshima/anago1.jpg',
+            title: 'Anago Meshi',
+            desc: 'Anago Meshi features grilled saltwater eel served over steamed rice, combining a tender texture with a slightly sweet soy-based glaze. This regional specialty is a satisfying meal reflecting the island’s coastal flavors.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Delicious grilled eel rice bowls, a regional favorite',
+                subtitle: 'Savory grilled eel over rice bowls'
+            },
+            bullets: ['Grilled eel glazed with sweet soy sauce', 'Served atop fluffy steamed rice', 'Signature Miyajima comfort food']
+            },
+            {
+            img: '../elements/places/hiroshima/food.jpg',
+            img2: '../elements/places/hiroshima/food1.jpg',
+            title: 'Street Food Vendors',
+            desc: 'Near the ferry terminal and popular spots, street vendors offer a variety of quick bites and seasonal treats. From fried squid to sweet snacks, these vendors provide tasty options for a casual and flavorful experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Treats like fried squid and seasonal snacks near the ferry terminal',
+                subtitle: 'Quick bites like fried squid and snacks'
+            },
+            bullets: ['Fried squid and other seafood snacks', 'Seasonal treats and sweets', 'Perfect for on-the-go tasting']
+            },
+        ],
+        nature_outdoor: [
+            {
+            img: '../elements/places/hiroshima/park.jpg',
+            img2: '../elements/places/hiroshima/park1.jpg',
+            title: 'Momijidani Park',
+            desc: 'A serene valley park known for its spectacular autumn colors, Momijidani Park is a peaceful place to stroll any time of year. Wander winding paths lined with maple trees, and enjoy the seasonal beauty that draws visitors from around the world.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Scenic park especially stunning in autumn foliage',
+                subtitle: 'Beautiful park with vibrant autumn leaves'
+            },
+            bullets: ['Vibrant autumn foliage in fall', 'Walking trails with benches and viewpoints', 'Home to native wildlife like deer and birds']
+            },
+            {
+            img: '../elements/places/hiroshima/waterdall.jpg',
+            img2: '../elements/places/hiroshima/waterdall1.jpg',
+            title: 'Momijidani Waterfall',
+            desc: 'Tucked away in the lush forest, Momijidani Waterfall offers a soothing retreat with the sound of cascading water. It’s an ideal spot for quiet reflection and photography amidst natural greenery.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Peaceful waterfall nestled in the lush forest',
+                subtitle: 'Tranquil waterfall surrounded by forest'
+            },
+            bullets: ['Cool mist and tranquil atmosphere', 'Easy access from main trails', 'Picturesque for nature photography']
+            },
+            {
+            img: '../elements/places/hiroshima/omoto.jpg',
+            img2: '../elements/places/hiroshima/omoto1.jpg',
+            title: 'Omoto Park',
+            desc: 'This large, open green space provides scenic views of the Seto Inland Sea and gentle walking paths. Perfect for picnics, jogging, or relaxing while taking in coastal breezes and panoramic vistas.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Large green space with walking paths and views of the sea.',
+                subtitle: 'Spacious park with sea views and trails'
+            },
+            bullets: ['Sea views with benches and picnic areas', 'Well-maintained walking and jogging paths', 'Seasonal flowers and open lawns']
+            },
+            {
+            img: '../elements/places/hiroshima/kayak.jpg',
+            img2: '../elements/places/hiroshima/kayak1.jpg',
+            title: 'Kayaking & Boat Tours',
+            desc: 'TExplore Miyajima’s coastline and iconic floating torii gate from the water. Kayak or take a boat tour for a unique perspective, spotting wildlife and enjoying the gentle waves around this famous shrine.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Explore the coastline and the floating torii from the water',
+                subtitle: 'Water adventures around the torii gate'
+            },
+            bullets: ['Guided kayak rentals and boat tours', 'Close-up views of the floating torii gate', 'Chance to see local marine life up close']
+            },
+        ],
+        cultural_experiences: [
+            {
+            img: '../elements/places/hiroshima/craft.jpg',
+            img2: '../elements/places/hiroshima/craft1.jpg',
+            title: 'Traditional Craft Shops',
+            desc: 'Discover exquisite handmade crafts that showcase local artistry. From delicate bamboo works to finely crafted pottery, these shops offer unique souvenirs that capture the spirit of Miyajima’s cultural heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Buy handcrafted souvenirs like bamboo works and pottery',
+                subtitle: 'Handmade bamboo and pottery souvenirs'
+            },
+            bullets: ['Authentic bamboo baskets and utensils', 'Hand-painted ceramics and pottery', 'Traditional textiles and fabric goods']
+            },
+            {
+            img: '../elements/places/hiroshima/noh.jpg',
+            img2: '../elements/places/hiroshima/noh1.jpg',
+            title: 'Noh Theater',
+            desc: 'Experience the timeless art of Noh theater, a classical Japanese performing art combining music, dance, and drama. Often held in shrine precincts, these performances offer a glimpse into Japan’s rich cultural traditions.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Watch classical Japanese theater often held in shrine precincts',
+                subtitle: 'Classic Japanese drama at the shrine'
+            },
+            bullets: ['Masked performers with slow, stylized movements', 'Traditional musical accompaniment with flutes and drums', 'Performances linked to seasonal festivals and rituals']
+            },
+            {
+            img: '../elements/places/hiroshima/festival.jpg',
+            img2: '../elements/places/hiroshima/festival1.jpg',
+            title: 'Seasonal Festivals',
+            desc: 'Join vibrant seasonal celebrations that bring Miyajima’s culture to life. Festivals like the Kangen-sai Boat Festival feature traditional music, boat processions, and colorful ceremonies that honor the island’s spiritual heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Participate in vibrant events like the Kangen-sai Boat Festival',
+                subtitle: 'Colorful events like the Kangen-sai'
+            },
+            bullets: ['Kangen-sai: a boat procession with ancient court music', 'Autumn harvest and moon-viewing festivities', 'Lantern-lit ceremonies illuminating the shrine at night']
+            },
+            {
+            img: '../elements/places/hiroshima/tea.jpg',
+            img2: '../elements/places/hiroshima/tea1.jpg',
+            title: 'Tea Ceremony',
+            desc: 'Immerse yourself in the serene world of the Japanese tea ceremony. These experiences highlight the art of preparing and serving matcha tea, emphasizing mindfulness, harmony, and respect.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Join a tea ceremony to immerse yourself in Japanese culture',
+                subtitle: 'Authentic Japanese tea rituals'
+            },
+            bullets: ['Learn traditional tea preparation techniques', 'Enjoy matcha and seasonal sweets in a tranquil setting', 'Understand the cultural significance behind each ritual step']
+            },
+        ]
+    };
+
+    let currentCategory = 'sacred_sites';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["sacred_sites", "local_cuisine", "nature_outdoor", "cultural_experiences"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/hiroshima/history1.png',
+            img2: '../elements/places/hiroshima/heiden-offering-hall.jpg',
+            title: 'Floating Shrine of Miyajima',
+            desc: 'Itsukushima Shrine dates back to 593 AD, during Empress Suiko’s reign. It honors the sea goddesses Ichikishimahime, Tagorihime, and Tagitsuhime, daughters of Susanoo no Mikoto. In the 12th century, military leader Taira no Kiyomori rebuilt the shrine in the aristocratic shinden-zukuri style. With its vermilion halls, elevated boardwalks, and serene corridors, the shrine’s elegant design has endured for centuries, surviving disasters and wars with periodic restorations.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Japan’s floating icon of faith and beauty'
+            }
+        },
+        small1: {
+            img: '../elements/places/hiroshima/history3.jpeg',
+            img2: '../elements/places/hiroshima/history2.jpg',
+            title: 'Floating Shrine Architecture',
+            desc: 'Itsukushima Shrine features a unique architectural style blending Shinto aesthetics with Heian-period elegance. Built on stilts over tidal flats, it appears to float during high tide. The iconic 16-meter-tall vermilion torii gate, made of camphor wood, stands unanchored in the sea. Key structures include the Honden (Main Hall), Heiden (Offering Hall), Haiden (Worship Hall), a rare over-water Noh Stage, and the Soribashi (Arched Bridge), all linked by covered wooden corridors.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where tradition timelessly rises with the tide',
+            }
+        },
+        small2: {
+            img: '../elements/places/hiroshima/shrine2.jpg',
+            img2: '../elements/places/hiroshima/offering-hall.png',
+            title: 'Tides and the Floating Shrine',
+            desc: 'This natural ebb and flow of the sea has transformed the shrine into a living, dynamic spiritual landscape that shifts with time. As the tides rise and fall, the appearance and atmosphere evolve, inviting visitors to experience its beauty and sacredness from different perspectives. This changing interaction between shrine and sea creates a profound connection between nature and spirituality, making each visit a unique, memorable experience reflecting the harmony central to Shinto beliefs.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A shrine that floats with the tides',
+            }
+        },
+        small3: {
+            img: '../elements/places/hiroshima/setsubun.jpg',
+            img2: '../elements/places/hiroshima/soribashi-arched-bridge.png',
+            title: 'Island of Divine Harmony',
+            desc: 'Itsukushima Shrine is more than a scenic landmark; it is an active place of worship and pilgrimage. The entire island has long been considered sacred—so much so that commoners were historically not allowed to set foot on it. Even today, births and deaths are not permitted on the island to preserve its purity. There are no maternity wards or cemeteries on Miyajima. The shrine has influenced Japanese art, poetry, and theater for centuries. Its image has appeared in ukiyo-e prints, literature, and photography, often representing the harmony between humanity and nature.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where tradition meets nature in sacred serenity',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+</script>
+</body>
+</html>

@@ -1,0 +1,1194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fushimi Inari Taisha - The Shrine of a Thousand Torii</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/fushimi/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+         /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+        .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+     <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Step Into the Spirit of Kyoto’s Fushimi  <br><span class="highlight">Inari Taisha</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A mystical gateway to Japan’s spiritual heritage, Fushimi Inari Taisha weaves tradition, nature, and devotion into a breathtaking journey. Wander beneath vermilion torii gates, savor sacred serenity, and discover the timeless dance of culture and faith at the heart of Kyoto. Every step invites reflection and awe.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/fushimi/1.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/fushimi/2.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/fushimi/3.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Fushimi Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Fushimi Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Fushimi Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Fushimi Inari Taisha (伏見稲荷大社), located in southern Kyoto, is one of Japan’s most important and visually arresting Shinto shrines. It is dedicated to Inari, the Shinto god of rice, agriculture, industry, and prosperity. The shrine is globally recognized for its countless vermilion torii gates that wind through the wooded slopes of Mount Inari, creating an ethereal, tunnel-like pathway that draws millions of visitors each year.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="spiritual_sights">Spiritual Sights</button>
+                    <button class="tab" data-category="nature_views">Nature & Views</button>
+                    <button class="tab" data-category="local_rituals_culture">Local Rituals & Culture</button>
+                    <button class="tab" data-category="food_souvenirs">Food & Souvenirs</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80"></h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight"></h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90"></h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/fushimi/cat.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">The Spirit of Gratitude in Vermilion</h3>
+                        <p class="image-description">From ancient origins to countless torii, this shrine honors centuries of devotion and the fox deity Inari</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/fushimi/spirits.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Fox Spirits and Their Sacred Role</h4>
+                                <p class="image-description">Messenger spirits bridging the human and divine</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/fushimi/senbon.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Enchanting Senbon Torii Trail</h4>
+                                <p class="image-description">A mesmerizing path of thousands of torii gates on the 4-kilometer Mount Inari hike</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/fushimi/details.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Inari: Guardian of Prosperity</h4>
+                                <p class="image-description">Fushimi Inari’s shrines and gates reflect a bond of faith and fortune</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Inari Taisha</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Early mornings and late evenings are ideal for avoiding crowds and experiencing the serene mysticism of the torii path in soft light or illuminated by lanterns. The shrine complex is especially atmospheric during seasonal festivals such as:<br><strong>Hatsumode</strong> (New Year's visit): An estimated 2.7 million people visit during the first few days of January.<br><strong>Inari Matsuri</strong> (early February): Celebrates the deity with ceremonies, offerings, and processions.
+
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/fushimi/architecture1.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/fushimi/architecture2.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Fushimi Inari Taisha is open 24 hours a day, year-round, with no admission fee—making it one of the most accessible spiritual sites in the country.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong> Always open (24/7) </li>
+                        <li><strong>Admission:</strong> Free</li>
+                        <li><strong>Main Shrine Office Hours:</strong> 9:00 AM to 5:00 PM</li>
+                        <li><strong>Best Time to Visit:</strong> Early morning (6–8 AM) or twilight (after 6 PM), especially in spring (March–April) or autumn (October–November)</li>
+                        <li><strong>Address: </strong>68 Fukakusa Yabunouchicho, Fushimi Ward, Kyoto, 612-0882</li>
+                        <li><strong>Access: </strong>A 5-minute walk from Inari Station on the JR Nara Line (one stop from Kyoto Station). Also accessible via a short walk from Fushimi-Inari Station on the Keihan Main Line.</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='hiroshima.html';">
+            <img src="../elements/places/hiroshima1.jpg" alt="Itsukushima Shrine">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Itsukushima Shrine</h3>
+                <p>Hiroshima's famous floating torii gate</p>
+            </div>
+        </div>
+
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='gifu.html';">
+            <img src="../elements/places/gifu1.jpeg" alt="Gifu-Shirakawa Go">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Gifu-Shirakawa Go</h3>
+                <p>A timeless village of steep thatched roofs blanketed in snow</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Inari Taisha Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>What to Bring</h3>
+                                        <ul>
+                                            <li><strong>Comfortable Shoes:</strong> The hike up the torii path can be steep and long.</li>
+                                            <li><strong>Hiking Duration:</strong> The full round-trip trail to the summit and back takes about 2–3 hours at a leisurely pace. You don’t need to hike all the way to enjoy the experience—the densest clusters of torii gates are in the lower section.</li>
+                                            <li><strong>Water Bottle:</strong> Stay hydrated, especially in warmer months.</li>
+                                            <li><strong>Camera/Phone:</strong> Capture stunning views and the endless red gates.</li>
+                                            <li><strong>Popular Photography Spots:</strong> The famous corridor of torii gates just behind the Romon Gate is iconic but crowded. For clearer shots, ascend further into the trail or visit early in the morning.</li>
+                                            <li><strong>Weather Awareness:</strong> The trail is outdoors and includes stairs and dirt paths. Wear comfortable walking shoes and bring water, especially in summer. Umbrellas are advisable during the rainy season (June–July).</li>
+                                            <li><strong>Language Support:</strong> While signage is mostly in Japanese, key signs and maps often include English. Some of the shops and tea houses around the base offer basic English menus.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Visitor Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Shrine Etiquette:</strong> Be respectful—bow before passing through torii gates, and at prayer spots, follow the customary procedure: bow twice, clap twice, make your prayer, then bow once more.</li>
+                                            <li><strong>Trash:</strong> Carry out any trash as there are few bins on the trail.</li>
+                                            <li><strong>Photography:</strong> Allowed in most areas, but be mindful around worshippers.</li>
+                                            <li><strong>No Climbing:</strong> Do not climb or hang on the torii gates or statues.</li>
+                                            <li><strong>No Eating or Drinking:</strong> Refrain from eating or drinking on the sacred paths.</li>
+                                            <li><strong>Pets:</strong> Dogs and other pets are generally not allowed inside shrine grounds.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Exploring the Trail</h3>
+                                        <ul>
+                                            <li><strong>Off the Main Trail:</strong> For a quieter, more mystical experience, follow the less-crowded Yotsutsuji intersection halfway up the mountain. It offers stunning views over southern Kyoto and a chance to rest with refreshments from tea houses.</li>
+                                            <li><strong>Pace Yourself:</strong> The full hike to the summit and back can take 2-3 hours.</li>
+                                            <li><strong>Look for Fox Statues:</strong> These guardian kitsune statues are scattered along the path.</li>
+                                            <li><strong>Wear Weather-Appropriate Gear:</strong> Rain can make paths slippery; bring an umbrella or raincoat if needed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+     // Cherry Blossom SVG as cursor
+    const cursor = document.getElementById('custom-cursor');
+    cursor.innerHTML = `
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <g>
+          <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+          <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+          <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+          <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+          <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+          <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+        </g>
+      </svg>
+    `;
+    document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+
+      // Sparkle effect
+      const sparkle = document.createElement('div');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = (e.clientX - 5) + 'px';
+      sparkle.style.top = (e.clientY - 5) + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 700);
+    });
+
+     document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Fushimi', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9';
+        
+        const cityId = 1863788; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Fushimi', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        spiritual_sights: [
+            {
+            img: '../elements/places/fushimi/honden.jpg',
+            img2: '../elements/places/fushimi/honden1.jpg',
+            title: 'Main Shrine (Honden)',
+            desc: 'The Honden is the central hall of worship at Fushimi Inari Taisha, where visitors pay respect to Inari, the Shinto deity of rice, prosperity, and foxes. It is the heart of the complex and the starting point for rituals and pilgrimages.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Centerpiece of devotion and ceremonial prayers',
+                subtitle: 'Heart of the shrine’s spiritual energy'
+            },
+            bullets: [' Spiritual Center – Main location for prayers, rituals, and blessings.', 'Historical Architecture – Originally constructed in 1499 in the nagare-zukuri style.', 'Cultural Significance – Hosts important seasonal festivals, including Hatsumode (New Year visit).']
+            },
+            {
+            img: '../elements/places/fushimi/sebon1.jpeg',
+            img2: '../elements/places/fushimi/sebon.jpg',
+            title: 'Senbon Torii',
+            desc: 'This iconic tunnel of vibrant vermilion gates is the most famous feature of Fushimi Inari. Donated by individuals and businesses seeking good fortune, these gates stretch into the wooded hills and provide a symbolic journey between the spiritual and physical worlds.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A mesmerizing pathway of vermilion gates donated by worshippers',
+                subtitle: 'Iconic trail of endless red gates'
+            },
+            bullets: ['Symbolic Passage – Each gate represents a wish or expression of gratitude.', 'Photo Icon – One of the most photographed places in Japan.', 'Leads to Trails – Begins the pilgrimage path up Mt. Inari.']
+            },
+            {
+            img: '../elements/places/fushimi/okusha.jpg',
+            img2: '../elements/places/fushimi/okusha1.jpg',
+            title: 'Okusha Shrine',
+            desc: 'Also known as the Oku-no-in, this quieter shrine is located deeper along the mountain path. It offers a more intimate space for worship, set among trees and moss-covered stones, where pilgrims make personal offerings.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A quieter place for personal wishes and offerings',
+                subtitle: 'Hidden sanctuary along the path'
+            },
+            bullets: ['Secluded Setting – Surrounded by tranquil forest away from crowds.', 'Wish-Making Spot – Many visitors write prayers and wishes here.', 'Candle Offerings – Light a candle for spiritual guidance and protection.']
+            },
+            {
+            img: '../elements/places/fushimi/fox.jpg',
+            img2: '../elements/places/fushimi/fox1.jpg',
+            title: 'Fox Statues',
+            desc: 'Stone foxes are found throughout the shrine grounds, believed to be messengers of Inari. Each statue carries a symbolic item in its mouth—like a rice key, scroll, or jewel—and represents protection, fertility, and prosperity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Mystical messengers of Inari with keys and scrolls in their mouths',
+                subtitle: 'Watchful protectors of the shrine'
+            },
+            bullets: ['Mythical Messengers – Represent the link between humans and the deity Inari.', ' Symbolic Items – Often hold rice granary keys or sacred scrolls.', 'Worshipped Figures – Many visitors bow or leave small offerings.']
+            }
+        ],
+        nature_views: [
+            {
+            img: '../elements/places/fushimi/intersection.jpg',
+            img2: '../elements/places/fushimi/intersection1.JPG',
+            title: 'Yotsutsuji Intersection',
+            desc: 'A halfway point on the trail, Yotsutsuji offers one of the most iconic panoramic views of Kyoto. It’s where most casual hikers pause, rest, and soak in the cityscape surrounded by stone lanterns and vending machines tucked into the mountainside.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A breathtaking viewpoint overlooking Kyoto city',
+                subtitle: 'Panoramic cityscapes meet mountain air'
+            },
+            bullets: ['City Viewpoint: Gaze over Kyoto from a high vantage framed by nature.', 'Trail Hub: Choose to continue up or return—many paths meet here.', 'Convenient Stop: Nearby benches, vending machines, and light snacks.']
+            },
+            {
+            img: '../elements/places/fushimi/trails.jpg',
+            img2: '../elements/places/fushimi/trails1.jpg',
+            title: 'Forest Trails',
+            desc: 'Winding paths through dense cedar and bamboo forests create a surreal, peaceful atmosphere. These lesser-trodden sections offer a sense of solitude and deeper connection with the spiritual and natural world.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A serene escape lined with cedar and bamboo',
+                subtitle: 'Quiet paths beneath swaying trees'
+            },
+            bullets: ['Tranquil Escape: Soft forest sounds and filtered sunlight.', 'Hidden Shrines: Discover small altars off the main path.', 'Photo Spots: Rich textures, shadows, and light-perfect scenery.']
+            },
+            {
+            img: '../elements/places/fushimi/summit.jpg',
+            img2: '../elements/places/fushimi/summmit1.jpg',
+            title: 'Summit Shrine',
+            desc: 'Often skipped by casual tourists, the summit shrine sits at the highest point of Mount Inari. It’s quieter, more spiritual, and marks the culmination of a pilgrimage for many devoted visitors.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The sacred peak, often missed by casual hikers',
+                subtitle: 'Peaceful, hidden, spiritually rewarding'
+            },
+            bullets: ['True Peak: Reach the spiritual and physical height of the trail.','Personal Reflection: Ideal for quiet moments and deep breaths.','Less Crowded: A calm, almost hidden part of the journey.']
+            },
+            {
+            img: '../elements/places/fushimi/mossy.jpg',
+            img2: '../elements/places/fushimi/mossy1.jpg',
+            title: 'Mossy Stone Lanterns',
+            desc: 'Scattered throughout the trail are ancient stone tōrō lanterns, many covered in velvety moss. These age-worn features bring a sense of timelessness and mystery to the walk.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Ancient markers wrapped in nature’s slow embrace',
+                subtitle: 'Timeless beauty softened by moss'
+            },
+            bullets: ['Historic Markers: Centuries-old waypoints on sacred ground.', 'Nature\'s Touch: Soft green moss softens stone textures beautifully.', 'Atmospheric Detail: Adds character and depth to photos and memories.']
+            },
+        ],
+        local_rituals_culture: [
+            {
+            img: '../elements/places/fushimi/omamori.jpg',
+            img2: '../elements/places/fushimi/omamori1.jpg',
+            title: 'Omamori Stalls',
+            desc: 'Small yet meaningful, omamori are traditional Japanese amulets sold at shrine stands throughout Fushimi Inari. Each one is hand-blessed and tailored to specific areas of life—like love, safety, or academic success.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Buy protective charms for everything from health to exams',
+                subtitle: 'Carry blessings wherever you go'
+            },
+            bullets: ['Variety of Blessings: Choose from charms for travel safety, business prosperity, good health, and more.', 'Student Favorites: Many students visit during exam season for academic success charms.', 'Great Keepsake: Lightweight and symbolic—a thoughtful souvenir or gift.']
+            },
+            {
+            img: '../elements/places/fushimi/plaque.jpg',
+            img2: '../elements/places/fushimi/plaque1.jpg',
+            title: 'Ema Prayer Plaques',
+            desc: 'These wooden plaques let visitors write their hopes and wishes for the future. At Fushimi Inari, they often come in a fox shape, where you can draw your own face on the fox before hanging it.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Write your wishes on wooden plaques with fox faces',
+                subtitle: 'Personal hopes hung in sacred silence'
+            },
+            bullets: ['Personalized Art: Visitors decorate the blank fox face with funny, cute, or expressive designs.', 'Wishes for All Walks of Life: Common topics include love, career, and well-being.', 'Left Hanging at the Shrine: Once written, ema are hung on designated racks, forming a visual collage of hopes.']
+            },
+            {
+            img: '../elements/places/fushimi/omikuji.jpg',
+            img2: '../elements/places/fushimi/omikuji1.jpg',
+            title: 'O-mikuji (Fortune Slips)',
+            desc: 'Draw a random slip from the box—your o-mikuji tells your fortune. Results range from great luck to curses, with detailed advice for different aspects of life.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Draw your fate—tie it to a tree if it’s bad!',
+                subtitle: 'Luck revealed in ancient ritual'
+            },
+            bullets: ['Varied Outcomes: Includes specific predictions for love, business, travel, and health.', 'Tie It If It’s Bad: Bad fortunes are tied to nearby trees or racks to leave the misfortune behind.', 'Fun and Reflective: Often surprising or insightful, many travelers enjoy comparing results.']
+            },
+            {
+            img: '../elements/places/fushimi/donation.jpg',
+            img2: '../elements/places/fushimi/donation1.jpg',
+            title: 'Torii Gate Donations',
+            desc: 'Want to leave a permanent mark? Donating a torii gate is a centuries-old tradition. Each gate along the path was gifted by a business or individual hoping for prosperity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Join tradition by sponsoring a gate (if you can afford it)',
+                subtitle: 'Leave a legacy in vivid vermilion'
+            },
+            bullets: ['Pricey but Powerful: Small gates start at hundreds of dollars, with larger ones in the thousands.', 'Names Etched in History: Donors’ names and dates are inscribed on the back of each gate.', 'Symbol of Gratitude: Many donors give thanks for fulfilled prayers or successful ventures.']
+            },
+        ],
+        food_souvenirs: [
+            {
+            img: '../elements/places/fushimi/zushi.jpeg',
+            img2: '../elements/places/fushimi/zushi1.jpg',
+            title: 'Inari-zushi',
+            desc: 'A sweet-and-savory treat made from sushi rice wrapped in fried tofu skin, Inari-zushi is said to be the favorite food of fox spirits (kitsune), the messengers of Inari. It\'s a must-try dish that perfectly captures the shrine’s spiritual and culinary heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sweet tofu-wrapped sushi named after the fox deity',
+                subtitle: 'A tasty shrine tradition'
+            },
+            bullets: ['Fox-Inspired: Symbolically tied to the deity Inari and his fox guardians.', 'Quick & Convenient: Sold at small vendors near the shrine and ideal for snacking.', 'Sweet-Savory Flavor: Delicately seasoned tofu pairs with vinegared rice.']
+            },
+            {
+            img: '../elements/places/fushimi/cookies.jpg',
+            img2: '../elements/places/fushimi/cookies1.jpg',
+            title: 'Fox Cookies & Snacks',
+            desc: 'Shaped like fox faces or paws, these whimsical snacks range from buttery cookies to rice crackers. They\'re fun, photogenic, and make for charming gifts that reflect the playful yet mystical spirit of Fushimi Inari.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Shaped sweets that echo the shrine’s guardians',
+                subtitle: 'Fox-shaped treats and souvenirs'
+            },
+            bullets: ['Adorably Themed: Fox motifs make each snack feel like a lucky charm.', 'Perfect Souvenir: Lightweight and packable for gifting or keeping.', 'Flavor Variety: From matcha to sesame to classic butter cookies.']
+            },
+            {
+            img: '../elements/places/fushimi/talisman.jpg',
+            img2: '../elements/places/fushimi/talisman1.jpg',
+            title: 'Talisman Shops',
+            desc: 'Scattered near the shrine path, these shops offer handmade charms, handwritten sutras, and personalized calligraphy. Each item holds spiritual significance and carries a piece of Kyoto’s ancient traditions.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Handwritten blessings and artistic mementos',
+                subtitle: 'Spiritual keepsakes and art'
+            },
+            bullets: ['Blessed Items: Talisman for love, success, safety, and more.', 'Custom Calligraphy: Personalized with your name or wishes in elegant kanji.', 'Spiritual Souvenirs: Deeply rooted in Shinto beliefs and aesthetics.']
+            },
+            {
+            img: '../elements/places/fushimi/matcha.jpeg',
+            img2: '../elements/places/fushimi/matcha1.jpg',
+            title: 'Matcha Ice Cream',
+            desc: 'A refreshing treat to beat the mountain climb heat, matcha ice cream at Fushimi Inari combines Kyoto’s famed green tea with soft serve perfection. Ideal after walking through the torii gates.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cool down with Kyoto’s famous green tea dessert',
+                subtitle: 'Refreshing green tea delight'
+            },
+            bullets: ['Kyoto Flavor: Authentic matcha sourced from nearby Uji.', 'Bittersweet Balance: Smooth, creamy, and not overly sweet.', 'Photo-Worthy: Served in cones or cups with fox-themed wrappers.']
+            },
+        ]
+    };
+
+    let currentCategory = 'spiritual_sights';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["spiritual_sights", "nature_views", "local_rituals_culture", "food_souvenirs"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/fushimi/cat.jpg',
+            img2: '../elements/places/fushimi/inari.jpg',
+            title: 'Path of the Fox',
+            desc: 'Fushimi Inari Taisha\'s origins date back to 711 CE, predating Kyoto’s establishment as capital in 794. Originally on Inariyama hill, the shrine was relocated in 816 by Buddhist monk Kūkai (Kōbō Daishi). Its importance grew during the Heian Period (794–1185), especially among aristocrats, and later among merchants and craftsmen in the Edo Period (1603–1868). The practice of donating torii gates began in the Edo period, symbolizing gratitude for blessings. Today, they form one of Japan’s longest and most stunning paths, winding up sacred Mount Inari (233 meters).',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A timeless journey through vermilion gates'
+            }
+        },
+        small1: {
+            img: '../elements/places/fushimi/spirits.jpg',
+            img2: '../elements/places/fushimi/spirits1.jpg',
+            title: 'Fox Spirits & Sacred Symbols',
+            desc: 'The shrine serves as the head shrine for over 30,000 Inari shrines across Japan. Statues of foxes (kitsune), believed to be Inari’s messengers, are scattered throughout the complex, often depicted holding keys in their mouths—symbols of the rice granaries they protect. Fox statues appear throughout the grounds—often with ears attentively perked and eyes alert—symbolizing vigilance and communication with the divine. Offerings of rice, sake, and fried tofu (a favorite of fox spirits) are commonly seen at these altars.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Guardians of Inari’s divine realm',
+            }
+        },
+        small2: {
+            img: '../elements/places/fushimi/senbon.jpg',
+            img2: '../elements/places/fushimi/senbon1.jpg',
+            title: 'The Senbon Torii Trail',
+            desc: 'The highlight for most visitors is the Senbon Torii (千本鳥居), or "thousands of torii gates," that line the trails up the mountain. Each gate has been donated by individuals or businesses hoping for blessings or in thanks for fulfilled wishes. The trail up Mount Inari is about 4 kilometers long and takes approximately 2–3 hours to complete. Along the path, visitors will encounter various smaller shrines, tea houses, and scenic lookout points offering stunning views and peaceful moments for reflection.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Thousands of gates, one unforgettable journey',
+            }
+        },
+        small3: {
+            img: '../elements/places/fushimi/details.jpg',
+            img2: '../elements/places/fushimi/torii.jpg',
+            title: 'Spiritual and Economic Harmony',
+            desc: 'Inari is associated not only with agriculture but also with prosperity, commerce, and business success. This broad link has made Fushimi Inari popular for personal and corporate worship. The thousands of torii gates bear inscriptions with donors\' names and dates, a visual of spiritual and economic gratitude. Numerous auxiliary shrines (sessha) dot the forest trail, each with unique customs. Notably, the Okusha Hohaisho near the summit is where pilgrims pray after their climb.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where business meets blessings',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

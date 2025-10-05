@@ -1,0 +1,1123 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fukuoka: Canal City Hakata - The City Within the City</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/fukuoka/header1.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Uncover the Allure of Fukuoka's <br><span class="highlight">Canal City Hakata</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A vibrant "city within a city" blending shopping, dining, and entertainment in the heart of Fukuoka. From luxury brands to local delicacies, every corner offers a new experience. Whether day or night, Canal City Hakata pulses with energy, color, and culture.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/fukuoka/header3.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/fukuoka/header2.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/fukuoka/header.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Fukuoka Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Fukuoka Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Fukuoka Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Canal City Hakata (キャナルシティ博多) is a sprawling shopping and entertainment complex located in Fukuoka's Hakata Ward. Nicknamed a "city within the city," it seamlessly integrates over 250 shops, diverse dining options, entertainment venues, and accommodations, all centered around a picturesque artificial canal. Since its opening in 1996, Canal City has become one of Kyushu’s most visited attractions, drawing millions annually with its unique architecture and dynamic atmosphere.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="shopping">Shopping</button>
+                    <button class="tab" data-category="dining">Dining</button>
+                    <button class="tab" data-category="entertainment">Entertainment</button>
+                    <button class="tab" data-category="events">Events</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/fukuoka/history2.jpeg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">The Dream That Built Canal City</h3>
+                        <p class="image-description">Born from a bold economic era and brought to life in the heart of Fukuoka</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/fukuoka/architecture2.jpeg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Living Stage of Urban Wonder</h4>
+                                <p class="image-description">Where architecture moves, water sings, and every turn tells a story.</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/fukuoka/1.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Summer Roars at Canal City</h4>
+                                <p class="image-description">Towering floats, sizzling performances, and exclusive celebrations await</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/fukuoka/2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Guardians of Spring</h4>
+                                <p class="image-description">Flying beans to roaring taiko drums bringingin age-old ritual to life with charm</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Canal City</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Canal City Hakata, located in Fukuoka, is a stunning blend of modern architecture and cultural charm. Known as a “city within a city,” it features a shopping complex, entertainment zones, art displays, and a central canal that flows through the middle. Whether you're here to shop, dine, or simply soak in the ambiance, Canal City offers an immersive experience unlike any other in Japan.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/fukuoka/fountain.jpeg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/fukuoka/fountain2.jpeg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">A view from the upper terraces where fountains perform every hour to music.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong>
+                            <li class="ml-4">Shops: 10:00 AM to 9:00 PM</li>
+                            <li class="ml-4">Restaurants: 11:00 AM to 11:00 PM (hours may vary)</li>
+                            <li class="ml-4">Ramen Stadium: 11:00 AM to 11:00 PM</li>
+                            <li class="ml-4">Cinema and Theater: Varies by schedule</li>
+                        </li>
+                        <li><strong>Admission:</strong> Free to enter; pay only for what you shop, eat, or see</li>
+                        <li><strong>Access:</strong>
+                            <li class="ml-4">10-minute walk from Hakata Station (JR, Shinkansen, and subway lines)</li>
+                            <li class="ml-4">10-15 minutes from Tenjin Station via Nishitetsu bus or subway</li>
+                            <li class="ml-4">Easily accessible by foot from central Fukuoka districts</li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='fushimi.html';">
+            <img src="../elements/places/fushimi1.jpg" alt="Fushimi Inari Taisha">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Fushimi Inari Taisha</h3>
+                <p>Kyoto's iconic shrine with thousands of torii gates</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='hiroshima.html';">
+            <img src="../elements/places/hiroshima1.jpg" alt="Itsukushima Shrine">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Hiroshima Itsukushima Shrine</h3>
+                <p>Hiroshima's famous floating torii gate</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Canal City Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Shopping & Services</h3>
+                                        <ul>
+                                            <li><strong>Tax-Free Shopping:</strong> Most stores participate in Japan's tax-free program for foreign visitors—remember to show your passport at eligible stores for an 8–10% tax exemption on qualifying purchases.</li>
+                                            <li><strong>Canal City OPA & Grand Hyatt Fukuoka:</strong> The complex includes specialty boutiques and luxury outlets inside Canal City OPA, and it’s directly connected to the upscale Grand Hyatt hotel.</li>
+                                            <li><strong>Local Goods & Regional Souvenirs:</strong> Discover Fukuoka-exclusive items such as mentaiko (spicy cod roe), Yame green tea, and Hakata textiles.</li>
+                                            <li><strong>Currency Exchange & ATM Services:</strong> Several international ATMs are located throughout the facility, including Seven Bank and Japan Post ATMs compatible with foreign cards.</li>
+                                            <li><strong>Delivery Service:</strong> Some stores offer same-day luggage or package delivery to hotels within the city (check at the information desk).</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Family & Amenities</h3>
+                                        <ul>
+                                            <li><strong>Stroller Rentals:</strong> Available at the Information Center (limited quantity; first come, first served).</li>
+                                            <li><strong>Parent-Child Rest Areas:</strong> Located on multiple floors, offering private nursing booths, microwave ovens, and sinks.</li>
+                                            <li><strong>Baby Food and Diapers for Sale:</strong> Convenience stores inside the complex (like Lawson and FamilyMart) stock child essentials.</li>
+                                            <li><strong>Free Wi-Fi:</strong> Available throughout the mall; connect to “Canalcity_Free_Wi-Fi.”</li>
+                                            <li><strong>Barrier-Free Access:</strong> Elevators, escalators, and accessible restrooms are widely available for visitors with mobility needs.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Information & Tips</h3>
+                                        <ul>
+                                            <li><strong>Multilingual Support:</strong> Signs and maps available in English, Chinese, and Korean. Many staff at the information desks speak basic English.</li>
+                                            <li><strong>Free Lockers & Paid Luggage Storage:</strong> Coin lockers in multiple sizes available on lower floors and near entrances. Oversized luggage storage available near the Bus Center.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Fukuoka', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9';
+        
+        const cityId = 1863967; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Fukuoka', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        shopping: [
+            {
+            img: '../elements/places/fukuoka/gundam1.jpg',
+            img2: '../elements/places/fukuoka/gundam.jpg',
+            title: 'Gundam Base',
+            desc: 'A must-visit for anime enthusiasts, this store offers a wide range of Gundam models and exclusive merchandise. It\'s a paradise for fans of the iconic mecha series.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'There’s often a Gundam Builders area where you can assemble your kits',
+                subtitle: 'Location: Center Walk South, 4th Floor'
+            },
+            bullets: ['Offers a massive selection of Gundam plastic models (Gunpla), including limited-edition and regional exclusives.', 'Features interactive displays, including life-sized Gundam statues and building areas.', 'Ideal for collectors and fans of the Mobile Suit Gundam series of all ages.']
+            },
+            {
+            img: '../elements/places/fukuoka/sanrio.jpg',
+            img2: '../elements/places/fukuoka/sanrio1.jpg',
+            title: 'Sanrio Gallery',
+            desc: 'This store is a haven for fans of Hello Kitty and other Sanrio characters. It offers a variety of character goods, including plush toys, accessories, and stationery.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Limited edition items for seasonal events and Japanese holidays.',
+                subtitle: 'Location: Center Walk North, 2nd Floor'
+            },
+            bullets: ['Stocks a wide range of Sanrio merchandise including Hello Kitty, Cinnamoroll, My Melody, and Kuromi.', 'Great for souvenirs like plush toys, stationery, bags, and home goods.', 'Themed displays and seasonal decor make it popular for Instagram-worthy photos.']
+            },
+            {
+            img: '../elements/places/fukuoka/gap1.jpg',
+            img2: '../elements/places/fukuoka/history2.jpeg',
+            title: 'GAP',
+            desc: 'Located in the South Building, this store offers a wide selection of casual wear for men, women, and children. It\'s a great spot for comfortable and stylish everyday clothing.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Look for “SALE” signage in the back for clearance and discounted items',
+                subtitle: 'Location: South Building, 1st Floor'
+            },
+            bullets: ['Offers classic American-style casual wear for men, women, and children.', 'Frequent sales and promotions make it budget-friendly for families.', 'Clean layout and size availability make shopping easy for all ages.']
+            },
+            {
+            img: '../elements/places/fukuoka/abc1.jpg',
+            img2: '../elements/places/fukuoka/abc.jpg',
+            title: 'ABC-MART',
+            desc: 'A popular footwear retailer, ABC-MART offers a variety of shoes, including sneakers and casual footwear, catering to diverse styles and preferences.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Known for frequent discounts, especially on sneakers',
+                subtitle: 'Location: East Building, 2nd Floor'
+            },
+            bullets: ['Wide selection of shoes from brands like Nike, Adidas, Vans, and Converse.', 'Carries both fashion-forward styles and practical daily wear options.', 'Often has outlet-level prices and frequent sales on trendy footwear.']
+            }
+        ],
+        dining: [
+            {
+            img: '../elements/places/fukuoka/ramen.jpg',
+            img2: '../elements/places/fukuoka/ramen1.jpg',
+            title: 'Ramen Stadium',
+            desc: 'A must-visit for ramen lovers, this food court on the 5th floor brings together multiple ramen shops from across Japan, each offering its own unique take on classic noodle soups like tonkotsu, miso, and shoyu. Perfect for sampling regional ramen styles in one spot.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Most shops offer mini bowls so you can try more than one.',
+                subtitle: 'Location: 5th Floor, Center Walk'
+            },
+            bullets: ['Features multiple ramen shops representing different regions of Japan.', 'Offers a variety of tonkotsu (pork bone) broths and other flavors.', 'Ideal for sampling and comparing different ramen styles in one place.']
+            },
+            {
+            img: '../elements/places/fukuoka/kirby.jpg',
+            img2: '../elements/places/fukuoka/kirby1.jpg',
+            title: 'Kirby Café',
+            desc: 'A themed café inspired by Nintendo’s Kirby, this whimsical spot features adorable character-shaped dishes, colorful desserts, and a playful atmosphere. Great for families and fans of the game—reservations are recommended due to high demand.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Limited-time menu items change seasonally.',
+                subtitle: 'Location: Canal City Hakata'
+            },
+            bullets: ['Inspired by the Nintendo character Kirby, offering a whimsical dining experience.', 'Serves creatively presented dishes and desserts themed around the game.', 'Popular among fans; reservations are often required in advance.']
+            },
+            {
+            img: '../elements/places/fukuoka/beef.jpg',
+            img2: '../elements/places/fukuoka/beef1.jpg',
+            title: 'Beef Taigen',
+            desc: 'Known for its succulent steaks and juicy hamburger steaks, Beef Taigen specializes in high-quality beef dishes served in a warm, casual setting. A great choice for hearty Japanese-Western fusion meals.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Lunchtime offers better deals than dinner.',
+                subtitle: 'Location: North Building, B1F'
+            },
+            bullets: ['Specializes in high-quality beef dishes, including juicy steaks and hamburgers.', 'Known for its rich flavors and generous portions.', 'Offers a cozy atmosphere suitable for both lunch and dinner.']
+            },
+            {
+            img: '../elements/places/fukuoka/pietro.jpg',
+            img2: '../elements/places/fukuoka/pietro1.jpg',
+            title: 'Pietro',
+            desc: 'A well-loved Italian restaurant chain from Fukuoka, PIETRO serves comforting pasta dishes, pizzas, and salads using their famous dressings and sauces. Popular with both locals and tourists for its homey flavors and family-friendly vibe.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Don\'t miss their original salad dressings—also sold in bottles.',
+                subtitle: 'Location: North Building, B1F'
+            },
+            bullets: ['Offers a range of pasta dishes and Italian-inspired meals.', 'Known for its signature dressings and sauces.', 'Provides a family-friendly environment with a variety of menu options.']
+            },
+        ],
+        entertainment: [
+            {
+            img: '../elements/places/fukuoka/theater.jpg',
+            img2: '../elements/places/fukuoka/theater1.jpg',
+            title: 'Canal City Theater',
+            desc: 'Canal City Theater hosts a wide variety of live performances, including musicals, traditional Japanese arts, and comedy shows. It’s a cultural hub offering high-quality entertainment for visitors of all ages.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Arrive early to grab good seats and enjoy the lobby displays.',
+                subtitle: 'Location: North Building, 4th Floor'
+            },
+            bullets: ['Hosts a diverse range of live performances, including musicals, dramas, rakugo (Japanese verbal entertainment), and traditional Japanese arts.', 'Known as one of the premier entertainment venues in Fukuoka.', 'Offers a rich cultural experience for visitors of all ages.']
+            },
+            {
+            img: '../elements/places/fukuoka/united.jpg',
+            img2: '../elements/places/fukuoka/united1.jpg',
+            title: 'United Cinemas',
+            desc: 'United Cinemas Canal City 13 is conveniently located within the Canal City Hakata complex, making it an ideal destination for entertainment and relaxation. With its state-of-the-art facilities and diverse movie offerings, it stands out as a top choice for moviegoers in Fukuoka.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Buy tickets early, especially for popular or new releases.',
+                subtitle: 'Location: 5th Floor'
+            },
+            bullets: ['Features 13 movie screens, including an IMAX theater.', 'Screens a mix of international blockbusters and Japanese films.', 'Provides a comfortable and modern cinema experience.']
+            },
+            {
+            img: '../elements/places/fukuoka/taito.jpg',
+            img2: '../elements/places/fukuoka/taito1.jpg',
+            title: 'Taito Station',
+            desc: 'A lively arcade offering a wide range of games, from video games and pachinko to claw machines. It’s a fun spot for gamers of all skill levels looking for casual entertainment. The energetic atmosphere and variety of machines keep visitors coming back.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Try the UFO catchers for fun souvenirs, but watch your budget!',
+                subtitle: 'Location: Lower Levels'
+            },
+            bullets: ['Offers a variety of arcade games, including video games, pachinko, and UFO catchers (claw machines).', 'Popular among both locals and tourists for casual gaming fun.', 'Provides a lively atmosphere with a wide selection of games.']
+            },
+            {
+            img: '../elements/places/fukuoka/aqua.jpg',
+            img2: '../elements/places/fukuoka/aqua1.jpg',
+            title: 'Canal Aqua Panorama',
+            desc: 'The Canal Aqua Panorama is a mesmerizing water and light show performed every 30 minutes throughout the day. It features synchronized music, colorful lights, and choreographed fountains that captivate audiences.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Bring a camera for stunning photos, but keep gear dry near the water.',
+                subtitle: 'Location: Sun Plaza Stage'
+            },
+            bullets: ['A spectacular water and light show held every 30 minutes from 10:00 AM to 10:00 PM.', 'Combines music, lights, and water choreography for an unforgettable experience.', 'Especially enchanting during the evening when illuminated.']
+            },
+        ],
+        events: [
+            {
+            img: '../elements/places/fukuoka/festival.jpg',
+            img2: '../elements/places/fukuoka/festival1.jpg',
+            title: 'Anniversary Festival',
+            desc: 'The event features an Art Marche showcasing works by Kyushu-based artists and live performances by musicians and comedians. The festivities culminate in a circus performance on the B1F Sun Plaza Stage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Admission: Free',
+                subtitle: 'Location: B1F Sun Plaza Stage and Moon Walk'
+            },
+            bullets: ['Over 40 shops offering discounts, novelty giveaways, and limited-time menu items.', 'Art Marche featuring artwork by Kyushu-based artists', 'Live performances by musicians and comedians, culminating in a circus performance.']
+            },
+            {
+            img: '../elements/places/fukuoka/lunar.jpg',
+            img2: '../elements/places/fukuoka/lunar1.jpg',
+            title: 'Lunar New Year',
+            desc: 'Canal City Hakata hosts the "Welcome CANAL Lunar New Year" campaign, enhancing hospitality for international visitors. A multilingual concierge counter and duty-free shopping services are also available to assist guests during this festive period.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Visit the concierge counter for assistance in multiple languages',
+                subtitle: 'Location: Center Walk 2F'
+            },
+            bullets: ['Spend ¥10,000 or more at participating stores to enter a prize lottery.', 'Special discounts for WeChat Pay users.', 'Multilingual concierge services to assist international visitors.']
+            },
+            {
+            img: '../elements/places/fukuoka/illumination.jpg',
+            img2: '../elements/places/fukuoka/illumination1.jpg',
+            title: 'Canal Illumination',
+            desc: 'Canal Illumination transforms the entire Canal City Hakata complex into a luminous wonderland. Highlights include the "Wall of Light," "River of Light," and the debut of the 4-meter-tall "Light of Hope" sculpture, all synchronized with music and fountain shows.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Admission: Free',
+                subtitle: 'Location: B1F Sun Plaza Stage and surrounding areas'
+            },
+            bullets: ['"Light of Hope" centerpiece illuminating the interior of Canal City.', '"Canal Christmas Miracle of Light" 3D projection mapping show during the holiday season.', 'Various light installations, including the Wall of Light and River of Light.']
+            },
+            {
+            img: '../elements/places/fukuoka/summer.jpg',
+            img2: '../elements/places/fukuoka/summer1.jpg',
+            title: 'Summer Festival',
+            desc: 'Traditional summer festival activities including yukata (summer kimono) fashion shows, live music, dance performances, and food stalls serving seasonal treats like kakigori (shaved ice). The festive atmosphere attracts families and tourists alike.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Bring a camera for stunning photos, but keep gear dry near the water.',
+                subtitle: 'Usually held in July or August'
+            },
+            bullets: ['Family-friendly atmosphere with activities for kids and tourists alike.', 'Often includes games and prize giveaways typical of Japanese summer festivals.', 'Great opportunity to experience authentic Japanese summer traditions in a lively urban setting.']
+            },
+        ]
+    };
+
+    let currentCategory = 'shopping';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["shopping", "dining", "entertainment", "events"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/fukuoka/history2.jpeg',
+            img2: '../elements/places/fukuoka/history1.jpeg',
+            title: 'From Bubble to Bloom',
+            desc: 'Conceived during Japan’s "bubble economy" period but realized in the mid-1990s, Canal City Hakata was part of a vision to rejuvenate Fukuoka\'s downtown area and become a new kind of urban hub. Construction began in 1993, and the complex officially opened in April 1996. It was developed by Fukuoka Jisho Co., Ltd., and has continued to evolve with new shops, renovations, and technological upgrades while retaining its original playful spirit.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Connecting people, spaces, and experiences'
+            }
+        },
+        small1: {
+            img: '../elements/places/fukuoka/architecture2.jpeg',
+            img2: '../elements/places/fukuoka/architecture1.jpeg',
+            title: 'City of Curves',
+            desc: 'Canal City is a prime example of “experience-focused” urban architecture. Its buildings curve and spiral in a vibrant, organic layout that breaks away from the typical box-like malls. It features swooping ramps, balconies, circular patios, and a scenic artificial canal with bridges and water shows. At night, the canal transforms into a spectacle of light and sound, thanks to programmed fountain shows and projection mapping events that reflect off the bright, painted walls and mirrored windows. It creates a dreamlike atmosphere that feels theatrical and immersive.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Not just a mall—an experience in motion.',
+            }
+        },
+        small2: {
+            img: '../elements/places/fukuoka/1.jpg',
+            img2: '../elements/places/fukuoka/history3.jpg',
+            title: 'A Yamakasa Spectacle',
+            desc: 'Every July, Fukuoka erupts in celebration for one of its most beloved and energetic festivals: the Hakata Gion Yamakasa. One of the Kazariyama floats is typically displayed in the Canal City complex. Shops and restaurants often decorate with traditional motifs and run limited-time Yamakasa-themed promotions, menus, and sales. The open-air central stage occasionally hosts related events or performances leading up to the main day. The canal fountain shows may also feature special Yamakasa-themed music and visuals during the festival period.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where culture runs deep and floats reach high.',
+            }
+        },
+        small3: {
+            img: '../elements/places/fukuoka/2.jpg',
+            img2: '../elements/places/fukuoka/architecture3.jpeg',
+            title: 'Setsubun at Canal City',
+            desc: 'During Setsubun, Canal City hosts a lively mamemaki (bean-throwing) ceremony on its central stage. Costumed oni (demons) playfully appear, and participants throw roasted soybeans while chanting “Oni wa soto! Fuku wa uchi!” ("Demons out! Luck in!"). The event often includes traditional dance performances, taiko drum shows, and lucky prize giveaways for children and families. The complex’s shops also take part with Setsubun-themed treats and seasonal displays.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Chase out evil, welcome spring.',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

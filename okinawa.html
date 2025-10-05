@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okinawa: Churaumi Aquarium- Beautiful Ocean Aquarium</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/okinawa/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Dive Into Okinawa’s Ocean Wonders at <br><span class="highlight">Churaumi Aquarium</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A breathtaking marine wonder showcasing Okinawa’s rich ocean life and coral reefs. From majestic whale sharks to vibrant tropical fish, every exhibit immerses you in underwater magic. Whether exploring the deep sea or interactive displays, Churaumi Aquarium captivates visitors with awe-inspiring beauty and educational experiences.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/okinawa/4.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/okinawa/3.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/okinawa/5.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Okinawa Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Okinawa Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Okinawa Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Okinawa Churaumi Aquarium (沖縄美ら海水族館, Okinawa Churaumi Suizokukan) is a world-renowned aquarium located in Motobu Town, in the northern part of Okinawa Island. It is the centerpiece of Ocean Expo Park and one of Japan’s most popular attractions outside of the mainland. “Churaumi” combines the Okinawan word for “beautiful” (chura) and “ocean” (umi), a fitting name for this extraordinary facility that showcases the marine biodiversity of the Kuroshio Current and the surrounding Pacific Ocean.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="shopping">Shopping</button>
+                    <button class="tab" data-category="dining">Dining</button>
+                    <button class="tab" data-category="entertainment">Entertainment</button>
+                    <button class="tab" data-category="events">Events</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/okinawa/coral-sea-tank.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Okinawa’s Ocean Legacy Reimagined</h3>
+                        <p class="image-description">Living tribute to the island’s maritime roots and ecological future</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/okinawa/architecture1.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Architecture in Harmony with Ocean and Culture</h4>
+                                <p class="image-description">Designed by nature, inspired by Okinawa</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/okinawa/sea-of-tropical-fish-and-sea-of-sharks.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">From Sunlit Reefs to Deep-Sea Mysteries</h4>
+                                <p class="image-description">Kuroshio, Coral, and Beyond</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/okinawa/marine-mammal-and-sea-of-turtles.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Tropical Waters, Majestic Creatures</h4>
+                                <p class="image-description">Okinawa’s Living Ocean Showcase</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Churaumi Aquarium</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Nestled within the Ocean Expo Park, is a breathtaking fusion of marine wonder and island culture. Celebrated for its massive Kuroshio Sea tank and diverse sea life—including whale sharks and manta rays—it brings visitors face-to-face with the mysteries of the deep. From hands-on tide pools to open-air dolphin shows, Churaumi offers an unforgettable journey through Okinawa’s vibrant marine ecosystems and conservation efforts.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/okinawa/1.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/okinawa/2.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Churaumi Aquarium. Where Ocean Giants Greet You.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                            <li><strong>Opening Hours: </strong>
+                                <li class="ml-4"><strong>March to September:</strong> 8:30 AM – 6:30 PM (last entry at 5:30 PM) </li>
+                                <li class="ml-4"><strong>October to February:</strong> 8:30 AM – 6:00 PM (last entry at 5:00 PM)</li>               
+                            <li><strong>Admission: </strong>
+                                <li class="ml-4">Adults: ¥2,180</li>
+                                <li class="ml-4">Elementary/Junior High Students: ¥710</li>
+                                <li class="ml-4">Children under 6: Free</li>
+                                <li class="ml-4">Discounted tickets available after 4 PM (“Twilight Tickets”)</li>
+                            </li>
+                            <li><strong>Address: </strong>424 Ishikawa, Motobu-cho, Kunigami-gun, Okinawa 905-0206, Japan </li>
+                            <li><strong>Access: </strong>
+                                <li class="ml-4">From Naha Airport: Approximately 2 hours by car via Okinawa Expressway</li>
+                                <li class="ml-4">By Bus: Direct highway buses (Yanbaru Express or Airport Limousine Bus) are available from Naha to the aquarium.</li>
+                            </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='shurijo.html';">
+            <img src="../elements/places/shurijo4.jpg" alt="Okinawa Shurijo Castle Ruins">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Okinawa Shurijo Castle Ruins</h3>
+                <p>Echoes of the Ryukyu Kingdom amid fiery red fortress stones</p>
+            </div>
+        </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='osaka.html';">
+            <img src="../elements/places/osaka1.jpeg" alt="Osaka Dotonbori District">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Osaka Dotonbori District</h3>
+                <p>A neon wonderland of street food, drama, and buzzing nights</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Churaumi Aquarium Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Timing & Planning</h3>
+                                        <ul>
+                                            <li><strong>Arrive Early:</strong> Beat the crowds by arriving shortly after opening—especially during weekends or holidays.</li>
+                                            <li><strong>Plan for Half a Day:</strong> Allocate at least 3–4 hours to enjoy all exhibits, gardens, and surrounding attractions.</li>
+                                            <li><strong>Check Event Schedules:</strong> Look ahead for feeding times, dolphin shows, and seasonal events to time your visit perfectly.</li>
+                                            <li><strong>Off-Season Advantage:</strong> Visiting in late fall or early spring avoids crowds and offers pleasant weather.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Access & Navigation</h3>
+                                        <ul>
+                                            <li><strong>Rent a Car:</strong> Public transport is limited—renting a car makes it easier to reach the aquarium and explore the area.</li>
+                                            <li><strong>Free Parking:</strong> The aquarium has large, free parking lots just a short walk from the entrance.</li>
+                                            <li><strong>Use the North Gate:</strong> If it’s busy, try entering via the North Gate for a quieter start.</li>
+                                            <li><strong>Combine with Nearby Sights:</strong> Plan visits to nearby attractions like Emerald Beach, Ocean Expo Park, or Bise Fukugi Tree Road.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Information & Tips</h3>
+                                        <ul>
+                                            <li><strong>Bring Sunscreen & Water:</strong> Okinawa’s sun can be strong—stay hydrated and protected, especially in outdoor areas.</li>
+                                            <li><strong>Wear Comfy Shoes:</strong> You’ll be walking through large indoor and outdoor sections, including sloped paths.</li>
+                                            <li><strong>Pack Light Snacks:</strong> Outside food isn’t allowed inside, but you can picnic at nearby parks or rest zones.</li>
+                                            <li><strong>Use Coin Lockers:</strong> Stash bulky items in the aquarium’s coin lockers for a hands-free visit.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Okinawa', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+    
+    const cityId = 1894616; 
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Okinawa', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        shopping: [
+            {
+            img: '../elements/places/okinawa/gift.jpg',
+            img2: '../elements/places/okinawa/gift1.jpg',
+            title: 'Aquarium Gift Shop',
+            desc: 'The Aquarium Gift Shop offers a delightful selection of marine-themed souvenirs perfect for all ages. From adorable plush sea creatures to elegant jewelry inspired by Okinawan marine life, you’ll find something special to remember your visit by or to gift to loved ones.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Take the ocean home with you!',
+                subtitle: 'Marine memories in every gift'
+            },
+            bullets: ['Wide range of marine-themed plush toys and apparel', 'Exclusive Okinawa Churaumi branded souvenirs','Unique jewelry and decor inspired by local ocean life']
+            },
+            {
+            img: '../elements/places/okinawa/craft.jpg',
+            img2: '../elements/places/okinawa/craft1.jpg',
+            title: 'Local Craft Booth',
+            desc: 'Explore a vibrant collection of handmade crafts from Okinawa’s artisans. Featuring exquisite Ryukyu glassware, traditional textiles, and pottery, the Local Craft Booth highlights the island’s rich artistic heritage and supports local creators.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Authentic Okinawa, handcrafted with love.',
+                subtitle: 'Discover the art of the islands'
+            },
+            bullets: ['Hand-blown Ryukyu glassware in vivid colors', 'Traditional Okinawan pottery and ceramics','Textiles and crafts made with island materials']
+            },
+            {
+            img: '../elements/places/okinawa/market.jpg',
+            img2: '../elements/places/okinawa/market1.jpg',
+            title: 'Seafood Market ',
+            desc: 'The Seafood Market offers fresh catches from Okinawa’s waters, including local delicacies and ready-to-eat snacks. Perfect for food lovers looking to experience authentic island flavors or take home specialty items.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Fresh flavors from Okinawa’s seas',
+                subtitle: 'Savor the ocean’s bounty'
+            },
+            bullets: ['Fresh and dried seafood specialties','Ready-to-eat snacks like dried fish and seaweed','Locally sourced ingredients with rich island flavors']
+            },
+            {
+            img: '../elements/places/okinawa/eco.jpg',
+            img2: '../elements/places/okinawa/eco1.jpeg',
+            title: 'Eco-Friendly Products',
+            desc: 'This shop section features sustainable, eco-friendly products inspired by Okinawa’s marine environment. From reusable bags to biodegradable souvenirs, these goods help promote environmental awareness and protect the ocean for future generations.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Eco-conscious choices inspired by the ocean',
+                subtitle: 'Sustain your style, save the seas'
+            },
+            bullets: ['Reusable and biodegradable souvenir items','Products made from recycled ocean plastics','Educational materials promoting marine conservation']
+            }
+        ],
+        dining: [
+            {
+            img: '../elements/places/okinawa/kuroshio.jpg',
+            img2: '../elements/places/okinawa/kuroshio1.jpeg',
+            title: 'Kuroshio Cafe',
+            desc: 'Perched next to the mesmerizing Kuroshio Sea tank, Kuroshio Cafe offers a relaxing space where you can enjoy light meals and desserts while gazing at whale sharks and manta rays. It’s the perfect blend of dining and spectacle.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Savor local flavors with a panoramic tank view',
+                subtitle: 'Dine beside giants of the deep'
+            },
+            bullets: ['Floor-to-ceiling views of the Kuroshio Sea tank','Okinawa-style taco rice and seafood pasta','Spacious seating ideal for families and groups']
+            },
+            {
+            img: '../elements/places/okinawa/sweet.jpg',
+            img2: '../elements/places/okinawa/sweet1.jpg',
+            title: 'Tropical Sweets Stand',
+            desc: 'A colorful corner for dessert lovers, the Tropical Sweets Stand specializes in refreshing treats made from Okinawan fruits like mango, pineapple, and dragon fruit. It’s a quick, fun stop for anyone craving sugar and sunshine.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cool down with island-inspired sweetness',
+                subtitle: 'Taste Okinawa’s sunny side in every bite'
+            },
+            bullets: ['Fresh fruit parfaits and tropical-flavored ice cream','Seasonal shaved ice with local syrups','Perfect for kids and quick snack breaks']
+            },
+            {
+            img: '../elements/places/okinawa/umino.jpg',
+            img2: '../elements/places/okinawa/umino1.jpg',
+            title: 'Umi-no-Ichiba',
+            desc: 'This full-service restaurant highlights traditional Okinawan cuisine with ingredients sourced from local waters and farms. From seaweed soup to grilled fish, Umi-no-Ichiba offers a rich cultural and culinary experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Authentic Okinawan taste from ocean to table',
+                subtitle: 'Local dining with deep-sea roots'
+            },
+            bullets: ['Traditional dishes like goya champuru and Okinawa soba','Set meals with fresh seafood and vegetables','Indoor and shaded outdoor seating available']
+            },
+            {
+            img: '../elements/places/okinawa/snack.jpg',
+            img2: '../elements/places/okinawa/snack1.jpg',
+            title: 'Snack Stalls',
+            desc: 'Scattered around the aquarium grounds, these snack stalls serve up local favorites perfect for a fast and satisfying break. Whether it’s savory, sweet, or somewhere in between, there’s something for every craving.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Quick bites packed with Okinawan flavor',
+                subtitle: 'Grab, go, and munch island-style'
+            },
+            bullets: ['Local street food like sata andagi (Okinawan donuts)','Affordable and fast service for visitors on the move','Great for sampling multiple small dishes']
+            },
+        ],
+        entertainment: [
+            {
+            img: '../elements/places/okinawa/dolphin.jpg',
+            img2: '../elements/places/okinawa/dolphine1.jpg',
+            title: 'Dolphin Show',
+            desc: 'Experience the energy and intelligence of Okinawa’s dolphins at the Okichan Theater. Set against a scenic ocean backdrop, these shows combine acrobatics, synchronized jumps, and playful interactions that captivate all ages.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Grace and agility leap above the sea',
+                subtitle: 'Smart, splashy, and full of surprises'
+            },
+            bullets: ['Choreographed routines with music and commentary','Free outdoor seating overlooking the East China Sea','Learn about dolphin behavior and training techniques']
+            },
+            {
+            img: '../elements/places/okinawa/touch.jpg',
+            img2: '../elements/places/okinawa/touch1.jpg',
+            title: 'Touch Pool',
+            desc: 'This interactive zone invites visitors to gently touch and observe live starfish, sea cucumbers, and other shallow-water creatures. Ideal for kids and curious minds, it\'s a hands-on way to explore marine biodiversity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Learning begins with a touch',
+                subtitle: 'Reach out and meet the sea'
+            },
+            bullets: ['Supervised interaction with gentle sea life','Informational signs about each species','Sanitizing stations for safety and cleanliness']
+            },
+            {
+            img: '../elements/places/okinawa/theater.jpg',
+            img2: '../elements/places/okinawa/theater1.jpg',
+            title: 'Deep Sea Theater',
+            desc: 'Discover the secrets of the deep in this mini theater showcasing awe-inspiring footage of rarely seen marine creatures. Educational and visually stunning, the theater connects science and storytelling.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The deep ocean, on the big screen',
+                subtitle: 'Descend into the mysteries below'
+            },
+            bullets: ['Short documentaries on deep-sea ecosystems','Seating area for rest and immersive viewing','Multilingual subtitles or audio options available']
+            },
+            {
+            img: '../elements/places/okinawa/feeding.jpg',
+            img2: '../elements/places/okinawa/feeding1.jpeg',
+            title: 'Feeding Time',
+            desc: 'Gather around the Kuroshio Tank to witness whale sharks, manta rays, and schools of fish being fed by divers. It’s a stunning moment of organized chaos and a glimpse into the aquarium’s care practices.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Watch giants dine in real time',
+                subtitle: 'A frenzy of fins and food'
+            },
+            bullets: ['Daily schedules posted near the tank','Live diver commentary during feedings','Best time to see active swimming and behavior']
+            },
+        ],
+        events: [
+            {
+            img: '../elements/places/okinawa/night.jpg',
+            img2: '../elements/places/okinawa/night1.jpg',
+            title: 'Night Aquarium Visits',
+            desc: 'Experience the aquarium in a whole new light—literally. During special evening hours, Churaumi’s tanks are softly lit, creating a magical, serene atmosphere perfect for romantic walks or reflective solo visits.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'When the lights dim, the ocean glows',
+                subtitle: 'See the sea after sundown'
+            },
+            bullets: ['Calmer crowd and ambient music for a relaxed vibe','Illuminated Kuroshio Tank with nocturnal marine behavior','Exclusive night-time café menus and photo ops']
+            },
+            {
+            img: '../elements/places/okinawa/festival.jpg',
+            img2: '../elements/places/okinawa/festival1.jpg',
+            title: 'Seasonal Festivals',
+            desc: 'Celebrate Okinawan traditions alongside marine wonders. These festivals combine local food stalls, music, dance, and seasonal displays, offering a cultural bonus to your aquarium adventure.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Ocean fun meets island spirit',
+                subtitle: 'Culture and creatures collide'
+            },
+            bullets: ['Live Eisa drumming and Okinawan folk dances','Seasonal decorations (e.g., cherry blossoms, summer matsuri lanterns)','Regional food pop-ups and limited-edition merchandise']
+            },
+            {
+            img: '../elements/places/okinawa/talk.jpg',
+            img2: '../elements/places/okinawa/talk1.jpg',
+            title: 'Conservation Talks',
+            desc: 'Engage with marine biologists, conservationists, and aquarium staff in interactive sessions about ocean health, endangered species, and what you can do to help.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Learn to protect what you love',
+                subtitle: 'From ocean facts to action steps'
+            },
+            bullets: ['Real-time Q&A with marine experts','Topics on coral reef recovery, plastic waste, and climate effects','Hands-on displays and take-home eco guides']
+            },
+            {
+            img: '../elements/places/okinawa/kid1.jpg',
+            img2: '../elements/places/okinawa/kid.jpg',
+            title: 'Kids’ Workshops',
+            desc: 'These fun, educational workshops are designed for young explorers. Kids learn about marine ecosystems through crafts, experiments, and touch tanks—all while playing.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where curiosity meets the sea',
+                subtitle: 'Little hands, big discoveries'
+            },
+            bullets: ['DIY marine-themed art and origami stations','Safe encounters with sea stars, hermit crabs, and more','Ocean-themed storytelling and games led by staff']
+            },
+        ]
+    };
+
+    let currentCategory = 'shopping';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["shopping", "dining", "entertainment", "events"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/okinawa/coral-sea-tank.jpg',
+            img2: '../elements/places/okinawa/deep-sea-world.jpg',
+            title: 'A Gateway to the Deep Blue',
+            desc: 'Opened in 2002 as part of Ocean Expo Park, Okinawa Churaumi Aquarium replaced the original 1975 expo facility with a state-of-the-art center dedicated to marine science, conservation, and cultural heritage. Designed with cutting-edge technology and sustainability in mind, the aquarium offers immersive exhibits—like its massive tank for whale sharks and manta rays—that reflect Okinawa’s deep connection to the ocean and its ongoing efforts to harmonize tourism with ecological stewardship.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where science meets the sea'
+            }
+        },
+        small1: {
+            img: '../elements/places/okinawa/architecture1.jpg',
+            img2: '../elements/places/okinawa/architecture2.jpg',
+            title: 'Sea-Inspired Design',
+            desc: 'Okinawa Churaumi Aquarium’s architecture harmonizes with its oceanfront setting through tiered levels that flow toward the sea, blurring the line between exhibit and nature. Using real, filtered seawater, the design mimics natural marine conditions. Highlights include the iconic Kuroshio Sea tank with its vast acrylic panel, and the use of local materials like coral stone and breezy open-air corridors that connect visitors to the island’s natural and cultural spirit.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where the building meets the sea',
+            }
+        },
+        small2: {
+            img: '../elements/places/okinawa/sea-of-tropical-fish-and-sea-of-sharks.jpg',
+            img2: '../elements/places/okinawa/manatee-habitat.jpg',
+            title: 'Okinawa’s Ocean Spectacle',
+            desc: 'At the heart of Okinawa Churaumi Aquarium lies the Kuroshio Sea, a record-breaking tank where massive whale sharks and graceful manta rays cruise through one of the world’s largest acrylic panels—an awe-inspiring experience for all ages. Nearby, the Coral Sea Tank thrives under open skies, sustaining live corals and vibrant reef fish in natural sunlight. For something more mysterious, explore Deep Sea World, where pressure-adapted creatures like giant isopods and bioluminescent organisms bring the dark ocean depths to life.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where whale sharks glide and deep-sea creatures glow',
+            }
+        },
+        small3: {
+            img: '../elements/places/okinawa/marine-mammal-and-sea-of-turtles.jpg',
+            img2: '../elements/places/okinawa/kuroshio-sea.jpg',
+            title: 'Predators & Playful Giants',
+            desc: 'The Sea of Tropical Fish and Sea of Sharks exhibits immerse visitors in the vibrant yet perilous world of subtropical marine life, showcasing dazzling reef fish alongside tiger sharks and hammerheads to highlight predator-prey balance. Nearby, the Marine Mammal and Sea Turtle Pools feature dolphins and endangered turtles in open-air habitats, including educational “Okichan Theater” shows. The Manatee Habitat offers a rare chance to observe West Indian manatees, reinforcing Okinawa’s commitment to marine conservation.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Marine wonders, from playful to powerful',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

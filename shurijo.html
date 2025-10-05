@@ -1,0 +1,1186 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Okinawa: Shurijo Castle - The Heart of the Ryukyu Kingdom</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/shurijo/header.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+        /* Cherry Blossom Cursor */
+        #custom-cursor {
+          position: fixed;
+          top: 0;
+          left: 0;
+          width: 36px;
+          height: 36px;
+          pointer-events: none;
+          z-index: 9999;
+          transform: translate(-50%, -50%);
+          transition: transform 0.12s cubic-bezier(.4,2,.6,1);
+          will-change: transform;
+          background: none;
+        }
+        body {
+          cursor: none;
+        }
+        .cursor-sparkle {
+          position: fixed;
+          pointer-events: none;
+          z-index: 9998;
+          width: 10px;
+          height: 10px;
+          border-radius: 50%;
+          background: radial-gradient(circle, #fff6fb 60%, #eab0d1 100%);
+          opacity: 0.7;
+          animation: sparkle-fade 0.7s forwards;
+        }
+        @keyframes sparkle-fade {
+          to {
+            opacity: 0;
+            transform: scale(1.8);
+          }
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- Cherry Blossom Cursor -->
+    <div id="custom-cursor"></div>
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Whispers of History at <br><span class="highlight">Shurijo Castle Ruins</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A living tapestry of history and resilience, Shurijo Castle Ruins echo the grandeur of the Ryukyu Kingdom. Stroll through stone gates and scarlet walls, where past and present converge. From sweeping views to cultural performances, the site radiates Okinawa’s spirit, pride, and enduring legacy.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/shurijo/1.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/shurijo/4.jpeg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/shurijo/6.jpeg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Okinawa Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Okinawa Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Okinawa Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Shurijo Castle (首里城, Shurijō) was the royal palace of the Ryukyu Kingdom and stands as a cultural and architectural cornerstone of Okinawa’s identity. Though repeatedly destroyed and rebuilt over centuries, including a devastating fire in 2019, Shurijo remains a cherished landmark and a UNESCO World Heritage Site as part of the “Gusuku Sites and Related Properties of the Kingdom of Ryukyu.” 
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="heritage_history">Heritage & History</button>
+                    <button class="tab" data-category="local_eats_nearby">Local Eats Nearby</button>
+                    <button class="tab" data-category="crafts_souvenirs">Crafts & Souvenirs</button>
+                    <button class="tab" data-category="cultural_encounters">Cultural Encounters</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/shurijo/8.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">The Resilient Legacy of Shurijo Castle</h3>
+                        <p class="image-description">Centuries of history, rebuilt with pride and purpose</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/shurijo/2.jpeg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">The Architectural Soul of the Ryukyu Kingdom</h4>
+                                <p class="image-description">A castle rooted in tradition, shaped by the seas</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/shurijo/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Gateways to the Ryukyu Soul</h4>
+                                <p class="image-description">Okinawa’s royal pageantry where tradition meets celebration</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/shurijo/9.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Rebuilding Royalty</h4>
+                                <p class="image-description">A Cultural Journey Through Shurijo Castle Park</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Shurijo Castle Ruins</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Shurijo Castle Ruins, nestled in the hills of Naha, Okinawa, echo the rich legacy of the Ryukyu Kingdom. Once the royal heart of Okinawa, the site blends centuries-old stonework, traditional gates, and sweeping city views. Though damaged by fire, its spirit endures through ongoing restoration and cultural reverence. Visitors can explore the grounds, absorb Okinawan heritage, and witness a proud symbol of resilience and identity in Japan’s southern islands.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/shurijo/shurijo.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/shurijo/7.jpeg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Walk the ancient paths of Okinawa’s proud past at the enduring soul of the Ryukyu Kingdom</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours: </strong>8:30 AM to 7:00 PM (last entry at 6:30 PM); hours may vary slightly during holidays or special events.</li>              
+                        <li><strong>Closed: </strong>First Wednesday of July and the following day; some closures during typhoons or restoration activities.</li>              
+                        <li><strong>Admission: </strong>400–800 yen (depending on accessible areas during reconstruction)</li>
+                        <li><strong>Address: </strong>1-2 Shurikinjocho, Naha, Okinawa 903-0815</li>
+                        <li><strong>Access: </strong>From Naha Bus Terminal or Yui Rail Shuri Station, it’s about a 15-20 minute walk uphill.</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='osaka.html';">
+            <img src="../elements/places/osaka1.jpeg" alt="Osaka Dotonbori District">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Osaka Dotonbori District</h3>
+                <p>A neon wonderland of street food, drama, and buzzing nights</p>
+            </div>
+        </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='saitama.html';">
+            <img src="../elements/places/saitama1.jpg" alt="Saitama Kawagoe (Little Edo)">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Saitama Kawagoe (Little Edo)</h3>
+                <p>Step into Edo-era charm with old storehouses and sweet potatoes</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Shurijo Castle Ruins Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Historical Awareness</h3>
+                                        <ul>
+                                            <li><strong>Learn Before You Go:</strong> Read about the Ryukyu Kingdom to appreciate the site's historical significance.</li>
+                                            <li><strong>Respect Sacred Areas:</strong> Some zones are still spiritually important—avoid loud behavior or eating near them.</li>
+                                            <li><strong>Understand the Fire Damage:</strong> Parts of the castle remain under reconstruction since the 2019 fire; this is part of its living story.</li>
+                                            <li><strong>Check for Updates:</strong> Restoration progress changes regularly—visit the official website for current accessibility.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Navigation & Timing</h3>
+                                        <ul>
+                                            <li><strong>Arrive Early or Late:</strong> Morning and late afternoon are best for soft lighting and fewer crowds.</li>
+                                            <li><strong>Wear Comfortable Shoes:</strong> The terrain includes cobblestone paths and gentle slopes—avoid sandals.</li>
+                                            <li><strong>Bring Water:</strong> Okinawa’s subtropical climate can be humid—stay hydrated during your exploration.</li>
+                                            <li><strong>Use the Map:</strong> Grab a site map to find hidden corners and viewpoints that are easily missed.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Photography Etiquette:</strong> Take photos respectfully and avoid using flash in historical areas.</li>
+                                            <li><strong>Quiet Reflection:</strong> This is a place of pride for Okinawans—speak softly, especially near memorial markers.</li>
+                                            <li><strong>No Littering:</strong> Help preserve the ruins by using designated bins or carrying trash out with you.</li>
+                                            <li><strong>Support Local Crafts:</strong> Visit the on-site gift shop for handmade Ryukyuan items and support local artisans.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+    // Cherry Blossom SVG as cursor
+    const cursor = document.getElementById('custom-cursor');
+    cursor.innerHTML = `
+      <svg width="36" height="36" viewBox="0 0 36 36" fill="none">
+        <g>
+          <ellipse cx="18" cy="24" rx="6" ry="10" fill="#F8BBD0" />
+          <ellipse cx="12" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(-30 12 14)" />
+          <ellipse cx="24" cy="14" rx="4" ry="7" fill="#F8BBD0" transform="rotate(30 24 14)" />
+          <ellipse cx="10" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(-60 10 22)" />
+          <ellipse cx="26" cy="22" rx="3" ry="5" fill="#F8BBD0" transform="rotate(60 26 22)" />
+          <circle cx="18" cy="19" r="2.5" fill="#F06292"/>
+        </g>
+      </svg>
+    `;
+     document.addEventListener('mousemove', (e) => {
+      cursor.style.left = e.clientX + 'px';
+      cursor.style.top = e.clientY + 'px';
+
+      // Sparkle effect
+      const sparkle = document.createElement('div');
+      sparkle.className = 'cursor-sparkle';
+      sparkle.style.left = (e.clientX - 5) + 'px';
+      sparkle.style.top = (e.clientY - 5) + 'px';
+      document.body.appendChild(sparkle);
+      setTimeout(() => sparkle.remove(), 700);
+    });
+     document.querySelectorAll('a, button').forEach(el => {
+      el.addEventListener('mouseenter', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1.3)';
+      });
+      el.addEventListener('mouseleave', () => {
+        cursor.style.transform = 'translate(-50%, -50%) scale(1)';
+      });
+    });
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Okinawa', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9';
+    
+    const cityId = 1894616;
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Okinawa', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        heritage_history: [
+            {
+            img: '../elements/places/shurijo/seiden.jpg',
+            img2: '../elements/places/shurijo/seiden1.jpg',
+            title: 'Seiden Ruins',
+            desc: 'The Seiden was the main hall of Shurijo Castle, serving as the political and cultural center of the Ryukyu Kingdom. Though largely destroyed, its ruins still convey the majesty of Ryukyu’s royal heritage, where important ceremonies and state affairs once took place.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Heart of the Ryukyu Kingdom’s royal power',
+                subtitle: 'Echoes of ancient palace grandeur'
+            },
+            bullets: ['Central gathering place for royal audiences and rituals','Archaeological site revealing traditional Okinawan architecture','Scenic views overlooking the castle grounds and surrounding city']
+            },
+            {
+            img: '../elements/places/shurijo/sonohyan.jpg',
+            img2: '../elements/places/shurijo/sonohyan1.jpg',
+            title: 'Sonohyan-utaki Ishimon',
+            desc: 'This UNESCO-designated stone gate marks the entrance to a sacred grove where Ryukyu kings prayed for safe travels. Sonohyan-utaki Ishimon exemplifies Ryukyuan spirituality and its harmonious connection with nature.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sacred gateway of spiritual protection',
+                subtitle: 'Where kings prayed before journeys'
+            },
+            bullets: ['UNESCO World Heritage Site for its cultural significance','Traditional limestone construction with symbolic carvings','Still revered as a spiritual site by locals today']
+            },
+            {
+            img: '../elements/places/shurijo/senkaimon.jpg',
+            img2: '../elements/places/shurijo/senkaimon1.jpg',
+            title: 'Kankaimon Gate',
+            desc: 'The Kankaimon Gate is the grand southern entrance to Shurijo Castle. It symbolized the authority and dignity of the Ryukyu Kingdom, welcoming nobility and visitors into the royal precincts.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The majestic gateway of royal welcome',
+                subtitle: 'Entrance to the heart of Shurijo Castle'
+            },
+            bullets: ['Restored gate showcasing traditional Okinawan design','Features vibrant red lacquer and decorative tiles','Important ceremonial passage during castle festivals']
+            },
+            {
+            img: '../elements/places/shurijo/enkakuji.jpg',
+            img2: '../elements/places/shurijo/engakuji1.jpg',
+            title: 'Enkaku-ji Temple',
+            desc: 'The Enkaku-ji Temple, once located within Shurijo Castle’s grounds, served as a religious sanctuary for the royal family. Though only remnants remain, it reflects the blend of Buddhism and native beliefs in Okinawan culture.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Echoes of temple prayers within castle walls',
+                subtitle: 'Spiritual anchor of Ryukyu ancestors'
+            },
+            bullets: ['Site of ancestor worship and royal prayers','Combines Chinese and Japanese architectural influences','Quiet space offering reflection amidst castle ruins']
+            }
+        ],
+        local_eats_nearby: [
+            {
+            img: '../elements/places/shurijo/shimujo.jpg',
+            img2: '../elements/places/shurijo/shimujo1.jpg',
+            title: 'Shimujo',
+            desc: 'Shimujo is a beloved local eatery known for its hearty Okinawa soba and tender slow-cooked pork dishes. The intimate, homestyle atmosphere invites visitors to savor traditional recipes passed down through generations, offering an authentic taste of island comfort food.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Authentic Okinawan flavors in a cozy setting',
+                subtitle: 'Home-cooked meals that warm the soul'
+            },
+            bullets: ['Specializes in Okinawa soba with rich pork broth.','Uses locally sourced ingredients for fresh, seasonal dishes.','Friendly service in a family-run environment.']
+            },
+            {
+            img: '../elements/places/shurijo/ryukyu.jpg',
+            img2: '../elements/places/shurijo/ryukyu1.jpg',
+            title: 'Ryukyu Sabo Ashibiuna',
+            desc: 'Ryukyu Sabo Ashibiuna offers a serene dining experience nestled in a traditional courtyard. Guests can enjoy classic island dishes like goya champuru and rafute, prepared with authentic techniques that celebrate Okinawa’s rich culinary heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Okinawan flavors served in a charming courtyard',
+                subtitle: 'Step into tradition with every bite'
+            },
+            bullets: ['Traditional Okinawan dishes including goya champuru and rafute.','Peaceful courtyard seating with lush greenery.','Focus on fresh, locally grown vegetables.']
+            },
+            {
+            img: '../elements/places/shurijo/cafe.jpg',
+            img2: '../elements/places/shurijo/cafe1.jpg',
+            title: 'Yagiya Café',
+            desc: 'Yagiya Café is the perfect spot to cool down and recharge with refreshing treats. Famous for its mango shaved ice and beni-imo parfaits, this casual café blends Okinawan ingredients into delicious desserts that offer a sweet taste of the islands.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Refresh with island-inspired desserts and drinks',
+                subtitle: 'Sweet relief after exploring Shurijo'
+            },
+            bullets: ['Specializes in mango shaved ice and purple sweet potato parfaits.','Casual, friendly atmosphere ideal for a quick break.','Uses seasonal, fresh Okinawan fruits and flavors.']
+            },
+            {
+            img: '../elements/places/shurijo/garden.jpeg',
+            img2: '../elements/places/shurijo/garden1.jpeg',
+            title: 'Ukishima Garden',
+            desc: 'Ukishima Garden serves innovative Okinawan-fusion cuisine with an emphasis on organic and sustainable ingredients. The menu balances traditional flavors with contemporary presentation, offering a fresh and healthy dining experience just steps from Shurijo Castle.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Organic Okinawan fusion in a modern setting',
+                subtitle: 'Healthy dining meets island tradition'
+            },
+            bullets: ['Organic, locally sourced ingredients with Okinawan fusion twists.','Stylish, modern interior perfect for relaxing meals.','Wide range of vegetarian and gluten-free options.']
+            },
+        ],
+        crafts_souvenirs: [
+            {
+            img: '../elements/places/shurijo/textile.jpg',
+            img2: '../elements/places/shurijo/textile1.jpg',
+            title: 'Shuri Textile Studio',
+            desc: 'Located near the castle ruins, Shuri Textile Studio preserves the centuries-old craft of bingata, Okinawa’s colorful resist-dyeing technique. This working atelier invites visitors to watch artisans at the loom or participate in hands-on dyeing experiences using natural pigments and stencils once reserved for nobility.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Step into the delicate rhythm of Ryukyuan threads',
+                subtitle: 'Patterns of the past, woven for today'
+            },
+            bullets: ['Witness traditional bingata dyeing in progress','Join a textile workshop and create your own cloth','Shop scarves, fans, and garments with royal-era patterns']
+            },
+            {
+            img: '../elements/places/shurijo/pottery.jpg',
+            img2: '../elements/places/shurijo/pottery1.jpg',
+            title: 'Yachimun Pottery Shops',
+            desc: 'These pottery shops around Shuri offer a gateway into yachimun, Okinawan ceramics characterized by earthy glazes and playful, symbolic motifs. Whether you\'re after tea cups or decorative lions (shisa), each piece is a blend of practicality and artistry, reflecting both local tradition and individual craftsmanship.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Clay shaped by culture, fired with island soul',
+                subtitle: 'Bring home a piece of Okinawa’s earth'
+            },
+            bullets: ['Handcrafted plates, cups, and sake bottles','Learn about the kiln-firing process and design styles','Find shisa statues to guard your home with island spirit']
+            },
+            {
+            img: '../elements/places/shurijo/shuri.jpg',
+            img2: '../elements/places/shurijo/shuri1.jpg',
+            title: 'Shuri Ryusen',
+            desc: 'Shuri Ryusen is both a workshop and gallery specializing in coral-dyeing—a distinct Okinawan art form that uses real coral fossils as stamps. Guests can try this unique print method on fabric items, combining vivid natural colors with underwater-inspired patterns for one-of-a-kind souvenirs.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Art born from coral, made by your own hands',
+                subtitle: 'Dye your memories with Okinawa’s colors'
+            },
+            bullets: ['Coral-stamp your own tote bags or T-shirts','Discover rare dye techniques only found in Okinawa','Browse an art shop filled with marine-inspired gifts']
+            },
+            {
+            img: '../elements/places/shurijo/market.jpg',
+            img2: '../elements/places/shurijo/market1.jpg',
+            title: 'Local Markets',
+            desc: 'Wander the vibrant markets around Shuri and uncover treasures beyond typical souvenirs. These bustling spots offer local produce, traditional sweets, natural soaps, and handmade crafts—all infused with Okinawa’s island identity. Perfect for last-minute gifts or authentic keepsakes.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From farm to hand—Okinawan flavors and finds',
+                subtitle: 'Where castle walls meet street stalls'
+            },
+            bullets: ['Try chinsuko cookies and brown sugar confections','Browse sea salt blends and herbal bath goods','Meet artisans selling handmade trinkets and textiles']
+            },
+        ],
+        cultural_encounters: [
+            {
+            img: '../elements/places/shurijo/dance.jpg',
+            img2: '../elements/places/shurijo/dance1.jpg',
+            title: 'Dance Shows',
+            desc: 'Immerse yourself in the grace of Ryukyuan court dances, once performed for kings and envoys. With vibrant kimonos, slow gestures, and poetic music, these performances breathe life into Okinawa’s royal past.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Elegance in motion, rooted in royalty',
+                subtitle: 'Watch ancient rhythms tell royal tales'
+            },
+            bullets: ['Performed at cultural halls and outdoor stages', 'Features traditional instruments like the sanshin','Dances narrate folk stories, nature, and nobility']
+            },
+            {
+            img: '../elements/places/shurijo/day.jpg',
+            img2: '../elements/places/shurijo/day1.jpg',
+            title: 'Castle Park Cultural Days',
+            desc: 'Held periodically in the Shurijo Castle Park area, Cultural Days offer visitors interactive experiences in Okinawan arts, crafts, and customs. It\'s a rare opportunity to actively engage with centuries-old traditions.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A weekend of hands-on Ryukyu tradition',
+                subtitle: 'History you can touch, taste, and try'
+            },
+            bullets: ['Try sanshin, tea ceremony, and calligraphy','Free or low-cost entry to most workshops','Great for families and cultural explorers']
+            },
+            {
+            img: '../elements/places/shurijo/festival.jpeg',
+            img2: '../elements/places/shurijo/festival1.jpeg',
+            title: 'Shurijo Festival',
+            desc: 'This annual October event recreates the grand royal processions and ceremonies of the Ryukyu Kingdom. Performers in period dress parade through town, reenacting coronation rites and showcasing Okinawan pride.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Every October, the Ryukyu Kingdom returns',
+                subtitle: 'Step into a royal procession of the past'
+            },
+            bullets: ['Full-scale reenactment of royal coronations','Parades feature 1,000+ participants in costume','Street food and cultural performances all week']
+            },
+            {
+            img: '../elements/places/shurijo/costume.jpeg',
+            img2: '../elements/places/shurijo/costume1.jpg',
+            title: 'Costume Photo',
+            desc: 'Rent traditional Ryukyuan attire, including ornate headpieces and robes, and pose within historic castle backdrops. A unique, immersive way to commemorate your visit to Shuri’s royal heart.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'BBecome Ryukyu royalty for a day',
+                subtitle: 'Dress the part—capture a legacy'
+            },
+            bullets: ['Choose from king, queen, or courtier costumes','Guided photo shoot or self-service options','Perfect for couples, solo travelers, or families']
+            },
+        ]
+    };
+
+    let currentCategory = 'heritage_history';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["heritage_history", "local_eats_nearby", "crafts_souvenirs", "cultural_encounters"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/shurijo/8.jpg',
+            img2: '../elements/places/shurijo/architecture2.jpg',
+            title: 'The Heart of the Ryukyu Kingdom',
+            desc: 'Shurijo Castle, originally built in the late 14th century by the Ryukyu kings, stood as the political and cultural heart of the Ryukyu Kingdom for over 450 years. After the kingdom\'s annexation by Japan in 1879, the castle lost its royal role and was nearly obliterated during World War II. A large-scale reconstruction in the 1990s brought much of it back to life, earning UNESCO World Heritage status in 2000. However, a devastating fire in 2019 destroyed key structures, including the main hall.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'From royal stronghold to symbol of resilience'
+            }
+        },
+        small1: {
+            img: '../elements/places/shurijo/2.jpeg',
+            img2: '../elements/places/shurijo/architecture1.jpg',
+            title: 'Okinawa’s Crimson Crown',
+            desc: 'Shurijo Castle’s unique architecture blends Okinawan, Chinese, and Japanese influences, setting it apart from Japan’s feudal castles. Its signature red-lacquered halls, curved tiled roofs, and dragon motifs reflect centuries of Ryukyuan diplomacy and artistry. At its heart stood the Seiden, the ceremonial main hall overlooking the Una Court where royal events took place. Surrounded by stone gates and gracefully curved limestone walls, Shurijo exemplifies the distinct cultural fusion of the Ryukyu Kingdom.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Ryukyuan royalty met East Asian elegance',
+            }
+        },
+        small2: {
+            img: '../elements/places/shurijo/3.jpg',
+            img2: '../elements/places/shurijo/architecture3.jpg',
+            title: 'History Walks in Procession',
+            desc: 'Surrounding the iconic main halls of Shurijo Castle are a series of architecturally significant gates, including the Kankaimon, or “Gate of Joyous Meeting,” where dignitaries were once warmly welcomed, and the Zuisenmon, or “Gate of Good Spring,” named after a nearby sacred well. These gates, adorned with intricate stonework and steeped in historical and spiritual meaning, serve as powerful symbols of the Ryukyuan court\'s refinement and diplomacy.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where ancient gates still whisper royal welcomes',
+            }
+        },
+        small3: {
+            img: '../elements/places/shurijo/9.jpg',
+            img2: '../elements/places/shurijo/5.jpg',
+            title: 'Restoration in Motion',
+            desc: 'Despite the devastating fire of 2019 that destroyed several main structures, Shurijo Castle Park continues to welcome visitors, serving as a powerful testament to the enduring spirit of Okinawa. The site remains a vibrant center of cultural education and historical reflection. Guests can explore preserved stone pathways, intricate outer gates, and partially reconstructed areas that hint at the grandeur of the former royal palace.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'History in progress, the rebirth of a kingdom',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

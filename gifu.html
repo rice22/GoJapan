@@ -1,0 +1,1125 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gifu: Shirakawa-go - White River Village</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/gifu/header.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Discover the Timeless Charm of Gifu’s <br><span class="highlight">Shirakawa-go Village</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A timeless village tucked in Gifu’s mountains, where steep thatched roofs and winding paths whisper stories of the past. From local crafts to riverside ryokans, each corner invites quiet discovery. Whether blanketed in snow or glowing at dusk, Shirakawa-go radiates rustic charm, heritage, and harmony with nature.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/gifu/shiroyama-viewpoint.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/gifu/nagase-house.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/gifu/1.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Gifu Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Gifu Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Gifu Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Shirakawa-go (白川郷, literally “White River Village”) is a picturesque, historic mountain village nestled in the remote Shogawa River Valley of Gifu Prefecture in central Japan. Along with its neighboring village Gokayama in Toyama Prefecture, Shirakawa-go is famous for its traditional gasshō-zukuri (合掌造り) farmhouses, some of which are over 250 years old. In 1995, the area was designated a UNESCO World Heritage Site for its outstanding preservation of architectural and cultural heritage in a natural setting.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="traditional_villages">Traditional Villages</button>
+                    <button class="tab" data-category="local_cuisine">Local Cuisine</button>
+                    <button class="tab" data-category="cultural_experiences">Cultural Experiences</button>
+                    <button class="tab" data-category="nature_outdoors">Nature Outdoors</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/gifu/history1.png" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Gasshō Harmony: Living Heritage</h3>
+                        <p class="image-description">Where history breathes through steep rooftops, silkwork attics, and enduring community traditions</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/gifu/history2.png" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Shirakawa-go's Blueprint</h4>
+                                <p class="image-description">Testament to resilience, craftsmanship, and communal life</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/gifu/history3.png" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Legacy in the Rafters</h4>
+                                <p class="image-description">Where family lines endure, tools remain untouched, and wooden beams echo the rhythm of rural life</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/gifu/wada-house.png" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Museums of Rural Life and Celebration</h4>
+                                <p class="image-description">Experience the textures, tastes, and traditions</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Shirakawa-go</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Shirakawa-go transforms with the seasons, offering breathtaking beauty year-round—from vibrant cherry blossoms in spring and lush green paddies in summer to fiery autumn foliage and a magical winter blanket of snow that highlights the iconic steep thatched roofs, creating a picturesque, postcard-perfect village scene.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/gifu/gassho-zukuri.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/gifu/winter.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Visitors are encouraged to be respectful: don’t enter private property, keep noise levels down, and avoid drone usage without permission.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours:</strong>Village accessible 24/7, but museums and homes open between 9:00 AM – 5:00 PM</li>
+                        <li><strong>Admission:</strong>
+                            <li class="ml-4">Village entrance is free.</li>
+                            <li class="ml-4">Wada House: 400 yen</li>
+                            <li class="ml-4">Kanda House: 300 yen</li>
+                            <li class="ml-4">Gassho-zukuri Minka-en: 600 yen</li>
+                        </li>
+                        <li><strong>Address: </strong>Ogimachi, Shirakawa Village, Ōno District, Gifu 501-5627, Japan</li>
+                        <li><strong>Access: </strong>Shirakawa-go is located in Gifu Prefecture and is most easily accessed by bus, as there is no train station in the village itself.
+                            <li class="ml-4">From Takayama: Nohi Bus (50 minutes, ~2,600 yen round trip)</li>
+                            <li class="ml-4">From Kanazawa:  Hokuriku Railroad/Kaetsuno Bus (75 minutes, ~3,600 yen round trip)</li>
+                            <li class="ml-4">From Nagoya: Direct highway buses take ~2.5 hours</li>
+                            <li class="ml-4">Gassho-zukuri Minka-en: 600 yen</li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+            <div class="popular-card" onclick="window.location.href='kanagawa.html';">
+                <img src="../elements/places/kanagawa3.jpg" alt="Kanagawa Kamakura">
+                <div class="popular-card-overlay">
+                    <h3 class="text-lg font-bold">Kanagawa Kamakura</h3>
+                    <p>Where samurai spirits linger by giant Buddhas and ocean air</p>
+                </div>
+            </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='kanazawa.html';">
+            <img src="../elements/places/kanazawa1.jpeg" alt="Kanazawa Kenrokuen Garden">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Kanazawa Kenrokuen Garden</h3>
+                <p>A living canvas of Japan’s most perfect strolling garden</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Shirakawa-go Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Getting There & Around</h3>
+                                        <ul>
+                                            <li><strong>Plan Ahead for Transportation:</strong> The village is accessible by bus from nearby cities like Takayama, Kanazawa, and Nagoya—check schedules in advance, especially in peak seasons.</li>
+                                            <li><strong>Use Shuttle Buses or Walk:</strong> Shirakawa-go is compact and best explored on foot; shuttle buses connect key spots if you prefer not to walk long distances.</li>
+                                            <li><strong>Consider Staying Overnight:</strong> Many farmhouses operate as guesthouses (minshuku), offering a unique immersive experience beyond the day trip.</li>
+                                            <li><strong>Currency Exchange & ATM Services:</strong> For more freedom and to explore surrounding areas, bicycle rentals are available but be prepared for hilly terrain.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Cultural Etiquette & Practical Tips</h3>
+                                        <ul>
+                                            <li><strong>Respect Local Customs:</strong> Many houses are private homes or guesthouses; always follow signage and ask before taking photos indoors.</li>
+                                            <li><strong>Prepare for Weather:</strong> Pack layers and waterproof footwear, as weather can change quickly, especially in winter.</li>
+                                            <li><strong>Bring Cash:</strong> While some shops accept cards, many small businesses and guesthouses operate on cash-only.</li>
+                                            <li><strong>Learn Basic Japanese Phrases:</strong> Simple greetings and thank-yous go a long way in this traditional village setting.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Visitor Information & Tips</h3>
+                                        <ul>
+                                            <li><strong>Try Local Delicacies:</strong> Don’t miss regional specialties like mountain vegetables, Hida beef, and soba noodles served in traditional settings.</li>
+                                            <li><strong>Sample Doburoku Sake:</strong> Visit the Doburoku Festival Museum or local breweries to taste this unique, unfiltered rice wine native to the region.</li>
+                                            <li><strong>Visit Local Markets:</strong> Explore small markets for handmade crafts, fresh produce, and souvenirs that reflect the village’s culture.</li>
+                                            <li><strong>Join Seasonal Festivals:</strong> Time your visit to experience local events like the Doburoku Festival in October or winter light-ups for a deeper cultural connection.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Gifu', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+        
+        const cityId = 1863640; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+    }
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Gifu', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        traditional_villages: [
+            {
+            img: '../elements/places/gifu/ogimachi.jpg',
+            img2: '../elements/places/gifu/ogimachi1.jpg',
+            title: 'Ogimachi Village',
+            desc: 'Ogimachi is the largest and most famous village in Shirakawa-go, known for its iconic gassho-zukuri farmhouses with steep thatched roofs designed to withstand heavy snow. ',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Heart of Shirakawa-go’s heritage and charm',
+                subtitle: 'Iconic thatched roofs in a bustling village'
+            },
+            bullets: ['Explore the Wada House, one of the largest traditional farmhouses open to the public.', 'Visit the Shirakawa-go Open Air Museum to see authentic village buildings and tools.', 'Climb the Shiroyama Viewpoint for panoramic views of the village and surrounding mountains.']
+            },
+            {
+            img: '../elements/places/gifu/suganuma.jpg',
+            img2: '../elements/places/gifu/suganuma1.jpg',
+            title: 'Suganuma Village',
+            desc: 'Suganuma is a charming, less crowded village featuring a collection of traditional gassho-zukuri houses along a peaceful river. It offers a more intimate atmosphere with local inns and craftspeople. Its tranquil environment makes it perfect for slow walks and photography.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Quiet, authentic, and less crowded escape',
+                subtitle: 'Traditional homes nestled in lush surroundings'
+            },
+            bullets: ['Stay overnight in a minshuku (family-run guesthouse) for an authentic local experience.', 'Discover the Suganuma Gassho-zukuri Museum showcasing village history and architecture.', 'Wander along the riverbanks for serene natural beauty and picturesque reflections.']
+            },
+            {
+            img: '../elements/places/gifu/ainokura.jpg',
+            img2: '../elements/places/gifu/ainokura1.jpg',
+            title: 'Ainokura Village',
+            desc: 'Nestled in a secluded valley, Ainokura boasts some of the best-preserved thatched roof houses, many still inhabited by local families. This quiet village offers stunning scenery year-round and is ideal for visitors seeking a peaceful retreat with cultural immersion.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Remote beauty with timeless architecture',
+                subtitle: 'Peaceful village surrounded by nature’s calm'
+            },
+            bullets: ['Visit the Ainokura Folk Museum to learn about traditional farming and village life.' , 'Hike the nearby mountain trails offering sweeping views of the village rooftops.', 'Attend seasonal events like the Doburoku Festival to experience local customs.']
+            },
+            {
+            img: '../elements/places/gifu/kokorogi.jpg',
+            img2: '../elements/places/gifu/kokorogi1.jpeg',
+            title: 'Kokorogi Village',
+            desc: 'Kokorogi is one of the smaller and less touristy villages in Shirakawa-go, characterized by pristine nature and historic homes. It’s a great spot for travelers wanting to escape crowds and enjoy authentic village vibes, surrounded by lush forests and quiet streams.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Rustic charm off the beaten path',
+                subtitle: 'Hidden gem for serene countryside walks'
+            },
+            bullets: ['Explore the village on foot, enjoying unspoiled nature and traditional architecture.','Visit small local workshops producing handmade crafts and souvenirs.','Enjoy peaceful riverside picnics and birdwatching in the surrounding woodlands.']
+            }
+        ],
+        local_cuisine: [
+            {
+            img: '../elements/places/gifu/hoba.jpg',
+            img2: '../elements/places/gifu/hoba1.jpg',
+            title: 'Hoba Miso',
+            desc: 'A regional delicacy where savory miso paste is grilled on large magnolia leaves, imparting a unique smoky aroma and rich flavor. Often served with vegetables or rice, it\'s a comforting taste of traditional Japanese mountain cuisine.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Savory miso grilled on fragrant magnolia leaves',
+                subtitle: 'A smoky local flavor with a rustic touch'
+            },
+            bullets: ['Served sizzling on a magnolia leaf for aroma and flavor.','Typically includes mushrooms, green onions, or tofu pieces.','Perfect as a savory side dish or accompaniment to rice.']
+            },
+            {
+            img: '../elements/places/gifu/gohei.jpg',
+            img2: '../elements/places/gifu/gohei1.jpg',
+            title: 'Gohei Mochi',
+            desc: 'Skewered rice cakes coated with a sweet and savory miso glaze, then grilled until caramelized. This snack originated as a way for farmers to enjoy rice during harvest festivals and remains a beloved street food in Shirakawa-go.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Sweet miso-glazed rice cakes on a stick',
+                subtitle: 'Traditional snack perfect for visitors'
+            },
+            bullets: ['Made from pounded rice formed into flat shapes on sticks.','Glazed with a miso, soy sauce, and sugar mixture.','Crispy on the outside and chewy inside, served hot.']
+            },
+            {
+            img: '../elements/places/gifu/soba.jpg',
+            img2: '../elements/places/gifu/soba1.jpg',
+            title: 'Soba Noodles',
+            desc: 'Handmade buckwheat noodles with a nutty aroma and firm texture, served either chilled with dipping sauce or in a hot broth. Soba is a staple in the region, reflecting the mountainous climate and agricultural heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Handmade buckwheat noodles, served fresh',
+                subtitle: 'Classic, hearty, and refreshingly simple'
+            },
+            bullets: ['Often served cold with soy-based dipping sauce (zaru soba).','Hot versions served in flavorful broth with toppings.','Known for its health benefits and earthy taste.']
+            },
+            {
+            img: '../elements/places/gifu/tempura.jpg',
+            img2: '../elements/places/gifu/tempura1.jpg',
+            title: 'Mountain Vegetables',
+            desc: 'Fresh wild vegetables foraged from the surrounding mountains, lightly battered and fried to crispy perfection. This seasonal dish showcases the natural flavors and textures unique to the Shirakawa-go region.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Crispy fried wild veggies from the hills',
+                subtitle: 'Taste of Shirakawa’s natural bounty'
+            },
+            bullets: ['Uses local wild vegetables like fiddlehead ferns and bamboo shoots.','Light, airy tempura batter that enhances natural taste.','Typically served with salt or dipping sauce for added flavor.']
+            },
+        ],
+        cultural_experiences: [
+            {
+            img: '../elements/places/gifu/thatched.jpg',
+            img2: '../elements/places/gifu/thatched1.jpg',
+            title: 'Thatched Roof',
+            desc: 'The Thatched Roof House Museum showcases the ingenious architecture and lifestyle of Shirakawa-go’s gassho-zukuri farmhouses.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Step inside history’s warm embrace',
+                subtitle: 'Discover life beneath the iconic roofs'
+            },
+            bullets: ['Explore traditional wooden interiors with authentic artifacts.','Learn about the roof’s steep angles designed to withstand heavy snow.','See demonstrations of traditional tools and household activities.']
+            },
+            {
+            img: '../elements/places/gifu/winter.png',
+            img2: '../elements/places/gifu/winter1.jpg',
+            title: 'Winter Illumination',
+            desc: 'Each winter, Shirakawa-go transforms into a shimmering spectacle during the Winter Illumination Festival. Thousands of LED lights trace the contours of the thatched roofs, creating a breathtaking contrast against the snow-covered landscape.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'When the village glows in icy splendor',
+                subtitle: 'Magic lights ignite a snowy wonderland'
+            },
+            bullets: ['Experience the glowing village from specially arranged viewpoints.','Enjoy local food stalls and warm drinks amidst the festive atmosphere.','Participate in guided night tours explaining the area’s history.']
+            },
+            {
+            img: '../elements/places/gifu/handicraft.jpg',
+            img2: '../elements/places/gifu/handicraft1.jpg',
+            title: 'Handicraft Workshops',
+            desc: 'Engage with Shirakawa-go’s cultural heritage through immersive handicraft workshops. Learn skills passed down through generations, such as pottery, weaving, and paper making. These workshops offer a unique chance to create souvenirs with your own hands while understanding the artistry behind traditional crafts.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Craft your own piece of tradition',
+                subtitle: 'Hands-on heritage: create and connect'
+            },
+            bullets: ['Try pottery shaping using locally sourced clay.','Weave simple textiles on traditional looms.','Make washi (Japanese paper) with natural materials.']
+            },
+            {
+            img: '../elements/places/gifu/festival.jpg',
+            img2: '../elements/places/gifu/festival1.jpg',
+            title: 'Traditional Festivals',
+            desc: 'Shirakawa-go’s traditional festivals offer vibrant glimpses into local customs and seasonal rhythms.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Celebrate centuries of community spirit',
+                subtitle: 'Where history dances with modern life'
+            },
+            bullets: ['Witness ceremonial sake brewing and tastings.','Enjoy folk dances and music in traditional attire.','Participate in seasonal rituals celebrating harvest and renewal.']
+            },
+        ],
+        nature_outdoors: [
+            {
+            img: '../elements/places/gifu/river.jpg',
+            img2: '../elements/places/gifu/river1.jpg',
+            title: 'Shirakawa River',
+            desc: 'The Shirakawa River meanders gently through the heart of Shirakawa-go, offering tranquil waters and picturesque views of the traditional thatched-roof houses lining its banks. ',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Flowing through history and beauty',
+                subtitle: 'A peaceful retreat by the water'
+            },
+            bullets: ['Serene walking paths perfect for casual strolls or photography.','Ideal picnic spots with soothing river sounds and scenic backdrops.','Local wildlife sightings including migratory birds and seasonal flora.']
+            },
+            {
+            img: '../elements/places/gifu/hakusan.jpg',
+            img2: '../elements/places/gifu/hakusan1.jpg',
+            title: 'Mount Hakusan Trails',
+            desc: 'Mount Hakusan, one of Japan’s “Three Holy Mountains,” offers diverse hiking trails suitable for beginners and experienced trekkers alike. Its verdant forests, alpine meadows, and crystal-clear streams provide a refreshing escape into nature.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Adventure into the sacred mountain’s embrace',
+                subtitle: 'Hiking paths with breathtaking panoramas'
+            },
+            bullets: ['Well-marked trails catering to various skill levels.','Rich biodiversity including rare plants and mountain fauna.','Seasonal changes transform the landscape—from vibrant greens to autumnal reds.']
+            },
+            {
+            img: '../elements/places/gifu/shiroyama.jpg',
+            img2: '../elements/places/gifu/shiroyama1.jpg',
+            title: 'Shiroyama Viewpoint',
+            desc: 'This lookout spot is especially magical at sunrise and sunset when the soft light highlights the unique architecture and surrounding mountains, making it a favorite for photographers and nature lovers.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The ultimate vantage point of Shirakawa-go',
+                subtitle: 'Sunsets that paint the sky and rooftops'
+            },
+            bullets: ['Easy access with a short hike or shuttle ride from the village.','Perfect spot for capturing seasonal beauty, including winter snow and spring blossoms.','Observation benches and information boards enhance the visitor experience.']
+            },
+            {
+            img: '../elements/places/gifu/onsen.jpg',
+            img2: '../elements/places/gifu/onsen1.jpg',
+            title: 'Okuhida Onsen',
+            desc: 'A collection of hot spring villages famed for their natural outdoor baths (rotenburo). Surrounded by towering peaks and lush forests, these soothing waters provide the perfect way to unwind and soak in the serene alpine atmosphere.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Relaxation nestled in mountain hot springs',
+                subtitle: 'Warm your soul after a day of exploring'
+            },
+            bullets: ['Variety of indoor and outdoor onsens with mineral-rich waters.','Scenic ryokan accommodations offering authentic Japanese hospitality.','Seasonal festivals and traditional cuisine complement the bathing experience.']
+            },
+        ]
+    };
+
+    let currentCategory = 'traditional_villages';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["traditional_villages", "local_cuisine", "cultural_experiences", "nature_outdoors"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/gifu/history1.png',
+            img2: '../elements/places/gifu/kanda-house.jpg',
+            title: 'Shirakawa-go Heritage',
+            desc: 'Shirakawa-go, nestled in the mountains of Japan’s Hida region, is famed for its gasshō-zukuri farmhouses—steep, thatched-roof homes designed to withstand heavy snow and support silk worm cultivation. Shaped by centuries of isolation, the village preserved its traditional way of life well into the modern era. Now a UNESCO World Heritage Site, it continues to thrive as a living community with homes that serve as residences, museums, and guesthouses.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where rooftops pray and stories sleep'
+            }
+        },
+        small1: {
+            img: '../elements/places/gifu/history2.png',
+            img2: '../elements/places/gifu/architecture1.png',
+            title: 'Hands in Harmony',
+            desc: 'Shirakawa-go’s hallmark is its gasshō-zukuri architecture—steep, thatched roofs resembling praying hands, designed to shed heavy snow and foster community through shared upkeep. These multi-story wooden homes, built without nails, housed silk farming in the attics and daily life below. Thoughtfully arranged for snow, sun, and sustainability, the village layout reflects a deep harmony between human life and the natural environment.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Built to last. Raised together.',
+            }
+        },
+        small2: {
+            img: '../elements/places/gifu/history3.png',
+            img2: '../elements/places/gifu/architecture2.jpg',
+            title: 'Heirlooms & Hearths',
+            desc: 'Shirakawa-go’s historic homes offer an intimate look into village life across generations. The Wada House, still lived in by descendants, is the largest gasshō-zukuri farmhouse. The Kanda House showcases traditional interiors and tools, while the Nagase House features an intricate wooden framework and displays of heirlooms, including historic medical instruments—each preserving a unique chapter of the village’s cultural heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Living heirtage Where the past still lives',
+            }
+        },
+        small3: {
+            img: '../elements/places/gifu/wada-house.png',
+            img2: '../elements/places/gifu/doburoku-festival.jpg',
+            title: 'Sake Meets Story',
+            desc: 'Shirakawa-go offers immersive cultural experiences through two key museums: the Doburoku Festival Museum celebrates the village’s annual October festival and sake-making heritage, complete with tastings of its signature cloudy rice wine. Nearby, the Gassho-zukuri Minka-en open-air museum features relocated traditional farmhouses, letting visitors explore authentic interiors, tools, and the rhythms of historic rural life—all in one scenic setting.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Festive sips, timeless homes',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

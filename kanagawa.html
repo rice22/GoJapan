@@ -1,0 +1,1124 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kanagawa: Kamakura - Kyoto of Eastern Japan</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/kanagawa/kamakura2.png');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Unveil the Timelessness of Kanagawa’s <br><span class="highlight">Ancient Kamakura</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A coastal haven where tradition meets tranquility. Wander through ancient temples, charming streets, and seaside cafés in the historic town of Kamakura. From towering bamboo groves to surf-lined shores, every path leads to timeless beauty. Kamakura invites you to slow down, explore deeply, and soak in centuries of culture by the sea.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/kanagawa/4.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/kanagawa/2.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/kanagawa/5.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Kanagawa Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Kanagawa Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Kanagawa Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Kamakura (鎌倉), located in Kanagawa Prefecture just south of Tokyo, is a coastal town steeped in history, culture, and natural beauty. Once the political center of Japan during the Kamakura Shogunate (1185–1333), the city is today best known for its iconic Great Buddha, countless ancient temples and shrines, scenic hiking trails, and laid-back beach culture. Kamakura is often called the “Kyoto of Eastern Japan” for its dense concentration of historical sites and spiritual atmosphere.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="shopping">Shopping</button>
+                    <button class="tab" data-category="dining">Dining</button>
+                    <button class="tab" data-category="entertainment">Entertainment</button>
+                    <button class="tab" data-category="events">Events</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/kanagawa/daibutsu hiking course.jpg" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Cradle of Samurai Power and Zen Tradition</h3>
+                        <p class="image-description">Where the samurai rose, and Zen took root</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/kanagawa/kencho-ji-temple.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Historic Heart of Kamakura: Samurai Legacy</h4>
+                                <p class="image-description">Timeless temples, peaceful paths</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/kanagawa/yuigahama-beach.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Hiking Paths and Coastal Beaches</h4>
+                                <p class="image-description">Hike, surf, and soak in history</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/kanagawa/tsurugaoka-shrine.png" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">When to Experience Kamakura’s Seasonal Magic</h4>
+                                <p class="image-description">Kamakura’s colors in the perfect seasons</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Kamakura</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Kamakura is surrounded by wooded hills with well-marked hiking trails connecting many of its historical sites. These trails provide not only a peaceful way to explore the area but also sweeping views and the chance to enjoy nature.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/kanagawa/1.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/kanagawa/3.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Kamakura is Best explored on foot or by local train. </p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours: </strong>Hours vary by temple or shrine, typically 8:00 AM – 5:00 PM</li>
+                        <li><strong>Great Buddha (Kōtoku-in)</strong>
+                            <li class="ml-4"><strong>Hours: </strong>8:00 AM – 5:30 PM (Mar–Sep); 8:00 AM – 5:00 PM (Oct–Feb)</li>
+                            <li class="ml-4"><strong>Admission: </strong>300 yen (entry to statue), +20 yen to enter interior</li>
+                            <li class="ml-4"><strong>Address: </strong>4-2-28 Hase, Kamakura, Kanagawa 248-0016</li>
+                        </li>
+                        <li><strong>Tsurugaoka Hachimangū</strong>
+                            <li class="ml-4"><strong>Hours: </strong>Open daily, 5:00 AM – 9:00 PM</li>
+                            <li class="ml-4"><strong>Admission: </strong>Free</li>
+                            <li class="ml-4"><strong>Address: </strong>2-1-31 Yukinoshita, Kamakura, Kanagawa 248-8588</li>
+                        </li>
+                        <li><strong>Access: </strong>Kamakura is approximately one hour from central Tokyo. Take the JR Yokosuka Line from Tokyo Station or the JR Shonan-Shinjuku Line from Shinjuku Station. Kita-Kamakura Station offers access to many temples as well.</li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+            <div class="popular-card" onclick="window.location.href='kanazawa.html';">
+                <img src="../elements/places/kanazawa1.jpeg" alt="Kanazawa Kenrokuen Garden">
+                <div class="popular-card-overlay">
+                    <h3 class="text-lg font-bold">Kanazawa Kenrokuen Garden</h3>
+                    <p>A living canvas of Japan’s most perfect strolling garden</p>
+                </div>
+            </div>
+            
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='miyagi.html';">
+            <img src="../elements/places/miyagi2.jpg" alt="Miyagi Matsushima Bay">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Miyagi Matsushima Bay</h3>
+                <p>A seascape of 260 pine-clad islands—haiku brought to life</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Kamakura Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Getting Around Kamakura</h3>
+                                        <ul>
+                                            <li><strong>Rent a Bicycle:</strong> Explore Kamakura’s scenic streets and trails easily by bike, ideal for visiting temples and beaches.</li>
+                                            <li><strong>Use the Enoden Train:</strong> Take the charming Enoshima Electric Railway for picturesque coastal views and easy access to key spots.</li>
+                                            <li><strong>Walk the Trails:</strong> Many attractions are connected by pleasant walking paths; wear comfortable shoes for temple hopping.</li>
+                                            <li><strong>Park & Ride:</strong> If driving, park outside the city center and use public transit to avoid busy traffic and limited parking.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Cultural Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Respect Temple Rules:</strong> Remove shoes where required, stay quiet, and avoid taking photos where prohibited.</li>
+                                            <li><strong>Dress Modestly:</strong> When visiting shrines and temples, opt for respectful attire covering shoulders and knees.</li>
+                                            <li><strong>Follow Shrine Customs:</strong> Purify hands and mouth at chozuya (water basin) before entering; bow respectfully at torii gates.</li>
+                                            <li><strong>Avoid Loud Behavior:</strong> Kamakura is a spiritual place; keep noise levels down and behave calmly in sacred areas.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Food & Dining Tips</h3>
+                                        <ul>
+                                            <li><strong>Try Local Soba:</strong> Kamakura is famous for its buckwheat noodles—try cold soba for a refreshing taste.</li>
+                                            <li><strong>Sample Shirasu Dishes:</strong> Fresh whitebait (shirasu) is a regional specialty, often served raw or grilled over rice.</li>
+                                            <li><strong>Eat Near Komachi Street:</strong> This lively shopping street has many cafes and eateries offering seasonal snacks and sweets.</li>
+                                            <li><strong>Reserve Weekend Meals:</strong> Popular restaurants fill up quickly on weekends—book ahead to avoid waiting.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+    // fetch weather data
+    function fetchWeather(city = 'Kanagawa', countryCode = 'jp') {
+        const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+        
+        const cityId = 1860291; 
+        const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+        
+        console.log("Fetching weather from:", url);
+        
+        fetch(url)
+            .then(response => {
+                console.log("Response status:", response.status);
+                if (!response.ok) {
+                    throw new Error(`Weather data not available (Status: ${response.status})`);
+                }
+                return response.json();
+            })
+            .then(data => {
+                console.log("Weather data received:", data);
+                
+                document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                    weekday: 'short', 
+                    year: 'numeric', 
+                    month: 'short', 
+                    day: 'numeric' 
+                });
+                document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                document.getElementById('weather-desc').textContent = data.weather[0].description;
+                document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6); 
+                document.getElementById('weather-humidity').textContent = data.main.humidity;
+                document.getElementById('weather-pressure').textContent = data.main.pressure;
+            })
+            .catch(error => {
+                console.error('Error fetching weather data:', error);
+                
+                if (url.includes('id=')) {
+                    console.log("Trying alternative method with city name...");
+                    const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                    
+                    fetch(altUrl)
+                        .then(response => {
+                            if (!response.ok) {
+                                throw new Error('Alternative method also failed');
+                            }
+                            return response.json();
+                        })
+                        .then(data => {
+                            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                                weekday: 'short', 
+                                year: 'numeric', 
+                                month: 'short', 
+                                day: 'numeric' 
+                            });
+                            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                            document.getElementById('weather-desc').textContent = data.weather[0].description;
+                            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                            document.getElementById('weather-humidity').textContent = data.main.humidity;
+                            document.getElementById('weather-pressure').textContent = data.main.pressure;
+                        })
+                        .catch(finalError => {
+                            console.error('Final error fetching weather data:', finalError);
+                            document.querySelector('.custom-weather').innerHTML = `
+                                <div class="weather-error p-4 text-center">
+                                    <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                    <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                    <p class="text-sm text-gray-500">Please try again later</p>
+                                    <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                                </div>
+                            `;
+                        });
+                } else {
+                    document.querySelector('.custom-weather').innerHTML = `
+                        <div class="weather-error p-4 text-center">
+                            <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                            <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                            <p class="text-sm text-gray-500">Please try again later</p>
+                            <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                        </div>
+                    `;
+                }
+            });
+    }
+
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Kanagawa', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        shopping: [
+            {
+            img: '../elements/places/kanagawa/komachi.jpg',
+            img2: '../elements/places/kanagawa/komachi1.jpg',
+            title: 'Komachi Street',
+            desc: 'A lively pedestrian street near Tsurugaoka Hachimangū, Komachi Street is Kamakura’s main shopping artery. It blends tradition and trend, offering everything from matcha ice cream and pickled vegetables to handmade souvenirs and fashionable boutiques.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Souvenirs, sweets, and charm',
+                subtitle: 'Where tradition meets trend on every corner'
+            },
+            bullets: ['Street Snacks Galore – Try senbei, sweet potato chips, and fresh mochi.', 'Souvenir Central – Kimono fabrics, wind chimes, and handmade goods.','Modern Cafés – Trendy spots with Japanese-Western fusion menus.']
+            },
+            {
+            img: '../elements/places/kanagawa/farmers.jpg',
+            img2: '../elements/places/kanagawa/farmers1.jpg',
+            title: 'Farmers Market',
+            desc: 'Operating since 1928, this rustic, open-air market near Kamakura Station offers a direct link to local agriculture. It’s a must-visit for food lovers seeking authenticity and seasonality.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Local flavors, fresh from the source',
+                subtitle: 'Taste the region, meet the makers'
+            },
+            bullets: ['Fresh Local Produce – Organic vegetables, mushrooms, and fruits.', 'Homemade Condiments – Miso, pickles, and yuzu-based products.','Personal Interaction – Meet the farmers and learn their growing methods.']
+            },
+            {
+            img: '../elements/places/kanagawa/kurame.jpg',
+            img2: '../elements/places/kanagawa/kurame1.jpg',
+            title: 'Kuramae Dou',
+            desc: 'A charming, quiet store specializing in traditional Kamakura-bori woodcraft and ceramics. It’s ideal for finding refined, meaningful keepsakes with deep cultural roots.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Timeless pottery, crafted with care',
+                subtitle: 'Handmade goods rooted in heritage'
+            },
+            bullets: ['Hand-Carved Lacquerware – Bowls, trays, and utensils with intricate detail.', 'Tea & Dining Sets – Elegant tableware for everyday use or gifts.', 'Minimalist Aesthetic – Serene, modern interior that lets the pieces shine.']
+            },
+            {
+            img: '../elements/places/kanagawa/caravaan.jpg',
+            img2: '../elements/places/kanagawa/caravaan1.jpg',
+            title: 'Carvaan Market',
+            desc: 'A globally inspired boutique offering organic foods, sustainable goods, and artisan products with Middle Eastern and Japanese influences. It\'s an unexpected, modern twist in traditional Kamakura.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Global finds with Kamakura soul',
+                subtitle: 'Organic, artisanal, unforgettable'
+            },
+            bullets: ['Organic Snacks & Spices – From za’atar to vegan chocolate.', 'Ethical Lifestyle Goods – Eco soaps, textiles, and handcrafted decor.', 'Boho Atmosphere – Earthy, contemporary style with travel vibes.']
+            }
+        ],
+        dining: [
+            {
+            img: '../elements/places/kanagawa/wadatsumi.jpg',
+            img2: '../elements/places/kanagawa/wadatsumi1.jpeg',
+            title: 'Wadatsumi',
+            desc: 'A refined dining spot in Kamakura specializing in seasonal kaiseki cuisine. With a tranquil, minimalist ambiance, Wadatsumi offers dishes crafted with regional ingredients and served with artistic flair. Ideal for a slow, thoughtful meal immersed in tradition.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Elevated kaiseki in a garden escape',
+                subtitle: 'Savor the seasons, one refined bite at a time'
+            },
+            bullets: ['Focus on seasonal, locally sourced ingredients', 'Offers sake pairings with curated courses', 'Serene traditional interior with garden views']
+            },
+            {
+            img: '../elements/places/kanagawa/bills.jpg',
+            img2: '../elements/places/kanagawa/bills1.jpg',
+            title: 'Bills Shichirigahama',
+            desc: 'Famous for its Australian-style brunch and sweeping views of Shichirigahama Beach, Bills blends casual sophistication with a coastal vibe. A perfect stop for breakfast, coffee, or sunset dining.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Laid-back brunch with a sea breeze view',
+                subtitle: 'Global flavors on Kamakura’s scenic coast'
+            },
+            bullets: ['Known for fluffy ricotta pancakes and full breakfasts', 'Oceanfront seating with panoramic views', 'Relaxed, modern interior with an international menu']
+            },
+            {
+            img: '../elements/places/kanagawa/ivy.jpg',
+            img2: '../elements/places/kanagawa/ivy1.jpg',
+            title: 'Ivy Kamakura',
+            desc: 'A cozy café and bistro nestled in Kamakura’s backstreets. Ivy Kamakura offers a menu of modern Japanese fusion, creative desserts, and drinks in an intimate, bohemian setting.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Trendy plates, cozy vibes, local charm',
+                subtitle: 'Where modern Japanese dining meets café cool'
+            },
+            bullets: ['Offers pasta, grilled dishes, and innovative takes on Japanese classics', 'Popular for seasonal cakes and parfaits', 'Stylish decor with a relaxed, artsy vibe']
+            },
+            {
+            img: '../elements/places/kanagawa/matsubaraan.jpg',
+            img2: '../elements/places/kanagawa/matsubaraan1.jpg',
+            title: 'Kamakura Matsubara-an',
+            desc: 'Tucked away in a quiet alley, this soba restaurant is surrounded by lush garden scenery. Handmade buckwheat noodles are the star, served in elegant wooden interiors that feel like a retreat from the city.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Handmade soba in a hidden courtyard',
+                subtitle: 'Rustic noodles, refined setting'
+            },
+            bullets: ['Handmade soba served hot or cold', 'Traditional architecture with a modern twist', 'Ideal spot for quiet lunches in nature']
+            },
+        ],
+        entertainment: [
+            {
+            img: '../elements/places/kanagawa/thegreatbuddha.jpg',
+            img2: '../elements/places/kanagawa/buddha.jpg',
+            title: 'Great Buddha',
+            desc: 'A towering bronze icon standing 13.35 meters tall, the Great Buddha of Kamakura is an enduring symbol of Japanese heritage. Originally housed in a temple hall that was later destroyed, the statue has stood in the open air since the 15th century, weathering time and nature with serene dignity.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Timeless Tranquility in Bronze',
+                subtitle: 'Stand Before a Legend'
+            },
+            bullets: ['Built in the 13th Century – Dating back to 1252, with historical ties to Kamakura’s Zen past.', 'Photogenic Landmark – Popular spot for classic Kamakura photos and serene selfies.', 'Peaceful Atmosphere – Surrounded by trees and quiet gardens ideal for reflection.']            
+            },
+            {
+            img: '../elements/places/kanagawa/hasedera-temple.png',
+            img2: '../elements/places/kanagawa/hasedera1.jpg',
+            title: 'Hasedera Temple',
+            desc: 'Famous for its eleven-headed Kannon statue, Hasedera blends religious reverence with scenic beauty. Its hillside location offers panoramic views of the ocean, while the temple grounds are lush with hydrangeas and seasonal flowers.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Flowers Meet the Sea',
+                subtitle: 'Breathe in Beauty, Step into Stillness'
+            },
+            bullets: ['Hydrangea Walk (Ajisai Path) – Stunning in June with vibrant blooms along a hillside trail.', 'Sacred Kannon Statue – A 9.18-meter-tall wooden deity carved from a single camphor tree.', 'Viewpoint Over Sagami Bay – One of the best coastal views in Kamakura.']
+            },
+            {
+            img: '../elements/places/kanagawa/zeniarai-benten-shrine.jpg',
+            img2: '../elements/places/kanagawa/zeniarai1.jpg',
+            title: 'Zeniarai Benten Shrine',
+            desc: 'Tucked into a cave and surrounded by forest, this unique shrine is known for its ritual of washing money in sacred spring water to ensure its multiplication. A mix of Shinto and Buddhist elements gives it a mystical, hidden feel.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Wash for Wealth, Pray for Fortune',
+                subtitle: 'Hidden Powers in Sacred Waters'
+            },
+            bullets: ['Money-Washing Ritual – Clean your coins and bills to bring good fortune.', 'Cave-Like Entrance – Enter through a tunnel carved into a rock wall.', 'Atmospheric Setting – A blend of spiritual charm and hidden tranquility.']
+            },
+            {
+            img: '../elements/places/kanagawa/engakuji-temple.png',
+            img2: '../elements/places/kanagawa/engakuji.jpg',
+            title: 'Engaku-ji Zen Temple',
+            desc: 'Founded in 1282 to honor the fallen of the Mongol invasions, Engaku-ji is one of Kamakura’s most important Zen temples. With sweeping gates, quiet courtyards, and groves of ancient trees, it invites peaceful introspection.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where Silence Speaks',
+                subtitle: 'Ancient Pines, Quiet Minds'
+            },
+            bullets: ['Zen Meditation Sessions – Occasionally open to the public for true Zen practice.', 'Sanmon Gate – A massive wooden gate symbolizing the path to enlightenment.', 'Seasonal Foliage – Particularly beautiful during the red and gold hues of autumn.']
+            },
+        ],
+        events: [
+            {
+            img: '../elements/places/kanagawa/festival.jpg',
+            img2: '../elements/places/kanagawa/festival1.jpg',
+            title: 'Kamakura Festival',
+            desc: 'Held every April, the Kamakura Festival celebrates the city’s rich samurai history and cultural heritage. Centered around Tsurugaoka Hachimangu Shrine, the festival features parades, ceremonial dances, and the thrilling Yabusame (horseback archery) — a direct homage to Kamakura’s warrior past.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Tradition rides in with the spring wind',
+                subtitle: 'Samurai spirit awakens in Kamakura streets'
+            },
+            bullets: ['Yabusame Performance: Archers in full samurai gear shoot arrows at targets while riding at full gallop.', 'Shizuka no Mai Dance: A traditional dance honoring Lady Shizuka, a famous historical figure.', 'Processions & Music: Watch parades of armored warriors and hear ancient gagaku music fill the shrine grounds.']
+            },
+            {
+            img: '../elements/places/kanagawa/hydrangea.jpeg',
+            img2: '../elements/places/kanagawa/hydrangea1.jpg',
+            title: 'Hydrangea Season',
+            desc: 'In early summer, Kamakura becomes a wonderland of blooming hydrangeas, or ajisai. The temple gardens, especially Hasedera and Meigetsuin, attract thousands of visitors for their winding paths lined with vivid shades of blue, pink, and violet.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Walk through rivers of blooming blue',
+                subtitle: 'Kamakura in bloom — quiet, radiant, alive'
+            },
+            bullets: ['Hasedera Temple: Over 2,500 hydrangea plants bloom across its hillside trails.', 'Meigetsuin ("Ajisai Temple"): Known for its sea of blue hydrangeas and iconic circular window.', 'Photogenic Views: Rainy days enhance the beauty, offering soft lighting and lush backdrops.']
+            },
+            {
+            img: '../elements/places/kanagawa/fireworks.jpg',
+            img2: '../elements/places/kanagawa/fireworks1.jpg',
+            title: 'Fireworks Festival',
+            desc: 'A beloved summer event held on the Yuigahama Beach, the Kamakura Fireworks Festival draws crowds for its impressive aquatic fireworks that burst from the sea. The sight of explosions reflecting over the waves creates a magical seaside atmosphere.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A summer sky lit with seaside wonder',
+                subtitle: 'Where ocean breeze meets bursts of light'
+            },
+            bullets: ['Over 2,500 Fireworks: Including uchiage hanabi (sky bursts) and water mines launched from the bay.', 'Beach Picnics: Locals and tourists gather early with mats, food, and yukata.', 'Easy Access: Short walk from Kamakura Station makes this an ideal day trip festival.']
+            },
+            {
+            img: '../elements/places/kanagawa/autumn.jpg',
+            img2: '../elements/places/kanagawa/autumn1.jpg',
+            title: 'Autumn Foliage Walks',
+            desc: 'Kamakura’s temples and mountain trails glow with crimson, amber, and gold during the fall. This is the perfect time to explore the city’s spiritual landmarks under a canopy of changing leaves, especially at higher elevation sites.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Leaves fall, temples glow',
+                subtitle: 'Kamakura’s quiet fire — autumn in full color'
+            },
+            bullets: ['Kenchō-ji & Engaku-ji: Zen temples with stunning maple-lined paths and quiet zen gardens.', 'Tenen Hiking Trail: A gentle trail connecting several temples with panoramic views of fall foliage.', 'Seasonal Tea Offerings: Many temples serve matcha with wagashi for autumn visitors.']
+            },
+        ]
+    };
+
+    let currentCategory = 'shopping';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["shopping", "dining", "entertainment", "events"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/kanagawa/daibutsu hiking course.jpg',
+            img2: '../elements/places/kanagawa/history1.jpeg',
+            title: 'Birthplace of the Samurai Shogunate',
+            desc: 'Kamakura became Japan’s political and military center in the late 12th century when Minamoto no Yoritomo established the Kamakura Shogunate, marking the start of the feudal era. As the seat of power for nearly 150 years, it thrived with samurai rule and the rise of Zen Buddhism. Though its political role faded after 1333, its cultural and spiritual legacy continues today.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A quiet force behind Japan’s feudal past'
+            }
+        },
+        small1: {
+            img: '../elements/places/kanagawa/kencho-ji-temple.jpg',
+            img2: '../elements/places/kanagawa/history2.png',
+            title: 'Kamakura’s Timeless Treasures',
+            desc: 'Kamakura is a charming city rich in history, dotted with iconic sites like the massive Great Buddha statue and the important Tsurugaoka Hachimangū Shrine. Its serene temples such as Hase-dera and Zen centers like Engaku-ji and Kencho-ji offer tranquil retreats surrounded by nature. Unique spots like the coin-washing Zeniarai Benten Shrine blend spiritual tradition with local culture, all within easy reach of Tokyo yet retaining a small-town feel.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where history meets tranquility',
+            }
+        },
+        small2: {
+            img: '../elements/places/kanagawa/yuigahama-beach.jpg',
+            img2: '../elements/places/kanagawa/zamokuza-beach.png',
+            title: 'Kamakura Trails & Shores',
+            desc: 'Kamakura is nestled among wooded hills with scenic hiking trails linking historic temples, including the Daibutsu Hiking Course and Tenen Trail, offering peaceful nature walks and panoramic views. Its coastal beaches, like Yuigahama and Zaimokuza, attract surfers and sun-seekers, blending seaside relaxation with the city’s rich cultural heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where forest trails meet ocean tides',
+            }
+        },
+        small3: {
+            img: '../elements/places/kanagawa/tsurugaoka-shrine.png',
+            img2: '../elements/places/kanagawa/history3.jpg',
+            title: 'Best Time to Visit Kamakura',
+            desc: 'The ideal time to visit Kamakura is during spring (March to May) and autumn (October to November) when the weather is mild, and the natural beauty is at its peak. Spring offers vibrant cherry blossoms, while autumn showcases stunning fall foliage, making these seasons perfect for sightseeing and outdoor activities. Summers can be hot and humid, but lively festivals and beach visits add to the charm. Winters are mild but less crowded.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Beauty blooms in spring and autumn',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>

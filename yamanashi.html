@@ -1,0 +1,1122 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Yamanashi: Lake Kawaguchi - Mirror of Mount Fuji</title> 
+    <link href="https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="../articles/articles.css">
+    <style>
+        .article-header {
+            height: 500px;
+            position: relative;
+            overflow: hidden;
+            background-image: url('../elements/places/yamanashi/header.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+    </style>
+</head>
+<body class="bg-gray-100">
+    <!-- navigation -->
+    <nav class="bg-white shadow-md py-4">
+        <div class="container mx-auto px-4 flex justify-between items-center">
+            <div class="flex items-center space-x-2">
+                <img class="w-16 h-16 object-contain" height="80" src="../elements/website logo.png" width="80"/>
+                <a href="../home.html" class="text-xl font-bold text-gray-800">Go Japan</a>
+            </div>
+            <div class="space-x-4">
+                <a href="../home.html" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Home</a>
+                <a href="../home.html#popular-places" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Tourist Spots</a>
+                <a href="../home.html#seasons-container" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Seasons</a>
+                <a href="../home.html#section-four" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Food</a>
+                <a href="../home.html#section-five" class="text-gray-600 hover:text-orange-500 transition-colors duration-200">Activities</a>
+            </div>
+        </div>
+    </nav>
+
+    <!-- article header -->
+    <header class="article-header">
+        <div class="header-overlay"></div>
+        <div class="header-content">
+            <div class="header-left">
+                <h1 class="header-title">
+                    Reflect in the Tranquil Waters of <br><span class="highlight">Lake Kawaguchi</span>
+                </h1>
+                <p class="header-tagline justified">
+                    A vibrant "lakefront retreat" blending nature, dining, and local crafts at the foot of Mount Fuji. From fresh lake delicacies to charming shops, every corner offers breathtaking views and unique experiences. Whether sunrise or sunset, Lake Kawaguchi glows with serenity, color, and mountain spirit.
+                </p>
+                <button class="live-weather-btn" onclick="openWeatherModal()">
+                    <i class="fas fa-cloud-sun"></i> Live Weather
+                </button>
+            </div>
+            <div class="header-right">
+                <div class="header-image-large header-image" onclick="openImageModal('../elements/places/fukuoka/architecture1.jpeg')">
+                    <img src="../elements/places/yamanashi/7.jpg" alt="Canal City Hakata Main View">
+                </div>
+                <div class="header-images-small">
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture2.jpeg')">
+                        <img src="../elements/places/yamanashi/1.jpg" alt="Canal City Interior">
+                    </div>
+                    <div class="header-image-small header-image" onclick="openImageModal('../elements/places/fukuoka/architecture3.jpeg')">
+                        <img src="../elements/places/yamanashi/9.jpg" alt="Canal City Night View">
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- weather Modal -->
+    <div id="weatherModal" class="weather-modal">
+        <div class="weather-modal-content">
+            <div class="weather-modal-header">
+                <h2>Yamanashi Live Weather</h2>
+                <button class="close-btn" onclick="closeWeatherModal()">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="weather-modal-body">
+                <div class="custom-weather">
+                    <div class="weather-header">
+                        <h3 id="modal-weather-location">Yamanashi Weather</h3>
+                        <div class="weather-date" id="modal-weather-date"></div>
+                    </div>
+                    <div class="weather-content">
+                        <div class="weather-icon">
+                            <img id="modal-weather-icon" src="" alt="Weather icon">
+                        </div>
+                        <div class="weather-info">
+                            <div class="weather-temp">
+                                <span id="modal-weather-temp"></span>°C
+                            </div>
+                            <div class="weather-desc" id="modal-weather-desc"></div>
+                        </div>
+                    </div>
+                    <div class="weather-details">
+                        <div class="weather-detail">
+                            <i class="fas fa-wind"></i>
+                            <span id="modal-weather-wind"></span> km/h
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-tint"></i>
+                            <span id="modal-weather-humidity"></span>%
+                        </div>
+                        <div class="weather-detail">
+                            <i class="fas fa-compress-arrows-alt"></i>
+                            <span id="modal-weather-pressure"></span> hPa
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- weather content -->
+    <div style="display: none;">
+    <div class="custom-weather">
+        <div class="weather-header">
+            <h3 id="weather-location">Yamanashi Weather</h3>
+            <div class="weather-date" id="weather-date"></div>
+        </div>
+        <div class="weather-content">
+            <div class="weather-icon">
+                <img id="weather-icon" src="" alt="Weather icon">
+            </div>
+            <div class="weather-info">
+                <div class="weather-temp">
+                    <span id="weather-temp"></span>°C
+                </div>
+                <div class="weather-desc" id="weather-desc"></div>
+            </div>
+        </div>
+        <div class="weather-details">
+            <div class="weather-detail">
+                <i class="fas fa-wind"></i>
+                <span id="weather-wind"></span> km/h
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-tint"></i>
+                <span id="weather-humidity"></span>%
+            </div>
+            <div class="weather-detail">
+                <i class="fas fa-compress-arrows-alt"></i>
+                <span id="weather-pressure"></span> hPa
+            </div>
+        </div>
+    </div>
+    </div>
+
+    <!-- content -->
+    <div class="article-container">
+        <!-- main article content -->
+        <article class="article-content">
+            <p class="text-lg mb-6 justified">
+                Lake Kawaguchi (河口湖, Kawaguchi-ko), located in the town of Fujikawaguchiko in Yamanashi Prefecture, is the most accessible and developed of the Fuji Five Lakes (Fujigoko). Set against the dramatic backdrop of Mount Fuji, the lake is renowned for its breathtaking views, tranquil waters, and vibrant seasonal landscapes, making it one of Japan’s premier destinations for nature lovers and photographers.
+            </p>
+            
+
+            <!-- find your scene -->
+            <div class="find-your-scene">
+                <h2 class="section-title">Find Your Scene</h2>
+
+                <div class="tabs">
+                    <button class="tab active" data-category="scenic_wonder">Scenic Wonder </button>
+                    <button class="tab" data-category="nature">Nature & Wellness Retreat</button>
+                    <button class="tab" data-category="culture">Culture & Curiosities</button>
+                    <button class="tab" data-category="adventure">Adventure & Discovery</button>
+                </div>
+
+                <div class="slider-wrapper">
+                    <button class="nav-arrow left-arrow">&#8592;</button>
+                    <div class="slider-container">
+                    <div class="slider-track" id="slider-track">
+                    </div>
+                    </div>
+                    <button class="nav-arrow right-arrow">&#8594;</button>
+                </div>
+                </div>
+
+                <!-- find your scene modals -->
+                <div id="image-modal" class="modal hidden">
+                <div class="modal-content">
+                    <div class="modal-text">
+                    <button class="close-modal">&times;</button>
+                    <h2 id="modal-title">Scene Title</h2>
+                    <p id="modal-description">Short description goes here.</p>
+                    <ul id="modal-list">
+                        <li>Highlight 1</li>
+                        <li>Highlight 2</li>
+                        <li>Highlight 3</li>
+                    </ul>
+                    </div>
+
+                    <div class="modal-image-container">
+                    <div class="modal-image-wrapper">
+                        <img id="modal-img" src="" alt="Scene" />
+                        <div class="modal-overlay-box">
+                            <h1 id="modal-overlay-desc" class="text-sm text-white/80">Extra info or details.</h1>
+                            <h4 id="modal-overlay-title" class="text-sm font-bold leading-tight">Title</h4>
+                            <h1 id="modal-overlay-subtitle" class="text-sm font-medium text-white/90">Subtitle</h1>
+                        </div>
+                    </div>
+                    <div class="dots">
+                        <span class="dot active" data-img="0"></span>
+                        <span class="dot" data-img="1"></span>
+                    </div>
+                    </div>
+                </div>
+                </div>
+
+                <!-- soak up the culture section -->
+                <div class="culture-section">
+                <h2 class="section-title">Soak Up the Culture</h2>
+                <div class="culture-content">
+                    <!-- left side -->
+                    <div class="culture-left">
+                        <div class="hover-wrapper">
+                    <div class="large-image-box culture-image" data-img="large">
+                        <img src="../elements/places/yamanashi/kachi-kachi-ropeway.png" alt="Cultural Highlight">
+                    </div>
+                    <div class="image-caption">
+                        <h3 class="image-title">Mount Fuji’s Spiritual Lake Gateway</h3>
+                        <p class="image-description">Discover the lake that echoes centuries of pilgrimage and tradition</p>
+                    </div>
+                    </div>
+                    </div>
+
+                    <!-- right side -->
+                    <div class="culture-right">
+                        <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small1">
+                            <img src="../elements/places/yamanashi/itchiku-kubota.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">An Ever-Changing Beauty</h4>
+                                <p class="image-description">From cherry blossoms to snowy peaks, Lake Kawaguchi’s seasons enchant</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small2">
+                            <img src="../elements/places/yamanashi/2.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Gateway to Serenity and Fuji’s Majesty</h4>
+                                <p class="image-description">Where tranquil waters meet the timeless silhouette of Fuji</p>
+                            </div>
+                    </div>
+                    </div>
+                    <div class="hover-wrapper">
+                    <div class="small-image-row culture-image" data-img="small3">
+                            <img src="../elements/places/yamanashi/3.jpg" class="culture-image" />
+                            <div class="image-caption">
+                                <h4 class="image-title">Mirror of Tradition and Nature</h4>
+                                <p class="image-description">Reflecting Mount Fuji’s spirit through culture and calm</p>
+                            </div>
+                    </div>
+                    </div>
+                    
+                    </div>
+                
+                </div>
+                </div>
+
+                <!-- soak up the culture modals -->
+                <div id="culture-modal" class="modal hidden">
+                    <div class="modal-content">
+                        <div class="modal-text">
+                            <button class="close-modal">&times;</button>
+                            <h2 id="culture-modal-title">Culture Title</h2>
+                            <p id="culture-modal-description">Description goes here.</p>
+                            <ul id="culture-modal-list">
+                                <li>Feature 1</li>
+                                <li>Feature 2</li>
+                                <li>Feature 3</li>
+                            </ul>
+                        </div>
+                        <div class="modal-image-container">
+                            <div class="modal-image-wrapper">
+                                <img id="culture-modal-img" src="" alt="Culture" />
+                                <div class="modal-overlay-box">
+                                    <p id="culture-modal-overlay-desc" class="text-sm text-white/80"></p>
+                                    <h3 id="culture-modal-overlay-title" class="text-xl font-bold leading-tight"></h3>
+                                    <h5 id="culture-modal-overlay-subtitle" class="text-base font-medium text-white/90"></h5>
+                                </div>
+                            </div>
+                            <div class="dots" id="culture-dots">
+                                <span class="dot active" data-img="0"></span>
+                                <span class="dot" data-img="1"></span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- visiting -->
+                <div class="canal-city">
+                <h2 class="section-title">Visiting Lake Kawaguchi</h2>
+                <div class="canal-city-grid">
+                    <!-- column one -->
+                    <div class="canal-text">
+                    <p class="justified">
+                        Lake Kawaguchi, nestled at the foot of Mount Fuji, is a breathtaking blend of natural beauty and cultural richness. Known as a “gateway to Fuji,” it offers serene lakeside views, vibrant local museums, relaxing hot springs, and outdoor adventures. Whether you’re here to explore, unwind, or connect with Japan’s iconic landscape, Lake Kawaguchi delivers an unforgettable experience that captures the spirit of the region.
+                    </p>
+                    </div>
+
+                    <!-- column two -->
+                    <div class="canal-image-large">
+                        <div class="image-hover-wrapper" style="height: 100%;">
+                    <img src="../elements/places/yamanashi/5.jpg" alt="Canal City large view" />
+                    </div>
+                    
+                    </div>
+
+                    <!-- column three -->
+                    <div class="canal-image-small">
+                        <div class="image-hover-wrapper" style="height: 60%;">
+                    <img src="../elements/places/yamanashi/6.jpg" alt="Canal City small view" />
+                    </div>
+                    <div class="canal-caption">
+                        <p class="justified">Where majestic Mount Fuji meets tranquil waters, inspiring awe, reflection, and timeless memories at every turn.</p>
+                    </div>
+                    </div>
+                </div>
+                </div>
+            
+                <!-- practical info -->
+                <div class="bg-gray-200 p-6 rounded-lg mt-8">
+                    <h3 class="text-xl font-bold mb-2">Practical Information</h3>
+                    <ul class="list-disc pl-6 space-y-2">
+                        <li><strong>Opening Hours: </strong>Most attractions are open between 9:00 AM and 5:00 PM. Ropeway and museums may vary.</li>
+                        <li><strong>Admission: </strong>Free to access the lake. Specific attractions such as the ropeway (~900 yen roundtrip) and museums charge entry fees.</li>
+                        <li><strong>Address: </strong>Fujikawaguchiko Town, Minamitsuru District, Yamanashi Prefecture</li>
+                        <li><strong>Language: </strong>English signage is widely available; tourist information centers provide English-speaking assistance.</li>
+                        <li><strong>Wi-fi: </strong>Free public Wi-Fi is available at Kawaguchiko Station and major attractions.</li>  
+                        
+                        <li><strong>Access:</strong>
+                            <li class="ml-4"><strong>From Tokyo: </strong>Take the JR Chuo Line from Shinjuku to Otsuki Station (1–1.5 hrs), then transfer to the Fujikyu Railway to Kawaguchiko Station (55 mins).</li>
+                            <li class="ml-4"><strong>By Highway Bus: </strong>Direct buses from Tokyo Station, Shibuya, or Shinjuku reach Kawaguchiko Station in about 2 hours.</li>
+                            <li class="ml-4"><strong>From Mt. Fuji 5th Station: </strong>Kawaguchiko serves as a base station with frequent buses to the Subaru Line 5th Station, the most popular starting point for climbers.</li>
+                        </li>
+                    </ul>
+                </div>
+        </article>
+
+        <!-- sidebar-->
+        <aside class="sidebar">
+
+        <!-- additional info -->
+        <div class="additional-info-container" onclick="openPopup()">
+            <div class="additional-info-header">
+                <h3>Additional Information</h3>
+                <button class="expand-btn">
+                    <i class="fas fa-expand-arrows-alt"></i>
+                </button>
+            </div>
+        </div>
+
+        <!-- popular places -->
+        <h2 class="text-2xl font-bold mb-4">Other Popular Places</h2>
+        
+        <!-- card 1 -->
+        <div class="popular-card" onclick="window.location.href='hyogo.html';">
+            <img src="../elements/places/hyogo1.jpeg" alt="Hyogo Himeji Castle">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Hyogo Himeji Castle</h3>
+                <p>Japan’s pristine white heron castle soaring through samurai history</p>
+            </div>
+        </div>
+        
+        <!-- card 2 -->
+        <div class="popular-card" onclick="window.location.href='fukuoka.html';">
+            <img src="../elements/places/fukuoka4.jpeg" alt="Fukuoka Canal City Hakata">
+            <div class="popular-card-overlay">
+                <h3 class="text-lg font-bold">Fukuoka Canal City Hakata</h3>
+                <p>A futuristic fusion of shopping, art, and flowing water</p>
+            </div>
+        </div>
+        
+        <!-- additional info popup -->
+        <div id="infoPopup" class="popup-overlay">
+            <div class="popup-container">
+                <div class="popup-header">
+                    <h2>Lake Kawaguchi Travel Tips</h2>
+                    <button class="close-btn" onclick="closePopup()">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                
+                <div class="popup-content">
+                    <div class="popup-main-content">
+                        <div class="slides-container">
+
+                                <div class="slide active" data-slide="1">
+                                    <div class="slide-content">
+                                        <h3>Getting There & Getting Around</h3>
+                                        <ul>
+                                            <li><strong>Train Access:</strong> Take the JR Tohoku Shinkansen to Utsunomiya Station, then transfer to the JR Nikko Line for Nikko Station. The shrine is a 20-minute bus or taxi ride from there.</li>
+                                            <li><strong>Bus Routes:</strong> Use the Tobu Bus “Shinkyo” line from Nikko Station to reach Toshogu Shrine directly. Day passes are available for unlimited bus rides around Nikko.</li>
+                                            <li><strong>Walking Paths:</strong> The shrine complex is walkable, but expect some uphill climbs and steps. Wear comfortable shoes and take breaks to enjoy the nature and smaller shrines.</li>
+                                            <li><strong>Taxi Convenience:</strong> For quicker and more direct access, taxis from Nikko Station or nearby hotels provide convenient transport, especially if visiting multiple sites in one day.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="2">
+                                    <div class="slide-content">
+                                        <h3>Visiting Tips & Cultural Etiquette</h3>
+                                        <ul>
+                                            <li><strong>Opening Hours:</strong> Toshogu Shrine is generally open from 8:00 AM to 5:00 PM (hours vary by season). Arrive early to avoid crowds and enjoy a peaceful visit.</li>
+                                            <li><strong>Admission Fees:</strong> Entrance requires a fee (around 1,300 yen), which grants access to the main shrine buildings and surrounding grounds.</li>
+                                            <li><strong>Photography Guidelines:</strong> Photos are allowed in most outdoor areas, but refrain from photographing inside the main sanctuaries out of respect.</li>
+                                            <li><strong>Respectful Behavior:</strong> Follow traditional shrine etiquette: bow before entering torii gates, cleanse hands and mouth at the chozuya fountain, and speak quietly.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                                <div class="slide" data-slide="3">
+                                    <div class="slide-content">
+                                        <h3>Enhancing Your Experience</h3>
+                                        <ul>
+                                            <li><strong>Guided Tours:</strong> Consider joining a guided tour or renting an audio guide to fully appreciate the rich history, architecture, and symbolism of the shrine.</li>
+                                            <li><strong>Visit the Sacred Stable:</strong> Don’t miss the famous “Three Wise Monkeys” carving at the sacred stable, which represents the proverb “see no evil, hear no evil, speak no evil.”</li>
+                                            <li><strong>Explore Surrounding Nature:</strong> The shrine is surrounded by lush cedar forests and beautiful walking trails—perfect for calming strolls after the cultural immersion.</li>
+                                            <li><strong>Seasonal Highlights:</strong> Visit in spring for cherry blossoms or autumn for vibrant fall foliage, both of which add spectacular colors to the shrine’s ancient architecture.</li>
+                                        </ul>
+                                    </div>
+                                </div>
+
+                        </div>
+                    </div> 
+                </div>
+
+                <div class="dot-navigation">
+                    <span class="dot-add active" onclick="currentSlide(1)"></span>
+                    <span class="dot-add" onclick="currentSlide(2)"></span>
+                    <span class="dot-add" onclick="currentSlide(3)"></span>
+                </div>
+            </div>
+        </div>
+
+        </aside>
+        </div>
+
+    <!-- footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-4">
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- column 1: Go Japan -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Go Japan</h3>
+                    <p class="text-gray-300 leading-relaxed">Discover Japan's beauty, tradition, and modern magic. Go Japan—where every path tells a story.</p>
+                </div>
+                
+                <!-- column 2: links -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Quick Links</h3>
+                    <div class="space-y-3">
+                        <div><a href="../home.html" class="text-gray-300 hover:text-white transition-colors duration-200">Home</a></div>
+                        <div><a href="../home.html#popular-places" class="text-gray-300 hover:text-white transition-colors duration-200">Tourist Spots</a></div>
+                        <div><a href="../home.html#seasons-container" class="text-gray-300 hover:text-white transition-colors duration-200">Seasons</a></div>
+                        <div><a href="../home.html#section-four" class="text-gray-300 hover:text-white transition-colors duration-200">Food</a></div>
+                        <div><a href="../home.html#section-five" class="text-gray-300 hover:text-white transition-colors duration-200">Activities</a></div>
+                    </div>
+                </div>
+                
+                <!-- column 3: email -->
+                <div class="mb-6 md:mb-0">
+                    <h3 class="text-2xl font-bold mb-4">Connect With Us</h3>
+                    <div>
+                        <a href="mailto:contact.gojapan@gmail.com" class="text-gray-300 hover:text-white transition-colors duration-200">contact.gojapan@gmail.com</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- copyright -->
+            <div class="border-t border-gray-700 mt-8 pt-6 text-center">
+                <p>&copy; 2025 Go Japan. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    
+<script>
+
+    // weather modal
+    function openWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'flex';
+    document.body.style.overflow = 'hidden';
+
+    // put weather data
+    document.getElementById('modal-weather-location').textContent = document.getElementById('weather-location').textContent;
+    document.getElementById('modal-weather-date').textContent = document.getElementById('weather-date').textContent;
+    document.getElementById('modal-weather-temp').textContent = document.getElementById('weather-temp').textContent;
+    document.getElementById('modal-weather-desc').textContent = document.getElementById('weather-desc').textContent;
+    document.getElementById('modal-weather-icon').src = document.getElementById('weather-icon').src;
+    document.getElementById('modal-weather-wind').textContent = document.getElementById('weather-wind').textContent;
+    document.getElementById('modal-weather-humidity').textContent = document.getElementById('weather-humidity').textContent;
+    document.getElementById('modal-weather-pressure').textContent = document.getElementById('weather-pressure').textContent;
+    }
+
+    // close weather modal
+    function closeWeatherModal() {
+    const modal = document.getElementById('weatherModal');
+    modal.style.display = 'none';
+    document.body.style.overflow = 'auto';
+    }
+
+    // clicking outside
+    document.addEventListener('DOMContentLoaded', function () {
+    const weatherModal = document.getElementById('weatherModal');
+
+    if (weatherModal) {
+        // Close on outside click
+        weatherModal.addEventListener('click', function (e) {
+            if (e.target === this) {
+                closeWeatherModal();
+            }
+        });
+
+        // Close on Escape key
+        document.addEventListener('keydown', function (e) {
+            if (e.key === 'Escape' || e.key === 'Esc') {
+                const modalStyle = window.getComputedStyle(weatherModal);
+                if (modalStyle.display !== 'none') {
+                    closeWeatherModal();
+                    document.activeElement.blur();
+                }
+            }
+        });
+    }
+});
+
+// fetch weather data
+function fetchWeather(city = 'Yamanashi', countryCode = 'jp') {
+    const apiKey = '5193a2e08e2808a8d6687c73549d95d9'; 
+    
+    const cityId = 1848649; 
+    const url = `https://api.openweathermap.org/data/2.5/weather?id=${cityId}&units=metric&appid=${apiKey}`;
+    
+    console.log("Fetching weather from:", url);
+    
+    fetch(url)
+        .then(response => {
+            console.log("Response status:", response.status);
+            if (!response.ok) {
+                throw new Error(`Weather data not available (Status: ${response.status})`);
+            }
+            return response.json();
+        })
+        .then(data => {
+            console.log("Weather data received:", data);
+            
+            document.getElementById('weather-location').textContent = `${data.name} Weather`;
+            document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                weekday: 'short', 
+                year: 'numeric', 
+                month: 'short', 
+                day: 'numeric' 
+            });
+            document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+            document.getElementById('weather-desc').textContent = data.weather[0].description;
+            document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+            document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+            document.getElementById('weather-humidity').textContent = data.main.humidity;
+            document.getElementById('weather-pressure').textContent = data.main.pressure;
+        })
+        .catch(error => {
+            console.error('Error fetching weather data:', error);
+            
+            if (url.includes('id=')) {
+                console.log("Trying alternative method with city name...");
+                const altUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city},${countryCode}&units=metric&appid=${apiKey}`;
+                
+                fetch(altUrl)
+                    .then(response => {
+                        if (!response.ok) {
+                            throw new Error('Alternative method also failed');
+                        }
+                        return response.json();
+                    })
+                    .then(data => {
+                        document.getElementById('weather-location').textContent = `${data.name} Weather`;
+                        document.getElementById('weather-date').textContent = new Date().toLocaleDateString('en-US', { 
+                            weekday: 'short', 
+                            year: 'numeric', 
+                            month: 'short', 
+                            day: 'numeric' 
+                        });
+                        document.getElementById('weather-temp').textContent = Math.round(data.main.temp);
+                        document.getElementById('weather-desc').textContent = data.weather[0].description;
+                        document.getElementById('weather-icon').src = `https://openweathermap.org/img/wn/${data.weather[0].icon}@2x.png`;
+                        document.getElementById('weather-wind').textContent = Math.round(data.wind.speed * 3.6);
+                        document.getElementById('weather-humidity').textContent = data.main.humidity;
+                        document.getElementById('weather-pressure').textContent = data.main.pressure;
+                    })
+                    .catch(finalError => {
+                        console.error('Final error fetching weather data:', finalError);
+                        document.querySelector('.custom-weather').innerHTML = `
+                            <div class="weather-error p-4 text-center">
+                                <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                                <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                                <p class="text-sm text-gray-500">Please try again later</p>
+                                <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                            </div>
+                        `;
+                    });
+            } else {
+                document.querySelector('.custom-weather').innerHTML = `
+                    <div class="weather-error p-4 text-center">
+                        <i class="fas fa-cloud-rain text-4xl text-gray-400 mb-2"></i>
+                        <p class="text-lg font-semibold">Weather data currently unavailable</p>
+                        <p class="text-sm text-gray-500">Please try again later</p>
+                        <p class="text-xs mt-4 text-gray-400">API Key may still be activating (can take up to 2 hours)</p>
+                    </div>
+                `;
+            }
+        });
+}
+
+    document.addEventListener('DOMContentLoaded', function() {
+        fetchWeather('Yamanashi', 'jp');
+
+    });
+
+    // additional info modal 
+    function openPopup() {
+        document.getElementById('infoPopup').style.display = 'flex';
+        document.body.style.overflow = 'hidden';
+        currentSlideIndex = 1;
+        showSlide(1);
+    }
+
+    function closePopup() {
+        document.getElementById('infoPopup').style.display = 'none';
+        document.body.style.overflow = 'auto';
+    }
+
+    // slide
+    let currentSlideIndex = 1;
+
+    function currentSlide(n) {
+        showSlide(currentSlideIndex = n);
+    }
+
+    function showSlide(n) {
+        const slides = document.querySelectorAll('.slide');
+        const dots = document.querySelectorAll('.dot-add');
+        
+        if (n > slides.length) { currentSlideIndex = 1; }
+        if (n < 1) { currentSlideIndex = slides.length; }
+        
+        slides.forEach(slide => {
+            slide.classList.remove('active');
+        });
+        
+        dots.forEach(dot => {
+            dot.classList.remove('active');
+        });
+        
+        slides[currentSlideIndex - 1].classList.add('active');
+        dots[currentSlideIndex - 1].classList.add('active');
+    }
+
+    // close click outside
+    document.addEventListener('DOMContentLoaded', function() {
+        const popup = document.getElementById('infoPopup');
+        
+        if (popup) {
+            popup.addEventListener('click', function(e) {
+                if (e.target === this) {
+                    closePopup();
+                }
+            });
+        }
+    });
+
+    // close popups escape key
+    document.addEventListener('keydown', function(e) {
+        if (e.key === 'Escape') {                
+            const mainPopup = document.getElementById('infoPopup');                
+            
+            if (mainPopup && mainPopup.style.display === 'flex') {
+                closePopup();             
+            }
+        } 
+    });
+
+    // find your scene data
+    const scene_data = {
+        scenic_wonder: [
+            {
+            img: '../elements/places/yamanashi/oishi.jpg',
+            img2: '../elements/places/yamanashi/oishi1.jpg',
+            title: 'Oishi and Nagasaki',
+            desc: 'Situated on the northern shore, Oishi and Nagasaki Parks are some of the most iconic places to view Mount Fuji. Seasonal flowers like lavender and kochia enhance the view, making it a dream spot for photographers.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'The postcard comes alive at Oishi and Nagasaki',
+                subtitle: 'Framing Fuji with flowers and serenity'
+            },
+            bullets: ['Best spot for unobstructed views of Mount Fuji across the lake.','Seasonal flower displays (lavender in summer, kochia in autumn).','Easy access from Fuji Oishi Hana Terrace and nearby cafes.']
+            },
+            {
+            img: '../elements/places/yamanashi/ropeway.jpg',
+            img2: '../elements/places/yamanashi/ropeway1.jpg',
+            title: 'Mt. Fuji Ropeway',
+            desc: 'Formerly known as the Kachi Kachi Ropeway, this ride ascends Mount Tenjo for breathtaking aerial views. The summit features trails, lookouts, and references to the classic Japanese folktale “Kachi Kachi Yama.”',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Rise above Lake Kawaguchi on clouds and folktales',
+                subtitle: 'From raccoon mischief to Fuji magnificence'
+            },
+            bullets: ['Scenic cable car ride with panoramic views of the lake and Mount Fuji.','Folktale-themed statues and storytelling panels at the summit.','Access to short hiking trails and observation decks.']
+            },
+            {
+            img: '../elements/places/yamanashi/winter1.jpg',
+            img2: '../elements/places/yamanashi/winter.jpg',
+            title: 'Winter Views',
+            desc: 'The clearest views of Mount Fuji often occur in winter, when the air is crisp and clouds are minimal. Lake Kawaguchi becomes a mirror for the snowcapped giant.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where snow and stillness reveal Fuji’s purest form',
+                subtitle: 'Winter clarity, timeless beauty'
+            },
+            bullets: ['Ideal conditions for photography and sunrise viewing.','Fewer crowds and peaceful lakeside walks.','Winter flower displays and illumination events nearby.']
+            },
+            {
+            img: '../elements/places/yamanashi/hanaterrace.jpg',
+            img2: '../elements/places/yamanashi/hanaterrace1.jpg',
+            title: 'Fuji Oishi Hana Terrace',
+            desc: 'This modern complex features local crafts, artisanal foods, and cafes with outdoor terraces. It’s a relaxing and stylish spot for both shopping and taking in views of Mount Fuji.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Boutiques, brews, and a flawless Fuji view',
+                subtitle: 'Shop local, sip slow, see Fuji'
+            },
+            bullets: ['Local goods like fruit jams, teas, and handmade crafts.','Open-air café spaces with panoramic views.','Nearby lavender fields and walking paths.']
+            }
+        ],
+        nature: [
+            {
+            img: '../elements/places/yamanashi/onsen.jpg',
+            img2: '../elements/places/yamanashi/onsen1.jpg',
+            title: 'Onsen Hotels',
+            desc: 'Kawaguchiko’s onsen hotels offer more than just relaxation—they often include open-air baths with direct views of Mount Fuji. Options range from luxury stays to public bathhouses.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Hot springs, cool views, unforgettable moments',
+                subtitle: 'Soak in serenity, face to face with Fuji'
+            },
+            bullets: ['Outdoor rotenburo baths overlooking Mount Fuji.','Private onsen rooms available at select hotels.','Traditional Japanese ryokan experiences with kaiseki meals.']
+            },
+            {
+            img: '../elements/places/yamanashi/park.jpg',
+            img2: '../elements/places/yamanashi/park1.jpg',
+            title: 'Yagizaki Park',
+            desc: 'Located on the southern edge of the lake, Yagizaki Park is a quieter alternative to Oishi Park, known for its spring cherry blossoms and summer lavender.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A quiet gem for nature lovers',
+                subtitle: 'Cherry blossoms and lakeside strolls'
+            },
+            bullets: ['Cherry blossoms in April and lavender in July.','Wide open lawns and lakeside walking trails.','Great picnic spot with fewer crowds.']
+            },
+            {
+            img: '../elements/places/yamanashi/center.jpg',
+            img2: '../elements/places/yamanashi/center1.jpg',
+            title: 'Natural Living Center',
+            desc: 'This hands-on center features blueberry fields, jam-making workshops, and a cozy café. It’s especially popular in summer and fall.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Berry picking with Fuji watching',
+                subtitle: 'Sweet treats and mountain peaks'
+            },
+            bullets: ['Seasonal blueberry picking (July–August).','Homemade jam and sweets available.','Family-friendly with small gardens and views.']
+            },
+            {
+            img: '../elements/places/yamanashi/footbath.jpg',
+            img2: '../elements/places/yamanashi/footbath1.jpg',
+            title: 'Riverside Footbaths',
+            desc: 'These free or low-cost outdoor footbaths offer a quick, relaxing break with stunning views of Fuji across the water. Popular spots include near Hotel Konanso and Yumedono Ryokan.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where warmth meets wonder',
+                subtitle: 'Dip your feet, lift your spirit'
+            },
+            bullets: ['Outdoor footbaths with Fuji views.','Some footbaths offer tea service or snacks.','Open to day visitors and hotel guests.']
+            },
+        ],
+        culture: [
+            {
+            img: '../elements/places/yamanashi/museum.jpg',
+            img2: '../elements/places/yamanashi/museum1.jpg',
+            title: 'Itchiku Kubota',
+            desc: 'A tranquil museum nestled in a forest, featuring the breathtaking kimono artistry of Itchiku Kubota. The architecture and garden reflect a deep harmony with nature.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Kimono as canvas, nature as frame',
+                subtitle: 'Where fabric meets philosophy'
+            },
+            bullets: ['Masterpieces of Tsujigahana-dyed kimono.','Beautifully landscaped gardens and teahouse.','Architectural blend of traditional and modern styles.']
+            },
+            {
+            img: '../elements/places/yamanashi/music.jpg',
+            img2: '../elements/places/yamanashi/music1.jpg',
+            title: 'Music Forest Museum',
+            desc: 'A European-style theme park and museum featuring antique music boxes, automated instruments, and live performances—all with a romantic view of Fuji.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'A fairytale of music by the lake',
+                subtitle: 'Whimsy, waltzes, and Mount Fuji'
+            },
+            bullets: ['Daily concerts and demonstrations of mechanical instruments.','Rose gardens and a Baroque-style interior.','Themed gift shops and tearoom.']
+            },
+            {
+            img: '../elements/places/yamanashi/herb.jpeg',
+            img2: '../elements/places/yamanashi/herb1.jpg',
+            title: 'Kawaguchiko Herb Hall',
+            desc: 'A pleasant stop for herbal teas, handmade soaps, and lavender-themed products. Visitors can also enjoy workshops or sample lavender soft cream.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Fragrant finds and handmade gifts',
+                subtitle: 'Breathe deep, shop slow'
+            },
+            bullets: ['Local herb products and souvenirs.','Hands-on crafting experiences.','Popular lavender ice cream and floral garden.']
+            },
+            {
+            img: '../elements/places/yamanashi/kawamuseum.jpg',
+            img2: '../elements/places/yamanashi/kawamuseum1.jpg',
+            title: 'Museum of Art',
+            desc: 'This elegant museum showcases rotating exhibitions of modern and contemporary art, often centered on themes of Mount Fuji. With large windows framing the mountain itself, the building becomes part of the aesthetic experience.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Contemporary expressions beneath a timeless peak',
+                subtitle: 'Where Fuji meets the modern canvas'
+            },
+            bullets: ['Exhibits featuring Japanese and international contemporary artists.','Panoramic windows with direct views of Mount Fuji from the gallery.','Quiet, reflective atmosphere perfect for art and nature lovers.']
+            },
+        ],
+        adventure: [
+            {
+            img: '../elements/places/yamanashi/cycling.jpg',
+            img2: '../elements/places/yamanashi/cycling1.jpg',
+            title: 'Cycling the Lake Loop',
+            desc: 'The nearly 20-kilometer path encircling Lake Kawaguchi offers a scenic and leisurely ride. Bike rental shops are plentiful, with electric assist options available.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Pedal the perimeter, soak in the scenery',
+                subtitle: 'Your ride, your pace, your Fuji'
+            },
+            bullets: ['Full or partial lake loop cycling routes.','Breathtaking scenery, rest spots, and photo ops.','Rentals available near train stations and hotels.']
+            },
+            {
+            img: '../elements/places/yamanashi/boating.png',
+            img2: '../elements/places/yamanashi/boating1.jpg',
+            title: 'Boating',
+            desc: 'From whimsical swan boats to guided sightseeing cruises, boating offers a peaceful way to enjoy the lake’s views and breeze.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Row, paddle, or cruise—it’s all majestic',
+                subtitle: 'Float beneath Fuji’s gaze.'
+            },
+            bullets: ['Paddle boats, rowboats, and electric swan rides.','Scenic cruises with commentary on Mount Fuji.','Rentals available at various docks around the lake.']
+            },
+            {
+            img: '../elements/places/yamanashi/tenjo.jpg',
+            img2: '../elements/places/yamanashi/tenjo1.jpg',
+            title: 'Hiking Mount Tenjo',
+            desc: 'The trail from the ropeway station to the summit of Mount Tenjo is short but rewarding. On clear days, hikers can see not only Lake Kawaguchi and Mount Fuji but also the Southern Alps.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Step by step, the view rewards',
+                subtitle: 'Trail to the sky above the lake'
+            },
+            bullets: ['Easy-to-moderate trails with panoramic outlooks.','Autumn foliage and cherry blossoms in season.','Benches and viewpoints along the ridge.']
+            },
+            {
+            img: '../elements/places/yamanashi/fishing.jpg',
+            img2: '../elements/places/yamanashi/fishing1.jpg',
+            title: 'Bass Fishing',
+            desc: 'Lake Kawaguchi is a hotspot for black bass fishing, drawing anglers from across Japan. Equipment rentals and fishing guides are readily available.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Cast, catch, and chill by Fuji’s side',
+                subtitle: 'A reel adventure in Fuji’s shadow'
+            },
+            bullets: ['Black bass and trout fishing opportunities.','Gear rentals and guided tours available.','Popular early morning activity with scenic backdrop.']
+            },
+        ]
+    };
+
+    let currentCategory = 'scenic_wonder';
+    let currentIndex = 0;
+    let activeImages = [];
+
+    const sliderTrack = document.getElementById('slider-track');
+    const tabs = document.querySelectorAll('.tab');
+    const modal = document.getElementById('image-modal');
+    const modalImg = document.getElementById('modal-img');
+    const modalDesc = document.getElementById('modal-description');
+    const dots = modal.querySelectorAll('.dot');
+    let modalImgSet = [];
+
+    function renderImages() {
+        activeImages = scene_data[currentCategory];
+        sliderTrack.innerHTML = '';
+        const slideImages = activeImages.slice(currentIndex, currentIndex + 4);
+        slideImages.forEach((item, i) => {
+        const box = document.createElement('div');
+        box.className = 'image-box';
+        box.innerHTML = `<img src="${item.img}" data-index="${i}" /><div class="image-title">${item.title}</div>`;
+        box.addEventListener('click', () => openModal(item));
+        sliderTrack.appendChild(box);
+        });
+    }
+
+    function updateTab(tabName) {
+        currentCategory = tabName;
+        currentIndex = 0;
+        tabs.forEach(t => t.classList.remove('active'));
+        document.querySelector(`.tab[data-category="${tabName}"]`).classList.add('active');
+        renderImages();
+    }
+
+    // arrow tabbing navigation
+
+    const tabOrder = ["scenic_wonder", "nature", "culture", "adventure"];
+
+    function getNextTab(current, direction) {
+        const currentIndex = tabOrder.indexOf(current);
+        const nextIndex =
+        direction === "right"
+        ? (currentIndex + 1) % tabOrder.length
+        : (currentIndex - 1 + tabOrder.length) % tabOrder.length;
+        return tabOrder[nextIndex];
+    }
+
+    document.querySelector('.left-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "left");
+        updateTab(nextTab);
+    });
+
+    document.querySelector('.right-arrow').addEventListener('click', () => {
+        const nextTab = getNextTab(currentCategory, "right");
+        updateTab(nextTab);
+    });
+
+    tabs.forEach(tab => {
+        tab.addEventListener('click', () => updateTab(tab.dataset.category));
+    });
+
+    function openModal(item) {
+        modal.classList.remove('hidden');
+        modalImg.src = item.img;
+        modalImgSet = [item.img, item.img2];
+
+        document.getElementById('modal-title').textContent = item.title || 'Scene Title';
+        document.getElementById('modal-description').textContent = item.desc || 'Short description.';
+        
+        const list = document.getElementById('modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+            const li = document.createElement('li');
+            li.textContent = text;
+            list.appendChild(li);
+            });
+        }
+
+        document.getElementById('modal-overlay-desc').textContent = item.overlay?.desc || 'Extra info or details.';
+        document.getElementById('modal-overlay-title').textContent = item.overlay?.title || 'Title';
+        document.getElementById('modal-overlay-subtitle').textContent = item.overlay?.subtitle || 'Subtitle';
+
+        dots.forEach(dot => dot.classList.remove('active'));
+        dots[0].classList.add('active');
+    }
+
+    dots.forEach((dot, index) => {
+            dot.addEventListener('click', () => {
+                dots.forEach(d => d.classList.remove('active'));
+                dot.classList.add('active');
+
+                if (modalImgSet[index]) {
+                    modalImg.src = modalImgSet[index];
+                }
+            });
+    });
+
+    document.querySelector('.close-modal').addEventListener('click', () => {
+        modal.classList.add('hidden');
+    });
+
+    modal.addEventListener('click', (e) => {
+        if (e.target === modal) modal.classList.add('hidden');
+    });
+
+    document.addEventListener('keydown', (e) => {
+        if (e.key === 'Escape') modal.classList.add('hidden');
+    });
+
+    window.addEventListener('DOMContentLoaded', () => {
+        renderImages();
+    });
+
+    const culture_data = {
+        large: {
+            img: '../elements/places/yamanashi/kachi-kachi-ropeway.png',
+            img2: '../elements/places/yamanashi/cycling.png',
+            title: 'Nature’s Sacred Shoreline',
+            desc: 'Lake Kawaguchi, formed by ancient volcanic activity from Mount Fuji, is the second largest of the Fuji Five Lakes and boasts the longest shoreline at 830 meters above sea level. The area holds deep spiritual significance, historically serving as a route for Edo-period pilgrims who revered Mount Fuji. Today, visitors can still encounter shrines and stone markers that echo this rich religious heritage.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where volcanic forces shape beauty and spirituality meets nature'
+            }
+        },
+        small1: {
+            img: '../elements/places/yamanashi/itchiku-kubota.jpg',
+            img2: '../elements/places/yamanashi/8.jpg',
+            title: 'Seasonal Splendor',
+            desc: 'Lake Kawaguchi captivates visitors year-round with its stunning seasonal beauty. Spring showcases cherry blossoms along the northern shores, highlighted by the Kawaguchiko Cherry Blossom Festival. Summer brings vibrant lavender fields and festive fireworks, attracting Mount Fuji climbers. Autumn paints the landscape with vivid red and gold foliage during the popular Kawaguchiko Autumn Leaves Festival. Winter offers crisp, clear views of snow-capped Mount Fuji, complemented by the Mount Fuji Snow Festival and enchanting illuminations.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Experience the colors of nature’s finest canvas',
+            }
+        },
+        small2: {
+            img: '../elements/places/yamanashi/2.jpg',
+            img2: '../elements/places/yamanashi/cycling-park.png',
+            title: 'Tranquility and Tradition',
+            desc: 'Lake Kawaguchi welcomes visitors throughout the year as a serene escape from the fast pace of Japan’s cities. Nestled at the base of Mount Fuji, the lake offers breathtaking panoramic views of Japan’s most iconic peak, making it a perfect spot for photographers, nature lovers, and cultural explorers alike. Beyond its natural allure, Lake Kawaguchi boasts a wealth of cultural attractions, from art museums to traditional festivals, as well as relaxing hot springs and scenic walking trails.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Your year-round refuge to Japan’s natural and cultural heart',
+            }
+        },
+        small3: {
+            img: '../elements/places/yamanashi/3.jpg',
+            img2: '../elements/places/yamanashi/4.jpg',
+            title: 'Cultural Heartbeat of Fuji’s Lakeside',
+            desc: 'Lake Kawaguchi is not only a stunning natural landmark but also a cultural icon deeply intertwined with Japan’s reverence for Mount Fuji. The lake has inspired countless poets, painters, and pilgrims over centuries, serving as a serene backdrop for traditional festivals, artistic expression, and spiritual reflection. Its waters reflect the sacred mountain, symbolizing harmony between nature and human culture, and it remains a cherished destination for those seeking both beauty and cultural connection.',
+            overlay: {
+                desc: 'Go Japan',
+                title: 'Where nature’s beauty meets centuries of inspiration',
+                }        
+            }
+    };
+
+    // soak up the culture
+    const cultureImages = document.querySelectorAll('.culture-image');
+    const cultureModal = document.getElementById('culture-modal');
+    const cultureModalImg = document.getElementById('culture-modal-img');
+    const cultureDots = document.querySelectorAll('#culture-dots .dot');
+    let cultureModalImgSet = [];
+
+    function openCultureModal(item) {
+        cultureModal.classList.remove('hidden');
+        cultureModalImg.src = item.img;
+        cultureModalImgSet = [item.img, item.img2];
+        
+        document.getElementById('culture-modal-title').textContent = item.title;
+        document.getElementById('culture-modal-description').textContent = item.desc;
+        
+        const list = document.getElementById('culture-modal-list');
+        list.innerHTML = '';
+        if (item.bullets && item.bullets.length) {
+            item.bullets.forEach(text => {
+                const li = document.createElement('li');
+                li.textContent = text;
+                list.appendChild(li);
+            });
+        }
+        
+        document.getElementById('culture-modal-overlay-desc').textContent = item.overlay?.desc || '';
+        document.getElementById('culture-modal-overlay-title').textContent = item.overlay?.title || '';
+        document.getElementById('culture-modal-overlay-subtitle').textContent = item.overlay?.subtitle || '';
+        
+        cultureDots.forEach(dot => dot.classList.remove('active'));
+        cultureDots[0].classList.add('active');
+    }
+
+    cultureImages.forEach(imageBox => {
+        imageBox.addEventListener('click', () => {
+            const imgKey = imageBox.getAttribute('data-img');
+            const item = culture_data[imgKey];
+            if (item) {
+                openCultureModal(item);
+            }
+        });
+    });
+
+    cultureDots.forEach((dot, index) => {
+        dot.addEventListener('click', () => {
+            cultureDots.forEach(d => d.classList.remove('active'));
+            dot.classList.add('active');
+            if (cultureModalImgSet[index]) {
+                cultureModalImg.src = cultureModalImgSet[index];
+            }
+        });
+    });
+
+    document.querySelector('#culture-modal .close-modal').addEventListener('click', () => {
+        cultureModal.classList.add('hidden');
+    });
+
+    cultureModal.addEventListener('click', (e) => {
+        if (e.target === cultureModal) cultureModal.classList.add('hidden');
+    });
+
+
+    window.addEventListener('keydown', e => {
+    if (e.key === 'Escape') {
+        if (!cultureModal.classList.contains('hidden')) {
+            cultureModal.classList.add('hidden');
+        }
+    }
+    });
+
+</script>
+</body>
+</html>
